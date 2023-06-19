@@ -28,7 +28,7 @@
                         </p>
 
                         <div class="banner-btn d-flex align-items-center">
-                            <a href="contact.html" class="default-btn">Get Started</a>
+                            <a href="#" class="default-btn">Get Started</a>
 
                         </div>
 
@@ -38,8 +38,7 @@
                     <div class="single-banner-image">
                         <div class="banner-image3s">
                             <div class="banner-main-img">
-                                <img src={{ asset('frontend/assets/images/insurance.jpg') }} alt="banner-1"
-                                    class="rounded-circle" style="height:550px; width:550px;">
+                                <img src={{ asset('frontend/assets/images/cheerful_man.png') }} alt="banner-1">        
                             </div>
                         </div>
 
@@ -116,8 +115,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="single-about-image">
-                        <img src={{ asset('frontend/assets/images/banner/safety.jpg') }} class="rounded-circle"
-                            alt="about-1" style="height:550px; width:550px;">
+                        <img src={{ asset('frontend/assets/images/happy_family.png') }}>
+                            
                         <div class="about-shape">
                             <!--<img src="assets/images/about/about-shape-1.webp" alt="about-shape">-->
                         </div>

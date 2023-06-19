@@ -35,7 +35,7 @@
     <link rel="stylesheet" href={{ asset('frontend/assets/css/dark.css') }} />
     <link rel="stylesheet" href={{ asset('frontend/assets/css/responsive.css') }} />
 
-    <link rel="icon" type="image/png" href={{ asset('frontend/assets/images/favicon.webp') }} />
+    <link rel="icon" type="image/png" href={{ asset('frontend/assets/images/favicon/favicon.ico') }} />
 </head>
 
 <body>
@@ -82,9 +82,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="single-about-image">
-                        <img src={{ asset('frontend/assets/images/banner/safety.jpg') }} class="rounded-circle"
-                            alt="about-1" style="height:550px; width:550px;">
-
+                        <img src={{ asset('frontend/assets/images/home.jpg') }} style="padding:10px;">
                     </div>
                 </div>
                 <div class="col-lg-6">

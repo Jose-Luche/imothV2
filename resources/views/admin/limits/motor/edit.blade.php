@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 <h4 class="header-title">Update {{$clause->product." - ".$clause->class}} Clauses</h4>
                                 @include('partials.info')
-                                <form method="post" action="{{ route('admin.limits.motor.edit', $id) }}" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('admin.limits.motor.store', $id) }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="fullname">Insurance Company * :</label>

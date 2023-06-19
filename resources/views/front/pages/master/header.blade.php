@@ -52,9 +52,9 @@
                 <div class="logo">
                     <a href="{{ route('home') }}">
                         <img src={{ asset('frontend/assets/images/imoth.jpeg') }} class="black-logo"
-                            style="width:140px; height:100px" alt="imoth">
+                            style="width:180px; height:140px" alt="imoth">
                         <img src={{ asset('frontend/assets/images/imoth.jpeg') }} class="white-logo"
-                            style="width:140px; height:100px" alt="imoth">
+                            style="width:180px; height:140px" alt="imoth">
                     </a>
                 </div>
             </div>
@@ -65,9 +65,9 @@
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img src={{ asset('frontend/assets/images/imoth.jpeg') }} class="black-logo"
-                        style="width:140px; height:100px" alt="imoth">
+                        style="width:180px; height:140px" alt="imoth">
                     <img src={{ asset('frontend/assets/images/imoth.jpeg') }} class="white-logo"
-                        style="width:140px; height:100px" alt="imoth">
+                        style="width:180px; height:140px" alt="imoth">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">

@@ -111,7 +111,7 @@ Route::prefix('admin')->group(function() {
                 Route::get('/', [ClausesController::class,'motorLimits'])->name('admin.limits.motor.list');
                 Route::get('/details/{id}', [ClausesController::class,'viewMotorLimits'])->name('admin.limits.motor.details');
                 Route::get('/edit/{id}', [ClausesController::class,'editMotorLimits'])->name('admin.limits.motor.edit');
-                Route::post('/edit/{id}', [ClausesController::class,'storeEditMotorLimits'])->name('admin.limits.motor.edit');
+                Route::post('/edit/{id}', [ClausesController::class,'storeEditMotorLimits'])->name('admin.limits.motor.store');
                 Route::get('/create', [ClausesController::class,'createMotorLimits'])->name('admin.limits.motor.create');
                 Route::post('/create', [ClausesController::class,'submitMotorLimits'])->name('admin.limits.motor.submit');
                 Route::get('/delete/{id}', [ClausesController::class,'deleteMotorLimits'])->name('admin.limits.motor.delete');
@@ -120,7 +120,7 @@ Route::prefix('admin')->group(function() {
                 Route::get('/', [ClausesController::class,'nonMotorLimits'])->name('admin.limits.nonmotor.list');
                 Route::get('/details/{id}', [ClausesController::class,'viewNonMotorLimits'])->name('admin.limits.nonmotor.details');
                 Route::get('/edit/{id}', [ClausesController::class,'editNonMotorLimits'])->name('admin.limits.nonmotor.edit');
-                Route::post('/edit/{id}', [ClausesController::class,'storeEditNonMotorLimits'])->name('admin.limits.nonmotor.edit');
+                Route::post('/edit/{id}', [ClausesController::class,'storeEditNonMotorLimits'])->name('admin.limits.nonmotor.store');
                 Route::get('/create', [ClausesController::class,'createNonMotorLimits'])->name('admin.limits.nonmotor.create');
                 Route::post('/create', [ClausesController::class,'submitNonMotorLimits'])->name('admin.limits.nonmotor.submit');
                 Route::get('/delete/{id}', [ClausesController::class,'deleteNonMotorLimits'])->name('admin.limits.nonmotor.delete');
