@@ -141,14 +141,14 @@
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
                                         <input id="phoneNumber" type="text" name="phoneNumber"
-                                            value="{{ old('phoneNumber') }}" placeholder="Email Phone Number"
+                                            value="{{ old('phoneNumber') }}" placeholder="Phone Number"
                                             required data-error="Please enter your Phone Number" class="form-control">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
-                                        <input id="email" type="text" name="email"
+                                        <input id="email" type="email" name="email"
                                             value="{{ old('email') }}" placeholder="Email Address" required
                                             data-error="Please enter your Email Address" class="form-control">
                                         <div class="help-block with-errors"></div>
@@ -157,7 +157,7 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" id="companyName" name="companyName"
-                                            value="{{ old('companyName') }}" placeholder="Attachment Institution"
+                                            value="{{ old('companyName') }}" placeholder="University/College"
                                             required data-error="Attachment Institution" class="form-control">
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -184,6 +184,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
+                                        <label for="form_name">When do you want your cover to start?*</label>
                                         <input type="date" id="startDate" name="startDate"
                                             value="{{ old('startDate') }}" class="form-control" required
                                             data-error="Please enter Duration">

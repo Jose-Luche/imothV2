@@ -15,17 +15,18 @@ return new class extends Migration
     {
         Schema::create('travel_applications', function (Blueprint $table) {
             $table->id();
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('email');
-            $table->string('mobile');
-            $table->integer('quoteId');
-            $table->string('travelFrom');
-            $table->string('travelTo');
-            $table->string('period');
-            $table->string('limit');
-            $table->date('startDate');
-            $table->longText('description');
+            $table->string('firstName')->nullable();
+            $table->string('lastName')->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
+            $table->integer('quoteId')->nullable();
+            $table->string('travelFrom')->nullable();
+            $table->string('travelTo')->nullable();
+            $table->string('period')->nullable();
+            $table->string('limit')->default(0);
+            $table->string('expectedValue')->default(0);
+            $table->date('startDate')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

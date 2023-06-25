@@ -147,14 +147,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-8 col-md-8" style="padding: 20px">
+                                <div class="col-lg-5 col-md-5" style="padding: 20px">
                                     <div class="form-group">
                                         Do you have a Spouse?
                                         <input type="checkbox" id="hasSpouse" name="hasSpouse" value="yes"
                                             style="width: 20px; height: 20px; margin-left: 30px">
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4" id="spouse-age" style="display: none">
+                                <div class="col-lg-7 col-md-7" id="spouse-age" style="display: none">
                                     <div class="form-group">
                                         <input type="text" id="spouseAge" class="form-control"
                                             placeholder="Spouse Age" name="spouseAge" value="{{ old('spouseAge') }}"
@@ -164,14 +164,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-8 col-md-8" style="padding: 20px">
+                                <div class="col-lg-5 col-md-5" style="padding: 20px">
                                     <div class="form-group">
                                         Do you have Children?
                                         <input type="checkbox" id="hasChildren" name="hasChildren" value="yes"
                                             style="width: 20px; height: 20px; margin-left: 30px">
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4" id="children-number" style="display: none">
+                                <div class="col-lg-7 col-md-7" id="children-number" style="display: none">
                                     <div class="form-group">
                                         <input type="text" id="childrenNumber" class="form-control"
                                             placeholder="Children Number" name="childrenNumber"

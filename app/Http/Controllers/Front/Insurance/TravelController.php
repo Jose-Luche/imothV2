@@ -80,7 +80,8 @@ class TravelController extends Controller
             'startDate'=>Session::get('startDate'),
             'endDate'=>Session::get('endDate'),
             'description'=>Session::get('description'),
-            'limit'=>Session::get('limit')
+            'limit'=>Session::get('limit'),
+            'quoteId' => 0
             
         ]);
 
@@ -176,6 +177,8 @@ class TravelController extends Controller
             $html .= '<p>Stamp Duty: <span style="float: right">'.number_format($stampDuty,2).'</span></p>';
             $html .= '<hr>';
             $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>';
+        
+            $applicationDetails->update(['expectedValue' => $totalPremiumPayable]);
        return view('front.travel.details',[
            'covers'=>$coverDetails,
            'applicationDetails' =>$applicationDetails,
@@ -192,36 +195,37 @@ class TravelController extends Controller
         $request->session()->put('quoteId', $id);
 
         $create = TravelApplication::findOrFail($id);
+
         //Mail::to($create->email)->send(new BidBondEmail($create));
         //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($create));
 
-        $message = "Your Bid Bond Insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
+        $message = "Your Travel Insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
 //        sendSms($create->phone,$message);
         if (!$create)
         {
             return back()->with('error','An unexpected error occurred.Please reload and try again.');
         }
 
-        $type = $request->get('type');
+        $type = "paynow";
         if ($type === 'paynow'){
-            return redirect()->route('front.bond.pay',$create->id)->with('success','Request received.Pay now to complete request.');
+            return redirect()->route('front.travel.pay',$create->id)->with('success','Request received.Pay now to complete request.');
         }
         return back()->with('success','Request placed successfully.We will get back to you shortly.');
     }
+
 
     public function pay($id)
     {
         $details = TravelApplication::findOrFail($id);
 
-
         $payment = Payment::where('ref_id',$details->id)
-            ->where('type',Payment::TYPE_BIDBOND)
+            ->where('type','travel')
             ->first();
         if (!$payment){
             $payment = Payment::create([
                 'ref_id'=>$details->id,
                 'amount'=>$details->expectedValue,
-                'type'=>Payment::TYPE_BIDBOND,
+                'type'=>'travel',
                 'phone'=>Session::get('phoneNumber'),
                 'paid_amount'=>0
             ]);
@@ -232,4 +236,5 @@ class TravelController extends Controller
             'payment'=>$payment
         ]);
     }
+
 }

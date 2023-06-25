@@ -1,5 +1,5 @@
 @extends('front.layout.app')
-@section('title','Bid Bond insurance')
+@section('title','Travel insurance')
 @section('content')
     <!-- /header -->
     <section class="wrapper bg-light">
@@ -27,7 +27,7 @@
                             <div class="col-lg-10 offset-lg-1">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h2 class="fs-15 text-uppercase text-muted mb-3">Bid Bond insurance</h2>
+                                        <h2 class="fs-15 text-uppercase text-muted mb-3">Travel insurance</h2>
                                         <h6 class="display-4 mb-3">Payment</h6>
                                     </div>
                                     <!-- /column -->
@@ -43,7 +43,7 @@
                                                 </div>
                                                 <div>
                                                     {{--                                                        <span class="badge bg-pale-blue text-blue rounded py-1 mb-2">Full Time</span>--}}
-                                                    <h4 class="mb-1">{{ $details->quoteDetails->company->name }}</h4>
+                                                    <h4 class="mb-1">{{ 'Travel Insurance' }}</h4>
                                                     <p class="mb-0 text-body">	<i class="uil uil-wallet me-1"></i> Ksh
                                                         {{ number_format($payment->amount) }}
                                                     </p>
@@ -77,7 +77,7 @@
                                                     <form class="coaantact-form needs-validation" id="paymentRequestForm" method="post" action="{{ route('payment.stk') }}"  novalidate>
                                                         @csrf
                                                         <input type="hidden" name="invoice" value="{{ $payment->reference }}">
-                                                        <input type="hidden" name="amount" value="{{ $payment->amount - $payment->paid_amount }}">
+                                                        <input type="hidden" name="amount" value="{{ $payment->amount - $payment->paid_amount ?? 0 }}">
                                                         <div class="row gx-4">
                                                             <div class="col-md-12">
                                                                 <div class="form-floating mb-4">

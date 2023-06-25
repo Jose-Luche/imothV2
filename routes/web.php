@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Payment\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +33,5 @@ Route::view('/contact', 'front.pages.contact')->name('contact');
 Route::view('/products', 'front.pages.products.products')->name('products');
 Route::view('/faq-insurance', 'front.pages.faq')->name('faq');
 Route::view('/location', 'front.pages.location')->name('ourLocation');
+
+Route::get('/mpesa-confirmation', [PaymentController::class, 'generateAccessToken']);
