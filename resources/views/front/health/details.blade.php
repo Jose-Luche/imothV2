@@ -145,10 +145,11 @@
                                             </a>
                                         </div>
                                         <div class="col-lg-6 col-md-6">
-                                            <a class="btn btn-outline-aqua btn-sm rounded-pill btn-send mb-3" href="{{ route('front.health.details.submit',['applicationId'=>$applicationDetails->id,'id'=>$details->id]) }}">
-                                    <span class="btn btn-outline-info btn-sm d-lg-block col-md-16 text-center text-body">
-                                        Submit quote & Pay later  <i class="uil uil-save"></i></i>
-                                    </span>
+                                            <a class="btn btn-outline-aqua btn-sm rounded-pill btn-send mb-3" 
+                                            href="{{ route('front.health.details.submit',['applicationId'=>$applicationDetails->id, 'id'=>$details->id]) }}">
+                                            <span class="btn btn-outline-info btn-sm d-lg-block col-md-16 text-center text-body">
+                                                Submit & Pay  <i class="uil uil-save"></i></i>
+                                            </span>
                                             </a>
                                         </div>
                                     </div>

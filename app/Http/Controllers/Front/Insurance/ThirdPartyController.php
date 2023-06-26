@@ -287,6 +287,11 @@ class ThirdPartyController extends Controller
             return back()->with('error', 'An unexpected error occurred.Please try again.');
         }
 
+        $type = "paynow";
+        if ($type === 'paynow'){
+            return redirect()->route('front.third.pay',$id)->with('success','Request received.Pay now to complete request.');
+        }
+
 
         $message = "Your Third Party insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
         //        sendSms($applicationDetails->phone,$message);
@@ -330,12 +335,15 @@ class ThirdPartyController extends Controller
             ]);
 
             //Create Payment
-            $createPaymentInstance = Payment::create([
-                'ref_id' => $details->id,
-                'amount' => $details->amountPayable,
-                'paid_amount' => 0,
-                'type' => Payment::TYPE_THIRDPARTY
-            ]);
+            $payment = Payment::where('ref_id',$details->id)->where('type','thirdparty')->first();
+            if (!$payment){
+                $payment = Payment::create([
+                    'ref_id' => $details->id,
+                    'amount' => $details->amountPayable,
+                    'paid_amount' => 0,
+                    'type' => 'thirdparty'
+                ]);
+            }
             DB::commit();
 
             return redirect()->route('front.third.pay', $id)->with('success', 'Files uploaded successfully.Proceed to pay to complete application');
@@ -368,9 +376,9 @@ class ThirdPartyController extends Controller
         return $filenametostore;
     }
 
-    public function pay($applicationId)
+    public function pay($id)
     {
-        $details = MotorApplication::findOrFail($applicationId);
+        $details = MotorApplication::findOrFail($id);
 
         $complete = $details->update([
             'is_complete' => true
@@ -380,14 +388,14 @@ class ThirdPartyController extends Controller
         if (!$complete) {
             dd("An unexpected error occurred.Please try again.");
         }
-        $payment = Payment::where('ref_id', $applicationId)
-            ->where('type', Payment::TYPE_THIRDPARTY)
+        $payment = Payment::where('ref_id', $id)
+            ->where('type', 'thirdparty')
             ->first();
         if (!$payment) {
             $payment = Payment::create([
-                'ref_id' => $applicationId,
+                'ref_id' => $id,
                 'amount' => $details->amountPayable,
-                'type' => Payment::TYPE_THIRDPARTY,
+                'type' => 'thirdparty',
                 'phone' => Session::get('phoneNumber'),
                 'paid_amount' => 0
             ]);

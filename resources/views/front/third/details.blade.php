@@ -290,7 +290,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
-                                        <span onclick="alert('Coming Soon')"
+                                        <span 
                                             class="btn btn-outline-info btn-sm d-lg-block col-md-6 text-center text-body">
                                             Print Quote <i class="uil uil-location-arrow"></i>
                                         </span>
@@ -300,7 +300,7 @@
                                             href="{{ route('front.third.details.submit', ['applicationId' => $applicationDetails->id, 'id' => $details->id]) }}">
                                             <span
                                                 class="btn btn-outline-info btn-sm d-lg-block col-md-16 text-center text-body">
-                                                Submit quote & Pay later <i class="uil uil-save"></i></i>
+                                                Submit & Pay <i class="uil uil-save"></i></i>
                                             </span>
                                         </a>
                                     </div>

@@ -230,7 +230,7 @@ class HealthController extends Controller
         if (!$updateApplication){
             return back()->with('error','An unexpected error occurred please try again.');
         }
-
+        //$applicationDetails->update(['expectedValue' => $totalPremiumPayable]);
         return view('front.health.details',[
             'total' => $totalPremiumPayable,
             'html' => $html,
@@ -241,17 +241,28 @@ class HealthController extends Controller
 
     public function submitApplication(Request $request,$id)
     {
-        $applicationDetails = HealthInsuranceApplication::findOrfail($id);
+        //$applicationDetails = HealthInsuranceApplication::findOrfail($id);
 
-        $message = "Your Health Insurance application to Imoth Insurance Brokers was successful.We will get back to you shortly.";
+        //$message = "Your Health Insurance application to Imoth Insurance Brokers was successful.We will get back to you shortly.";
         //sendSms($create->phone,$message);
 
         //Mail::to($applicationDetails->email)->send(new BidBondEmail($applicationDetails));
        // Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($applicationDetails));
 
-        $type = $request->get('type');
+       $request->session()->put('quoteId', $id);
+
+        $create = HealthInsuranceApplication::findOrFail($id);
+
+        $message = "Your Travel Insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
+//        sendSms($create->phone,$message);
+        if (!$create)
+        {
+            return back()->with('error','An unexpected error occurred.Please reload and try again.');
+        }
+
+        $type = "paynow";
         if ($type === 'paynow'){
-            return redirect()->route('front.bond.pay',$id)->with('success','Request received.Pay now to complete request.');
+            return redirect()->route('front.health.pay',$create->id)->with('success','Request received.Pay now to complete request.');
         }
 
         return back()->with('success','Request placed successfully.We will get back to you shortly.');
@@ -259,23 +270,22 @@ class HealthController extends Controller
 
     public function pay($id)
     {
-        $details = BidBondApplication::findOrFail($id);
-
+        $details = HealthInsuranceApplication::findOrFail($id);
 
         $payment = Payment::where('ref_id',$details->id)
-            ->where('type',Payment::TYPE_BIDBOND)
+            ->where('type','health')
             ->first();
         if (!$payment){
             $payment = Payment::create([
                 'ref_id'=>$details->id,
-                'amount'=>$details->expectedValue,
-                'type'=>Payment::TYPE_BIDBOND,
+                'amount'=>$details->premiumPayable,
+                'type'=>'health',
                 'phone'=>Session::get('phoneNumber'),
                 'paid_amount'=>0
             ]);
         }
 
-        return view('front.bond.pay',[
+        return view('front.travel.pay',[
             'details'=>$details,
             'payment'=>$payment
         ]);
