@@ -36,7 +36,7 @@
 
                     <div class="col-12">
                         <div class="card-box">
-                            <h2 class="header-title">Company Details</h2>
+                            <h2 class="header-title">Company Details.</h2>
                             <hr>
                             @include('partials.info')
                             <form id="demo-form" data-parsley-validate="" method="post" action="{{ route('admin.companies.submit') }}" enctype="multipart/form-data">
