@@ -30,16 +30,32 @@ class InsuranceCompaniesController extends Controller
             'name' => 'required|max:255',
             'location' => 'required',
             'details' => 'string',
-            'image'=>'required|mimes:jpeg,jpg,png,bmb,gif,svg',
+            'logo'=>'required|mimes:jpeg,jpg,png,bmb,gif,svg',
         ]);
 
-        $createCompany = InsuranceCompany::create([
+        /*$createCompany = InsuranceCompany::create([
             'name'=>$request->input('name'),
             'location'=>$request->input('location'),
             'details'=>$request->input('details'),
-            'logo'=>'x'
-        ]);
-        if (!$createCompany)
+            'logo'=> 'x',
+        ]);*/
+
+        $company = new InsuranceCompany;
+        $company->name = $request->name;
+        $company->location = $request->location;
+        $company->details = $request->details;
+        $company->logo = $request->logo;
+
+        if ($request->file('logo')) {
+            $file = $request->file('logo');
+            //@unlink(public_path('upload/user_image/' . $data->image));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/company'), $filename);
+            $company['logo'] = $filename;
+        }
+
+        $company->save();
+        /*if (!$createCompany)
         {
             return back()->withInput()->with('error','An unexpected error occurred.Please try again.');
         }
@@ -71,7 +87,7 @@ class InsuranceCompaniesController extends Controller
             }
 
             return back()->withInput()->with('errors','An unexpected error occurred.Please reload the page and try again.');
-        }
+        }*/
         return back()->with('success','Insurance Company Created successfully.');
 
     }
@@ -90,10 +106,26 @@ class InsuranceCompaniesController extends Controller
             'name' => 'required|max:255',
             'location' => 'required',
             'details' => 'string',
-            'image'=>'mimes:jpeg,jpg,png,bmb,gif,svg',
+            'logo'=>'mimes:jpeg,jpg,png,bmb,gif,svg',
         ]);
 
-        $createCompany = InsuranceCompany::where('id',$id)->update([
+        $company = InsuranceCompany::findOrFail($id);
+        $company->name = $request->name;
+        $company->location = $request->location;
+        $company->details = $request->details;
+        $company->logo = $request->logo;
+
+        if ($request->file('logo')) {
+            $file = $request->file('logo');
+            @unlink(public_path('upload/company/' . $company->logo));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/company'), $filename);
+            $company['logo'] = $filename;
+        }
+
+        $company->save();
+
+        /*$createCompany = InsuranceCompany::where('id',$id)->update([
             'name'=>$request->input('name'),
             'location'=>$request->input('location'),
             'details'=>$request->input('details')
@@ -130,7 +162,7 @@ class InsuranceCompaniesController extends Controller
             }
 
             return back()->withInput()->with('errors','An unexpected error occurred.Please reload the page and try again.');
-        }
+        }*/
         return back()->with('success','Insurance Company Updated successfully.');
     }
     //Delete companies

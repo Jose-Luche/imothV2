@@ -16,8 +16,8 @@ use App\Http\Controllers\Payment\PaymentController;
 
 Route::get('/pdf-test', [\App\Http\Controllers\PdfTestController::class, 'pdf']);
 Route::view('/', 'front.index2')->name('home');
-Route::view('/contact-us', 'front.contact')->name('contact');
-Route::post('/contact', [ContactController::class, 'contact'])->name('contact.action');
+//Route::view('/contact-us', 'front.contact')->name('contact');
+//Route::post('/contact', [ContactController::class, 'contact'])->name('contact.action');
 
 //Route::view('/test','front.index2')->name('home');
 Route::view('/about-imoth-insurance', 'front.pages.about')->name('about');

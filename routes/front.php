@@ -31,8 +31,8 @@ Route::get('/', function () {
     }
     return view('front.index2');
 })->name('home');
-Route::view('/contact-us', 'front.contact')->name('contact');
-Route::post('/contact', [ContactController::class, 'contact'])->name('contact.action');
+//Route::view('/contact-us', 'front.contact')->name('contact');
+//Route::post('/contact', [ContactController::class, 'contact'])->name('contact.action');
 Route::prefix('covers')->group(function () {
     Route::prefix('comprehensive')->group(function () {
         Route::get('/', [ComprehensiveController::class, 'index'])->name('front.comprehensive.index');

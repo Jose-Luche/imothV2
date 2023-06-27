@@ -57,7 +57,7 @@
                                             <tr>
                                                 <td>{{ ++$count }}</td>
 
-                                                <td><img style="max-height: 30px" class="" src="{{ asset('uploads/'.$company->logo) }}"></td>
+                                                <td><img style="max-height: 30px" class="" src="{{ url('upload/company/'.$company->logo) }}"></td>
                                                 <td>{{ $company->name }}</td>
                                                 <td>{{ $company->location }}</td>
                                                 <td>{{ strip_tags($company->details) }}</td>

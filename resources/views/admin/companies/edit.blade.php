@@ -79,9 +79,9 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="fullname">Logo (Optional):</label>
-                                    <input type="file" name="image"
-                                           class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
-                                    @if ($errors->has('image'))
+                                    <input type="file" name="logo"
+                                           class="form-control @error('image') is-invalid @enderror" value="{{ old('logo') }}">
+                                    @if ($errors->has('logo'))
                                         <span class="help-block">
                                                 <strong>{{ $errors->first('image') }}</strong>
                                             </span>
