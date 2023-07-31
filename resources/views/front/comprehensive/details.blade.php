@@ -129,10 +129,14 @@
                                 {!! $html !!}<br>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
-                                        <span onclick="alert('Coming Soon')"
-                                            class="btn btn-outline-info btn-sm d-lg-block col-md-6 text-center text-body">
-                                            Print Quote <i class="uil uil-location-arrow"></i>
-                                        </span>
+                                        <a href="{{ route('front.pages.quotations.quotation-pdf', ['applicationId' => $applicationDetails->id, 'id' => $details->id, 'motor']) }}">
+                                            <span 
+                                                class="btn btn-outline-info btn-sm d-lg-block col-md-6 text-center text-body">
+                                                Print Quote <i class="uil uil-location-arrow"></i>
+                                            </span>
+                                        </a>
+                                        
+                                        
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <a class="btn btn-outline-aqua btn-sm rounded-pill btn-send mb-3"

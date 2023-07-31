@@ -197,48 +197,7 @@
 
 
 
-    <div class="team-area pt-100 pb-70">
-        <div class="container">
-            <div class="section-title">
-                <span class="top-title">Our Team</span>
-                <h2>Meet Our Great Team</h2>
-            </div>
-            <div class="team-slider owl-carousel owl-theme">
-                <div class="single-team-card">
-                    <div class="team-img">
-                        <img src={{ asset('frontend/assets/images/taem/taem-1.webp') }} alt="team" />
-                    </div>
-                    <div class="single-team-content">
-                        <h3>Graham Cracker</h3>
-                        <p>Manager</p>
-                        <ul class="d-flex align-items-center justify-content-center">
-                            <li class="list-inline">
-                                <a href="https://www.facebook.com/" target="_blank">
-                                    <i class="bx bxl-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline">
-                                <a href="https://twitter.com/" target="_blank">
-                                    <i class="bx bxl-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline">
-                                <a href="https://www.linkedin.com/" target="_blank">
-                                    <i class="bx bxl-linkedin"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline">
-                                <a href="https://www.google.com/" target="_blank">
-                                    <i class="bx bxl-google"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    
 
 
 

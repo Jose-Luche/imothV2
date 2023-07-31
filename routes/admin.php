@@ -18,9 +18,10 @@ use App\Http\Controllers\Admin\RequestsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ThirdPartyController;
 use App\Http\Controllers\Admin\ComprehensiveController;
-use App\Http\Controllers\Admin\PersonalAccidentController;
 use App\Http\Controllers\Admin\InsuranceCompaniesController;
 use App\Http\Controllers\Admin\IndustrialAttachmentController;
+use App\Http\Controllers\Admin\PersonalAccidentController;
+
 
 
 Route::get('logout', [AuthController::class,'logOut'])->name('logout');

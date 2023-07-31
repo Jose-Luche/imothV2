@@ -25,13 +25,7 @@ Route::prefix('pay')->group(function () {
 });
 Route::get('/', function () {
     $getHost = request()->getSchemeAndHttpHost();
-
-
-    $homeUrl = env('HOME_URL', 'http://127.0.0.1:8000');
-    //    dd($getHost." Home Url : ".$homeUrl);
-    if ($getHost !== $homeUrl) {
-        return redirect()->away($homeUrl);
-    }
+    
     return view('front.index2');
 })->name('home');
 //Route::view('/contact-us', 'front.contact')->name('contact');

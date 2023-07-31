@@ -86,7 +86,7 @@ class TravelController extends Controller
         ]);
 
 
-        return redirect()->route('front.travel.covers', $create->id);
+        return redirect()->route('front.travel.covers', $create->id)->with('success', 'Request placed successfully. We will reach out immediately');
     }
 
     public function covers($id)

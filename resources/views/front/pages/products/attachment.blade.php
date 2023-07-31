@@ -236,7 +236,7 @@
                     <div class="download-app">
                         <h2>Instant Quotation</h2>
                         <div class="option-item">
-                            <a href="{{ route('front.attachment.index') }}" style="background-color: #0031AA"
+                            <a href="{{ route('front.attachment.index') }}" style="background-color: #0031AA; color:white" 
                                 class="default-btn">Get A Quote</a>
                         </div>
 

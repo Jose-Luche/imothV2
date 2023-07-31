@@ -111,26 +111,17 @@
                                 <li class="nav-item">
                                     <a href="{{ route('bid_bond') }}" class="nav-link">Bid Bond Insurance</a>
                                 </li>
+                                
                                 <li class="nav-item">
                                     <a href="{{ route('life') }}" class="nav-link">Life Insurance</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('pa') }}" class="nav-link">Personal Accident</a>
                                 </li>
 
                             </ul>
                         </li>
-                        <!--<li class="nav-item">
-                            <a href="#" class="nav-link">
-                                Claims
-                                <i class='bx bx-down-arrow-alt'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="portfolio.html" class="nav-link">Register Claim</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="portfolio-details.html" class="nav-link">Download Forms</a>
-                                </li>
-                            </ul>
-                        </li>-->
+                        
 
                         <li class="nav-item">
                             <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>

@@ -57,6 +57,7 @@
     <div class="contact-us-area pt-100">
         <div class="container">
             <div class="section-title">
+                @include('partials.info')
                 <span class="top-title">Get Instant Quote</span>
                 <h2>Enter Your Details</h2>
             </div>
@@ -88,6 +89,7 @@
                         <form method="POST" action="{{ route('front.home.bio.submit') }}" novalidate>
                             @csrf
                             <div class="row">
+                                
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="firstName" class="form-control"

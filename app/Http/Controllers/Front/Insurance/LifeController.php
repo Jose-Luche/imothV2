@@ -29,6 +29,6 @@ class LifeController extends Controller
 
         $application->save();
 
-        return back()->with('success','Request placed successfully.We will get back to you shortly.');
+        return redirect()->route('home')->with('success','Request placed successfully.We will get back to you shortly.');
     }
 }
