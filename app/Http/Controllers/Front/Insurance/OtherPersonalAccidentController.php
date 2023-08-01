@@ -74,6 +74,8 @@ class OtherPersonalAccidentController extends Controller
     {
         $duration = \Illuminate\Support\Facades\Session::get('duration');
         $category = \Illuminate\Support\Facades\Session::get('category');
+        $applicationId = \Illuminate\Support\Facades\Session::get('applicationId');
+
         if ($duration == 3) {
             $type = 'three_month';
         } elseif ($duration == 6) {
@@ -84,7 +86,7 @@ class OtherPersonalAccidentController extends Controller
 
         $covers = PersonalAccident::where('category', $category )->get();
 
-        return view('front.personalAccident.quotes', ['covers' => $covers, 'duration' => $type]);
+        return view('front.personalAccident.quotes', ['covers' => $covers, 'duration' => $type, 'applicationId'=>$applicationId]);
     }
 
     public function quoteDetails($id)
@@ -94,6 +96,8 @@ class OtherPersonalAccidentController extends Controller
         $details = PersonalAccident::findorfail($id);
         /**Since we have the Duration Session Period Details, get the Premium Payable**/
         $duration = \Illuminate\Support\Facades\Session::get('duration');
+        $applicationId = \Illuminate\Support\Facades\Session::get('applicationId');
+
         if ($duration == 3) {
             $total = $details->three_month;
         } elseif ($duration == 6) {
@@ -106,7 +110,7 @@ class OtherPersonalAccidentController extends Controller
             'details' => $details,
             'total' => $total,
             'html' => $html,
-            'applicationDetails' => $details
+            'applicationDetails' => OtherPersonalAccidentApplication::find($applicationId)
         ]);
     }
 
@@ -169,13 +173,13 @@ class OtherPersonalAccidentController extends Controller
         ]);
 
         $payment = Payment::where('ref_id', $details->id)
-            ->where('type', Payment::TYPE_ATTACHMENT)
+            ->where('type', Payment::TYPE_ATTACHMENT_PA)
             ->first();
         if (!$payment) {
             $payment = Payment::create([
                 'ref_id' => $details->id,
                 'amount' => $details->premiumPayable,
-                'type' => Payment::TYPE_ATTACHMENT,
+                'type' => Payment::TYPE_ATTACHMENT_PA,
                 'phone' => Session::get('phoneNumber'),
                 'paid_amount' => 0
             ]);

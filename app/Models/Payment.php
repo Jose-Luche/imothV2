@@ -10,7 +10,7 @@ class Payment extends Model
     const TYPE_THIRDPARTY = 'thirdparty';
     const TYPE_BIDBOND = 'bidbond';
     const TYPE_ATTACHMENT = 'attachment';
-
+    const TYPE_ATTACHMENT_PA = 'personalAccident';
     const STATUS_NEW = 'new';
     const STATUS_PROGRESS = 'progress';
     const STATUS_PAID = 'paid';
