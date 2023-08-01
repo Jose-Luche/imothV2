@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {{--<meta name="description"
+    <meta name="description"
         content="We are the top insurance broker in Kenya with regards to Bond Insurance. Buy our insurance covers online.">
     <meta name="keywords"
         content="bid bond insurance, performance bond insurance, customs bond insurance, tender bond insurance">
@@ -18,7 +18,7 @@
         content="We are the top insurance broker in Kenya with regards to Bond Insurance. Buy our insurance covers online.">
     <meta property="og:image" content="https://www.imoth.co.ke/frontend/assets/images/services/helmet.jpg">
     <meta property="og:url" content="https://www.imoth.co.ke/bond-insurance">
-    <meta property="og:type" content="website">--}}
+    <meta property="og:type" content="website">
     <title>Bond Insurance | Imoth Insurance Brokers, Nairobi, Kenya</title>
 
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }} />

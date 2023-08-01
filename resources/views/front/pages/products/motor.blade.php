@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {{--<meta name="description"
+    <meta name="description"
         content="Get the best motor vehicle insurance rates in Kenya. Do a motor quotation online with a click of a button. ">
     <meta name="keywords"
         content="car insurance, motor insurance, Comprehensive motor insurance, Third party motor insurance">
@@ -18,7 +18,7 @@
         content="Get the best motor vehicle insurance rates in Kenya. Do a motor quotation online with a click of a button.">
     <meta property="og:image" content="https://www.imoth.co.ke/frontend/assets/images/services/car_insurance.jpg">
     <meta property="og:url" content="https://www.imoth.co.ke/car-insurance">
-    <meta property="og:type" content="website">--}}
+    <meta property="og:type" content="website">
     <title>Motor Insurance Kenya| Imoth Insurance Brokers, Nairobi, Kenya</title>
 
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }} />

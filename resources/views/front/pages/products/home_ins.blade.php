@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-   {{-- <meta name="description"
+   <meta name="description"
         content="Get the best rates for your home insurance, also known as Domestic Package. Insure your buildings, homes, home contents, all risks, and your employees">
     <meta name="keywords" content="home insurance, domestic package, all risks, legal liability, home items or contents">
     <meta name="robots" content="index, follow" />
@@ -17,7 +17,7 @@
         content="Get the best rates for your home insurance cover, also known as Domestic Package. Insure your buildings, homes, home contents, all risks, and your employees">
     <meta property="og:image" content="https://www.imoth.co.ke/frontend/assets/images/services/home_insurance.jpg">
     <meta property="og:url" content="https://www.imoth.co.ke/home-insurance">
-    <meta property="og:type" content="website">--}}
+    <meta property="og:type" content="website">
     <title>Home Insurance | Imoth Insurance Brokers, Nairobi, Kenya</title>
 
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }} />

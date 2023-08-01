@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {{--<meta name="description"
+    <meta name="description"
         content="We are the number one life insurance broker in Kenya. We offer solutions such as: Retirement planning and education planning for your loved ones">
     <meta name="keywords"
         content="life insurance, death benefit, critical illness cover, funeral expenses, education policy, retirement policy">
@@ -19,7 +19,7 @@
         content="We are the number one life insurance broker in Kenya. We offer solutions such as: Retirement planning and education planning for your loved ones.">
     <meta property="og:image" content="https://www.imoth.co.ke/frontend/assets/images/about/family.jpg">
     <meta property="og:url" content="https://www.imoth.co.ke/life-insurance">
-    <meta property="og:type" content="website">--}}
+    <meta property="og:type" content="website">
     <title>Life Insurance Kenya| Imoth Insurance Brokers, Nairobi, Kenya</title>
 
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }} />

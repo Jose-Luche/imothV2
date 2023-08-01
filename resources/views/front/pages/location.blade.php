@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{-- <meta name="description" content="Get to know where we are Located. ">
+    <meta name="description" content="Get to know where we are Located. ">
     <meta name="keywords" content="contact imoth, contact info, imoth insurance location.">
     <meta name="robots" content="index, follow" />
     
@@ -15,7 +15,7 @@
     <meta property="og:title" content="Frequently Asked Insurance Questions">
     <meta property="og:description" content="Get to know the answers to Frequenty asked insurance questions.">
     <meta property="og:url" content="https://www.imoth.co.ke/faq-insurance">
-    <meta property="og:type" content="website"> --}}
+    <meta property="og:type" content="website">
 
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }}>
     <link rel="stylesheet" href={{ asset('frontend/assets/css/animate.min.css') }}>

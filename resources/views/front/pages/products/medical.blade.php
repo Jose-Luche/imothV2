@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {{--<meta name="description"
+    <meta name="description"
         content="We have partnered with the best Medical Insurance Providers in Kenya, to cover your medical expenses in the event of an illness or an accident. ">
     <meta name="keywords" content="medical insurance, health insurance, illnesses">
     <meta name="robots" content="index, follow" />
@@ -17,7 +17,7 @@
         content="We have partnered with the best Medical Insurance Providers in Kenya, to cover your medical expenses in the event of an illness or an accident.">
     <meta property="og:image" content="https://www.imoth.co.ke/frontend/assets/images/services/medical_insurance.jpg">
     <meta property="og:url" content="https://www.imoth.co.ke/medical-insurance">
-    <meta property="og:type" content="website">--}}
+    <meta property="og:type" content="website">
     <title>Medical Insurance Kenya| Imoth Insurance Brokers, Nairobi, Kenya</title>
 
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }} />

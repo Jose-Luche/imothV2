@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-   {{-- <meta name="description"
+   <meta name="description"
         content="Insure yourself against loss or property damage, or accidents with our Travel Insurance packages. ">
     <meta name="keywords" content="travel insurance, emergency medical expenses, damage or loss of property.">
     <meta name="robots" content="index, follow" />
@@ -17,7 +17,7 @@
         content="Insure yourself against loss or property damage, or accidents with our Travel Insurance packages.">
     <meta property="og:image" content="https://www.imoth.co.ke/frontend/assets/images/services/travel_insurance.jpg">
     <meta property="og:url" content="https://www.imoth.co.ke/travel-insurance">
-    <meta property="og:type" content="website">--}}
+    <meta property="og:type" content="website">
     <title>Travel Insurance Kenya| Imoth Insurance Brokers, Nairobi, Kenya</title>
 
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }} />

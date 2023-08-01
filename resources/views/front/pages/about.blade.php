@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {{--<meta name="description"
+    <meta name="description"
         content="Get various insurance products at imoth insurance brokers Kenya. Our products panel include: Home Insurance, Motor Insurance, Life Insurance, Travel Insurance among others. ">
     <meta name="keywords" content="travel insurance, emergency medical expenses, damage or loss of property.">
     <meta name="robots" content="index, follow" />
@@ -16,7 +16,7 @@
     <meta property="og:description"
         content="Get various insurance products at imoth insurance brokers Kenya. Our products panel include: Home Insurance, Motor Insurance, Life Insurance, Travel Insurance among others.">
     <meta property="og:url" content="https://www.imoth.co.ke/about-imoth-insurance">
-    <meta property="og:type" content="website">--}}
+    <meta property="og:type" content="website">
     <title>Top Insurance Broker Kenya| Imoth Insurance Brokers, Nairobi, Kenya</title>
 
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }} />
