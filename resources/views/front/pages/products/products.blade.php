@@ -52,7 +52,7 @@
         </div>
     </div>
 
-
+    
     <div class="page-banner-area">
         <div class="container">
             <div class="single-page-banner-content">
@@ -71,6 +71,7 @@
     <div class="services-three-area pt-100 pb-100">
         <div class="container">
             <div class="section-title">
+                @include('partials.info')
                 <span class="top-title">Our Services</span>
                 <h2>Imoth Insurance Services</h2>
             </div>

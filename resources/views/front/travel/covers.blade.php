@@ -61,7 +61,7 @@
                 <h2>Check through our Available Covers</h2>
             </div>
             <div class="row">
-                <img src="{{ asset('frontend/assets/images/travel_rates.png') }}" alt="Imoth Insurance Brokers Travel Rates">
+                <img src="{{ asset('frontend/assets/images/travel_rates.PNG') }}" alt="Imoth Insurance Brokers Travel Rates">
             </div>
 
             <div class="col-lg-12 col-md-12" style="text-align:center">

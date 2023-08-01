@@ -58,7 +58,7 @@
     <div class="features-area pt-100 pb-70">
         <div class="container">
             <div class="section-title">
-                <span class="top-title">Available Bond Covers</span>
+                <span class="top-title">Available Personal Accident Covers</span>
                 <h2>Select the cover of your choice</h2>
             </div>
 
