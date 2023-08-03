@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{-- <meta name="description"
+    <meta name="description"
         content="Get your Motor Insurance Comprehensive Quote instantly,anywhere in Kenya.">
     <meta name="keywords"
         content="motor insurance quotation">
@@ -17,7 +17,7 @@
     <meta property="og:description"
         content="Get your motor insurance quotation instantly in Kenya.">
     <meta property="og:url" content="https://www.imoth.co.ke/covers/comprehensive">
-    <meta property="og:type" content="website"> --}}
+    <meta property="og:type" content="website">
     <title>Motor Insurance Quotation | Imoth Insurance Brokers, Nairobi, Kenya</title>
 
 

@@ -66,7 +66,7 @@
                 @foreach ($covers as $cover)
                     <div class="col-lg-3 col-sm-6 col-md-6">
                         <a
-                            href="{{ route('front.attachment.details', ['applicationId' => $cover->id, 'id' => $cover->id]) }}">
+                            href="{{ route('front.attachment.details', ['applicationId' => $applicationId, 'id' => $cover->id]) }}">
                             <div class="single-features-card bg-color-2">
                                 <div class="features-icon">
                                     <img style="width: 120px"

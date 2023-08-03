@@ -7,6 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="Get your Personal Accident Insurance Quote instantly,anywhere in Kenya.">
+    <meta name="keywords" content="Personal Accident Insurance quotation">
+    <meta name="robots" content="index, follow" />
+ 
+
+    <meta property="og:title" content="Motor Insurance Quotation">
+    <meta property="og:description" content="Get your personal accident  quotation instantly in Kenya.">
+    <meta property="og:url" content="https://www.imoth.co.ke/covers/personal_accident">
+    <meta property="og:type" content="website"> 
+    <title>Personal Accident Insurance Quotation | Imoth Insurance Brokers, Nairobi, Kenya</title>
+
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }}>
     <link rel="stylesheet" href={{ asset('frontend/assets/css/animate.min.css') }}>
     <link rel="stylesheet" href={{ asset('frontend/assets/css/boxicons.min.css') }}>
@@ -23,7 +34,6 @@
     <link rel="stylesheet" href={{ asset('frontend/assets/css/style.css') }}>
     <link rel="stylesheet" href={{ asset('frontend/assets/css/dark.css') }}>
     <link rel="stylesheet" href={{ asset('frontend/assets/css/responsive.css') }}>
-    <title>Imoth Insurance Brokers</title>
     <link rel="icon" type="image/png" href={{ asset('frontend/assets/images/favicon/favicon.ico') }} />
 </head>
 

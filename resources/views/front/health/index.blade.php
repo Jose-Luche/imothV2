@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{-- <meta name="description" content="Get your Health Insurance  Quote instantly,anywhere in Kenya.">
+    <meta name="description" content="Get your Health Insurance  Quote instantly,anywhere in Kenya.">
     <meta name="keywords" content="Health insurance quotation">
     <meta name="robots" content="index, follow" />
  
@@ -15,7 +15,7 @@
     <meta property="og:title" content="Motor Insurance Quotation">
     <meta property="og:description" content="Get your health insurance quotation instantly in Kenya.">
     <meta property="og:url" content="https://www.imoth.co.ke/covers/health">
-    <meta property="og:type" content="website">  --}}
+    <meta property="og:type" content="website"> 
     <title>Health Insurance Quotation | Imoth Insurance Brokers, Nairobi, Kenya</title>
 
     <link rel="stylesheet" href={{ asset('frontend/assets/css/bootstrap.min.css') }}>

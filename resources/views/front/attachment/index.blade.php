@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{-- <meta name="description" content="Get your Student Personal Quote instantly.">
+    <meta name="description" content="Get your Student Personal Quote instantly.">
     <meta name="keywords"
         content="student attachment insurance, student personal accident insurance, industrial attachment insurance, personal accident insurance">
     <meta name="robots" content="index, follow" />
@@ -17,7 +17,7 @@
     <meta property="og:description"
         content="We are the number one Student personal accident insurance broker, also known as Student Attachment, in Kenya. Despite the period for your industrial attachment, as a student, we got you covered with competitive rates.">
     <meta property="og:url" content="https://www.imoth.co.ke/covers/industrial-attachment">
-    <meta property="og:type" content="website"> --}}
+    <meta property="og:type" content="website">
     <title>Student Attachment Insurance Quotation | Imoth Insurance Brokers, Nairobi, Kenya</title>
 
 

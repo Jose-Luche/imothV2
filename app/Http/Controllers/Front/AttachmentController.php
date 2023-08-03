@@ -75,6 +75,8 @@ class AttachmentController extends Controller
     public function quotes()
     {
         $duration = \Illuminate\Support\Facades\Session::get('duration');
+        $applicationId = \Illuminate\Support\Facades\Session::get('applicationId');
+
         if ($duration == 3) {
             $type = 'three_month';
         } elseif ($duration == 6) {
@@ -85,7 +87,7 @@ class AttachmentController extends Controller
 
         $covers = Attachment::get();
 
-        return view('front.attachment.quotes', ['covers' => $covers, 'duration' => $type]);
+        return view('front.attachment.quotes', ['covers' => $covers, 'duration' => $type, 'applicationId'=>$applicationId]);
     }
 
     public function quoteDetails($id)
@@ -96,6 +98,7 @@ class AttachmentController extends Controller
         $details = Attachment::findorfail($id);
         /**Since we have the Duration Session Period Details, get the Premium Payable**/
         $duration = \Illuminate\Support\Facades\Session::get('duration');
+        $applicationId = \Illuminate\Support\Facades\Session::get('applicationId');
         if ($duration == 3) {
             $total = $details->three_month;
         } elseif ($duration == 6) {
@@ -109,7 +112,8 @@ class AttachmentController extends Controller
             'details' => $details,
             'total' => $total,
             'html' => $html,
-            'applicationDetails' => $details
+            'applicationDetails' => PersonalAccidentApplication::find($applicationId)
+            
         ]);
     }
 
