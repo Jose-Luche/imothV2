@@ -30,7 +30,7 @@ class AdminIndustrialAttachment extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Industrial Attachment Insurance Application .')
+        return $this->subject('Industrial Attachment Insurance Application .')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.attachment');
     }
 }

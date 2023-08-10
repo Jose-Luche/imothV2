@@ -29,7 +29,7 @@ class AdminPerformanceBondEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Performance Bond Insurance Application.')
+        return $this->subject('Performance Bond Insurance Application.')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.performance');
     }
 }

@@ -219,64 +219,28 @@
                                 <td align="left" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                     <!-- section text ======-->
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        A client has placed a <strong>Bid Bond Insurance</strong> application
+                                        A client has placed a <strong>Travel Insurance</strong> application
                                     </p>
                                     <h2 style="line-height: 24px; margin-bottom:20px;">
                                         <u>Application Details.</u>
                                     </h2>
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        Name : {{ $details->firstName." ".$details->lastName }}
+                                        Name : {{ $create->firstName." ".$create->lastName }}
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        Phone : {{ $details->phone }}
+                                        Phone :  {{ $create->phone }}
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        Email : {{ $details->email }}
+                                        Email :  {{ $create->email }}
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        Company : {{ $details->company }}
+                                        Start Date : {{ $create->startDate }}
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        Tender No. : {{ $details->tenderNo }}
+                                        Duration : {{ $create->duration }}
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        Bond Value : {{ $details->bondValue }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Physical Address : {{ $details->physicalAddress }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Tender Name : {{ $details->tenderName }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Contract Price : {{ $details->contractPrice }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Period : {{ $details->period }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Commencement Date : {{ $details->commencementDate }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        End Date : {{ $details->endDate }}
-                                    </p>
-                                    <p>
-                                        <strong>Description:</strong><br>
-                                        {!! $details->description  !!}
-                                    </p>
-
-                                    <h2 style="line-height: 24px; margin-bottom:20px;">
-                                        <u>Cover Details.</u>
-                                    </h2>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Insurance Company : {{ $details->quoteDetails->company->name }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Amount Payable : Ksh {{ number_format($details->expectedValue) }}
-                                    </p>
-                                    <p>
-                                        <strong>Details:</strong><br>
-                                        {!! $details->quoteDetails->details  !!}
+                                        Company Name : {{ $create->companyName }}
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
                                         Login to view more details

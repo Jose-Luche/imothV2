@@ -31,7 +31,7 @@ class AdminThirdParty extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Third Party Insurance Application .')
+        return $this->subject('Third Party Insurance Application .')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.thirdParty');
     }
 }

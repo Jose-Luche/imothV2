@@ -293,7 +293,7 @@ class ThirdPartyController extends Controller
         }
         $message = "Your Third Party insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
         //        sendSms($applicationDetails->phone,$message);
-        Mail::to($applicationDetails->email)->send(new \App\Mail\User\ThirdParty($applicationDetails));
+        //Mail::to($applicationDetails->email)->send(new \App\Mail\User\ThirdParty($applicationDetails));
         Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminThirdParty($applicationDetails, 'submission'));
         return back()->with('success', 'Application Successful,We will get back to you soon.');
     }

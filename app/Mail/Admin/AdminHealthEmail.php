@@ -2,27 +2,24 @@
 
 namespace App\Mail\Admin;
 
-use App\Mail\User\ThirdParty;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class AdminComprehensive extends Mailable implements ShouldQueue
+class AdminBidBondEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $details;
-    public $type = 'submission';
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details,$type)
+    public function __construct($details)
     {
         $this->details = $details;
-        $this->type = $type;
     }
 
     /**
@@ -32,7 +29,7 @@ class AdminComprehensive extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Comprehensive Insurance Application .')->to('imothinsurance@gmail.com')
-            ->view('emails.applications.admin.comprehensive');
+        return $this->subject('Health Insurance Application.')->to('imothinsurance@gmail.com')
+            ->view('emails.applications.admin.health');
     }
 }

@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Front\Insurance;
 
-use App\Http\Controllers\Controller;
-use App\Mail\Admin\AdminBidBondEmail;
-use App\Mail\User\BidBondEmail;
-use App\Models\BidBond;
-use App\Models\BidBondApplication;
-use App\Models\Health;
-use App\Models\HealthInsuranceApplication;
-use App\Models\HealthPrincipalPremium;
-use App\Models\HealthSpousePremium;
-use App\Models\Payment;
 use Carbon\Carbon;
+use App\Models\Health;
+use App\Models\BidBond;
+use App\Models\Payment;
 use Illuminate\Http\Request;
+use App\Mail\User\BidBondEmail;
+use App\Models\BidBondApplication;
+use App\Models\HealthSpousePremium;
+use App\Http\Controllers\Controller;
+use App\Mail\Admin\AdminHealthEmail;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\Admin\AdminBidBondEmail;
+use App\Models\HealthPrincipalPremium;
 use Illuminate\Support\Facades\Session;
+use App\Models\HealthInsuranceApplication;
 
 class HealthController extends Controller
 {
@@ -247,7 +248,7 @@ class HealthController extends Controller
         //sendSms($create->phone,$message);
 
         //Mail::to($applicationDetails->email)->send(new BidBondEmail($applicationDetails));
-       // Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($applicationDetails));
+       //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminHealthEmail($applicationDetails));
 
        $request->session()->put('quoteId', $id);
 

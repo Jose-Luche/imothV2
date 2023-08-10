@@ -29,7 +29,7 @@ class AdminCorporateMotor extends Mailable
      */
     public function build()
     {
-        return $this->subject('Corporate Motor Insurance Application .')
+        return $this->subject('Corporate Motor Insurance Application .')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.corporateMotor');
     }
 }

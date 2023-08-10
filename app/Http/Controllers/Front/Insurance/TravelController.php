@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front\Insurance;
 
 use Carbon\Carbon;
+use App\Models\Travel;
 use App\Models\BidBond;
 use App\Models\Payment;
 use Illuminate\Http\Request;
@@ -11,9 +12,9 @@ use App\Models\MotorApplication;
 use App\Models\TravelApplication;
 use App\Mail\Admin\AdminThirdParty;
 use App\Http\Controllers\Controller;
+use App\Mail\Admin\AdminTravelEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Admin\AdminBidBondEmail;
-use App\Models\Travel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -195,7 +196,7 @@ class TravelController extends Controller
         $create = TravelApplication::findOrFail($id);
 
         //Mail::to($create->email)->send(new BidBondEmail($create));
-        //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($create));
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminTravelEmail($create));
 
         $message = "Your Travel Insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
 //        sendSms($create->phone,$message);

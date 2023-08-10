@@ -321,7 +321,7 @@ class ComprehensiveController extends Controller
 //        return view('insurance.comprehensive',['details'=>$applicationDetails,'payment'=>$createPaymentInstance]);
 //
 //        dd("Here");
-//        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminComprehensive($applicationDetails,'submission'));
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminComprehensive(MotorApplication::find($applicationId),'submission'));
 
         //$message = "Your Comprehensive insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
   //sendSms($applicationDetails->phone,$message);

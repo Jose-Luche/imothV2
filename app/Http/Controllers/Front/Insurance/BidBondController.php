@@ -101,8 +101,7 @@ class BidBondController extends Controller
             'address' => Session::get('address'),
             'expectedValue' => 0
         ]);
-        //Mail::to($create->email)->send(new BidBondEmail($create));
-        //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($create));
+        
 
         return redirect()->route('front.bond.covers', $create->id);
     }
@@ -224,7 +223,7 @@ class BidBondController extends Controller
         $message = "Your Bid Bond Insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
         //sendSms($create->phone,$message);
 
-        Mail::to($applicationDetails->email)->send(new BidBondEmail($applicationDetails));
+        //Mail::to($applicationDetails->email)->send(new BidBondEmail($applicationDetails));
         Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($applicationDetails));
 
         $type = 'paynow';

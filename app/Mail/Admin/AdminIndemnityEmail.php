@@ -29,7 +29,7 @@ class AdminIndemnityEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Professional Indemnity Insurance Application .')
+        return $this->subject('Professional Indemnity Insurance Application .')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.indemnity');
     }
 }

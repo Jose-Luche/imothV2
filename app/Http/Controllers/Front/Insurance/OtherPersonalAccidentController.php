@@ -148,7 +148,7 @@ class OtherPersonalAccidentController extends Controller
         //
         //        $request->session()->flash('success', 'Applications submitted successfully.We will get back to you shortly.');
         //Mail::to($applicationDetails->email)->send(new IndustrialAttachment(PersonalAccidentApplication::find($requestId)));
-        //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminIndustrialAttachment(PersonalAccidentApplication::find($requestId)));
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminIndustrialAttachment(PersonalAccidentApplication::find($requestId)));
 
         //        $message = "Your Industrial attachment insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
         //        sendSms($create->phone,$message);

@@ -7,19 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class AdminFamilyApplicationMail extends Mailable
+class AdminTravelEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-    public $details;
+    public $create;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($create)
     {
-        $this->details = $details;
+        $this->create = $create;
     }
 
     /**
@@ -29,7 +29,7 @@ class AdminFamilyApplicationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Family/Individual Insurance Application .')->to('imothinsurance@gmail.com')
-            ->view('emails.applications.admin.family');
+        return $this->subject('Travel Insurance Application.')->to('imothinsurance@gmail.com')
+            ->view('emails.applications.admin.travel');
     }
 }

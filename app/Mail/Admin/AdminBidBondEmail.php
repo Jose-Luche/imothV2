@@ -29,7 +29,7 @@ class AdminBidBondEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Bid Bond Insurance Application.')
+        return $this->subject('Bid Bond Insurance Application.')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.bidBond');
     }
 }
