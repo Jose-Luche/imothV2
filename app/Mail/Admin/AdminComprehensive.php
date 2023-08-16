@@ -32,7 +32,7 @@ class AdminComprehensive extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Comprehensive Insurance Application .')->to('imothinsurance@gmail.com')
+        return $this->subject('Comprehensive Insurance Application .')->to('joseluche3@gmail.com')
             ->view('emails.applications.admin.comprehensive');
     }
 }

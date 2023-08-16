@@ -253,6 +253,8 @@ class ThirdPartyController extends Controller
             return back()->with('error', 'An unexpected error occurred please try again.');
         }
 
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminThirdParty($applicationDetails, 'submission'));
+
         return view('front.third.details', [
             'total' => $totalPremiumPayable,
             'html' => $html,

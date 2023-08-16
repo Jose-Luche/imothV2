@@ -98,6 +98,8 @@ class OtherPersonalAccidentController extends Controller
         $duration = \Illuminate\Support\Facades\Session::get('duration');
         $applicationId = \Illuminate\Support\Facades\Session::get('applicationId');
 
+        $applicationDetails = OtherPersonalAccidentApplication::where('id', $applicationId)->first();
+
         if ($duration == 3) {
             $total = $details->three_month;
         } elseif ($duration == 6) {
@@ -106,6 +108,8 @@ class OtherPersonalAccidentController extends Controller
             $total = $details->one_year;
         }
         $html = ' <p>Total Premium Payable:  <span style="float: right"><b>' . number_format($total, 2) . '</b></span></p>';
+
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminIndustrialAttachment($applicationDetails));
         return view('front.personalAccident.details', [
             'details' => $details,
             'total' => $total,
@@ -148,7 +152,7 @@ class OtherPersonalAccidentController extends Controller
         //
         //        $request->session()->flash('success', 'Applications submitted successfully.We will get back to you shortly.');
         //Mail::to($applicationDetails->email)->send(new IndustrialAttachment(PersonalAccidentApplication::find($requestId)));
-        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminIndustrialAttachment(PersonalAccidentApplication::find($requestId)));
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminIndustrialAttachment(OtherPersonalAccidentApplication::find($requestId)));
 
         //        $message = "Your Industrial attachment insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
         //        sendSms($create->phone,$message);

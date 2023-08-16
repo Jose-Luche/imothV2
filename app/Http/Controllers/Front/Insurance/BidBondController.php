@@ -151,6 +151,8 @@ class BidBondController extends Controller
             ];
         }
 
+        
+
         if ((int)Session::get('bondValue') == null) {
             return redirect()->route('front.bond.index')
                 ->with('error', 'Please fill all the required details.');
@@ -207,6 +209,8 @@ class BidBondController extends Controller
             return back()->with('error', 'An unexpected error occurred please try again.');
         }
 
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($applicationDetails));
+
         return view('front.bond.details', [
             'total' => $totalPremiumPayable,
             'html' => $html,
@@ -214,6 +218,8 @@ class BidBondController extends Controller
             'covers' => $covers,
             'applicationDetails' => $applicationDetails,
         ]);
+
+        
     }
 
     public function submitApplication(Request $request, $id)

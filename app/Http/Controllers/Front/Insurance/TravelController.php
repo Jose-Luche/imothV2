@@ -180,13 +180,16 @@ class TravelController extends Controller
             $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>';
 
             $applicationDetails->update(['expectedValue' => $totalPremiumPayable]);
-       return view('front.travel.details',[
-           'covers'=>$coverDetails,
-           'applicationDetails' =>$applicationDetails,
-           'total' => $totalPremiumPayable,
-            'html' => $html,
-            'details'=>$details,
-       ]);
+
+            Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminTravelEmail($applicationDetails));
+
+            return view('front.travel.details',[
+                'covers'=>$coverDetails,
+                'applicationDetails' =>$applicationDetails,
+                'total' => $totalPremiumPayable,
+                    'html' => $html,
+                    'details'=>$details,
+            ]);
     }
 
     public function submitApplication(Request $request,$id)

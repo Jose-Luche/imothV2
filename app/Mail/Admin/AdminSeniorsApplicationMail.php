@@ -29,7 +29,7 @@ class AdminSeniorsApplicationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Seniors Insurance Application .')->to('imothinsurance@gmail.com')
+        return $this->subject('Seniors Insurance Application .')->to('immaculateinsurance@gmail.com')
             ->view('emails.applications.admin.seniors');
     }
 }

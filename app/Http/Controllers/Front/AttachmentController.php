@@ -99,6 +99,8 @@ class AttachmentController extends Controller
         /**Since we have the Duration Session Period Details, get the Premium Payable**/
         $duration = \Illuminate\Support\Facades\Session::get('duration');
         $applicationId = \Illuminate\Support\Facades\Session::get('applicationId');
+
+        $applicationDetails = PersonalAccidentApplication::where('id', $applicationId)->first();
         if ($duration == 3) {
             $total = $details->three_month;
         } elseif ($duration == 6) {
@@ -108,6 +110,9 @@ class AttachmentController extends Controller
         }
 
         $html = ' <p>Total Premium Payable:  <span style="float: right"><b>' . number_format($total, 2) . '</b></span></p>';
+
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminIndustrialAttachment($applicationDetails));
+        
         return view('front.attachment.details', [
             'details' => $details,
             'total' => $total,

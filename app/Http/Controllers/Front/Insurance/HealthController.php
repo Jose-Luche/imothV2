@@ -242,17 +242,19 @@ class HealthController extends Controller
 
     public function submitApplication(Request $request,$id)
     {
-        //$applicationDetails = HealthInsuranceApplication::findOrfail($id);
+        
 
         //$message = "Your Health Insurance application to Imoth Insurance Brokers was successful.We will get back to you shortly.";
         //sendSms($create->phone,$message);
 
         //Mail::to($applicationDetails->email)->send(new BidBondEmail($applicationDetails));
-       //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminHealthEmail($applicationDetails));
+        
 
        $request->session()->put('quoteId', $id);
 
         $create = HealthInsuranceApplication::findOrFail($id);
+
+        //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminHealthEmail($create));
 
         $message = "Your Travel Insurance application to Insurancemaramoja was successful.We will get back to you shortly.";
 //        sendSms($create->phone,$message);

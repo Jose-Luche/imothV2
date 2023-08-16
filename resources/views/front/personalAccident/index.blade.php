@@ -194,7 +194,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input name="gridCheck" value="I agree to the terms and privacy policy."
+                                            <input name="gridCheck" style="border:2px solid black;" value="I agree to the terms and privacy policy."
                                                    class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
                                                 Accept <a href="{{ url('#') }}">Terms Of Services</a> And<a

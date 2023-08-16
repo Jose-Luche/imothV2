@@ -230,7 +230,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input name="gridCheck" value="I agree to the terms and privacy policy."
+                                            <input name="gridCheck" style="border:2px solid black;" value="I agree to the terms and privacy policy."
                                                 class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
                                                 Accept <a href="#">Terms Of Services</a> And<a
@@ -315,7 +315,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input name="gridCheck" value="I agree to the terms and privacy policy."
+                                            <input name="gridCheck" style="border:2px solid black;" value="I agree to the terms and privacy policy."
                                                 class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
                                                 Accept <a href="terms-of-service.html">Terms Of Services</a> And<a
@@ -341,62 +341,9 @@
             </div>
         </div>
     </div>
-    <div class="contact-area pt-70">
-        <div class="container">
-            <div class="contact-card-item">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-sm-6 col-md-6">
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <img src={{ asset('frontend/assets/images/contact-phone-2.svg') }} alt="Phone">
-                            </div>
-                            <h2>Phone Number</h2>
-                            <p><a href="tel:(305) 547-9909">+(305) 547-9909</a></p>
-                            <a href="tel:(305) 547-9908">+(305) 547-9908</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-md-6">
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <img src={{ asset('frontend/assets/images/contact-email.svg') }} alt="Email">
-                            </div>
-                            <h2>Sent Us Email</h2>
-                            <p><a
-                                    href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#b8d0ddd4d4d7f8d1d6d7d696dbd7d5"><span
-                                        class="__cf_email__"
-                                        data-cfemail="5d35383131321d34333233733e3230">[email&#160;protected]</span></a>
-                            </p>
-                            <a
-                                href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#563f383039163f3839387835393b"><span
-                                    class="__cf_email__"
-                                    data-cfemail="c1a8afa7ae81a8afaeafefa2aeac">[email&#160;protected]</span></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-md-6">
-                        <div class="contact-card">
-                            <div class="contact-icon">
-                                <img src={{ asset('frontend/assets/images/location-icon.svg') }} alt="images">
-                            </div>
-                            <h2>Our Location</h2>
-                            <p>382 NE 191st NY Miami, FL 33179-3899</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
-    <div class="map-area" style="padding:30px">
-        <div class="container-fluid">
-            <div class="place-map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3988.8133144003887!2d36.8226443858446!3d-1.2860400740876188!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d7af10a227%3A0x8d11f68a5e8340d8!2sSalama%20House!5e0!3m2!1sen!2ske!4v1683823494962!5m2!1sen!2ske"
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
-    </div>
+    
 
     @include('front.layout2.footer')
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
