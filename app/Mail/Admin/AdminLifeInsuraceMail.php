@@ -29,7 +29,7 @@ class AdminLifeInsuraceMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Life Insurance Application .')->to('immaculateinsurance@gmail.com')
+        return $this->subject('Life Insurance Application .')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.life');
     }
 }

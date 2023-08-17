@@ -20,7 +20,6 @@ class AdminIndustrialAttachment extends Mailable implements ShouldQueue
     public function __construct($details)
     {
         $this->details = $details;
-
     }
 
     /**
@@ -30,7 +29,7 @@ class AdminIndustrialAttachment extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Industrial Attachment Insurance Application .')->to('immaculateinsurance@gmail.com')
+        return $this->subject('Industrial Attachment Insurance Application .')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.attachment');
     }
 }

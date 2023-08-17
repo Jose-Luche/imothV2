@@ -29,7 +29,7 @@ class AdminFamilyApplicationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Family/Individual Insurance Application .')->to('immaculateinsurance@gmail.com')
+        return $this->subject('Family/Individual Insurance Application .')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.family');
     }
 }

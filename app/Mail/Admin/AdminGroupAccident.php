@@ -29,7 +29,7 @@ class AdminGroupAccident extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Group Personal Accident Insurance.')->to('immaculateinsurance@gmail.com')
+        return $this->subject('Group Personal Accident Insurance.')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.groupAccident');
     }
 }

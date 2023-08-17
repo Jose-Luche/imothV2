@@ -29,7 +29,7 @@ class AdminTravelEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Travel Insurance Application.')->to('immaculateinsurance@gmail.com')
+        return $this->subject('Travel Insurance Application.')->to('imothinsurance@gmail.com')
             ->view('emails.applications.admin.travel');
     }
 }
