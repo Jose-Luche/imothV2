@@ -45,7 +45,7 @@ class AttachmentController extends Controller
             'email' => $request->input('email'),
             'startDate' => $request->input('startDate'),
             'duration' => $request->input('duration'),
-            'companyName' => $request->institution,
+            'companyName' => $request->companyName,
             'idNumber' => $request->idNumber,
             'amount_payable' => 0,
             'insurance_id' => 0,
@@ -65,7 +65,7 @@ class AttachmentController extends Controller
         $request->session()->put('startDate', $request->input('startDate'));
         $request->session()->put('duration', $request->input('duration'));
         $request->session()->put('companyName', $request->input('companyName'));
-        $request->session()->put('companyName', 1);
+        //$request->session()->put('companyName', 1);
 
         $request->session()->put('applicationId', $create->id);
 
@@ -143,9 +143,9 @@ class AttachmentController extends Controller
             $amountPayable = $details->one_year;
         }
 
-        $comapanyName = InsuranceCompany::where('id', $id)->first()->name ?? 'null';
+        //$comapanyName = InsuranceCompany::where('id', $id)->first()->name ?? 'null';
         $create = $applicationDetails->update([
-            'companyName' => $comapanyName,
+            
             'amount_payable' => $amountPayable,
             'insurance_id' => $id,
             'type' => 1
