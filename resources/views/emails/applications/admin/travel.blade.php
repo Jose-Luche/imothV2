@@ -228,7 +228,7 @@
                                         Name : {{ $create->firstName." ".$create->lastName }}
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        Phone :  {{ $create->phone }}
+                                        Phone :  {{ $create->mobile }}
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
                                         Email :  {{ $create->email }}
