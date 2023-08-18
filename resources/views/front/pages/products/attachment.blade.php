@@ -153,7 +153,7 @@
                             predefined.
                         </p>
 
-                        <h4>We Help To Get Solutions</h4>
+                        {{--<h4>We Help To Get Solutions</h4>
                         <div class="faqs-content">
                             <div class="faqs-item">
                                 <div class="accordion" id="accordionExample">
@@ -229,7 +229,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
                 <div class="col-lg-4">

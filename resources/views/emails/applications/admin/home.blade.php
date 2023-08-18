@@ -219,7 +219,7 @@
                                 <td align="left" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                     <!-- section text ======-->
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        A client has placed a <strong>Life Insurance</strong> application request
+                                        A client has placed a <strong>Home Insurance</strong> application
                                     </p>
                                     <h2 style="line-height: 24px; margin-bottom:20px;">
                                         <u>Application Details.</u>
@@ -244,7 +244,6 @@
                         </table>
                     </td>
                 </tr>
-
             </table>
 
         </td>

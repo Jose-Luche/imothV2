@@ -24,7 +24,7 @@
         </li>
     </ul>
 </div>
-<div class="download-app">
+{{--<div class="download-app">
     <h2>Download</h2>
     <button type="button" class="default-btn">
         <img src={{ asset('frontend/assets/images/services/pdf-icon.svg') }} alt="pdf" />
@@ -34,4 +34,4 @@
         <img src={{ asset('frontend/assets/images/services/doc-icon.svg') }} alt="doc" />
         Company Details
     </button>
-</div>
+</div>--}}

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Front\Insurance;
 
 use Illuminate\Http\Request;
 use App\Models\HomeApplication;
+use App\Mail\Admin\AdminHomeEmail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -28,6 +30,8 @@ class HomeController extends Controller
         $application->mobile = $request->mobile;
 
         $application->save();
+
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminHomeEmail($application));
 
         return redirect()->route('products')->with('success','Request placed successfully.We will get back to you shortly.');
     }

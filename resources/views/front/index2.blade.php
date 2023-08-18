@@ -76,7 +76,7 @@
                             <img src={{ asset('frontend/assets/images/features/features-icon-2.svg') }} alt="features-1">
                         </div>
                         <h3>Financial Protection</h3>
-                        <p>We offer a reliable safety net. We boost of our reliable claims processes assistance that ensures
+                        <p>We offer a reliable safety net. We guarantee reliable claims processes assistance that ensures
                             you get a fair settlement with a quick turn around time.
                         </p>
                     </div>

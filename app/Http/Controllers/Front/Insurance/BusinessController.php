@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front\Insurance;
 use Illuminate\Http\Request;
 use App\Models\BusinessApplication;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Admin\AdminBusinessEmail;
 
 class BusinessController extends Controller
 {
@@ -28,6 +30,8 @@ class BusinessController extends Controller
         $application->mobile = $request->mobile;
 
         $application->save();
+
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBusinessEmail($application));
 
         return redirect()->route('products')->with('success','Request placed successfully.We will get back to you shortly.');
     }

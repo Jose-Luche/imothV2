@@ -145,7 +145,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <h4>Motor Categories Covered</h4>
+                        {{--<h4>Motor Categories Covered</h4>
                         <div class="faqs-content">
                             <div class="faqs-item">
                                 <div class="accordion" id="accordionExample">
@@ -221,7 +221,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
 
                     </div>
                 </div>
