@@ -86,6 +86,8 @@ class TravelController extends Controller
 
         ]);
 
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminTravelEmail($create));
+
 
         return redirect()->route('front.travel.covers', $create->id)->with('success', 'Request placed successfully. We will reach out immediately');
     }
