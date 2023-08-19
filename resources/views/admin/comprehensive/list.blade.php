@@ -41,12 +41,14 @@
                                 </div>
 
                                 <div class="table-responsive">
-                                    <table class="table table-centered table-striped" id="products-datatable">
+                                    <table class="table table-centered table-striped" id="products-datatable" style="font-size: 11px">
                                         <thead>
                                         <tr>
                                             <th>#</th>
                                             <th>Company Logo</th>
                                             <th>Company Name</th>
+                                            <th>Si From</th>
+                                            <th>Si To</th>
                                             <th>Rate</th>
                                             <th>Details</th>
                                             <th>Benefits</th>
@@ -60,6 +62,8 @@
 
                                                 <td><img style="max-height: 30px" class="" src="{{ url('upload/company/'.$cover->company->logo) }}"></td>
                                                 <td>{{ $cover->company->name }}</td>
+                                                <td>{{ number_format($cover->si_from ?? 0) }}</td>
+                                                <td>{{ number_format($cover->si_to ?? 0) }}</td>
                                                 <td>{{ $cover->rate }}%</td>
                                                 <td>{{ Str::limit(strip_tags($cover->details),100) }}</td>
                                                 <td>{{ $cover->benefits->count() }}</td>
@@ -67,7 +71,7 @@
                                                     <span>
                                                          <a  href="{{ route('admin.comprehensive.details',$cover->id) }}" class="btn btn-outline-info btn-sm"> Details <i class="fa fa-eye"></i></a> |
                                                         <a  href="{{ route('admin.comprehensive.edit',$cover->id) }}" class="btn btn-outline-success btn-sm"> Edit <i class="fa fa-edit"></i></a> |
-                                                        <a  onclick="deleteCompany({{$cover->id}})" class="btn btn-outline-danger btn-sm"> Delete <i class="fa fa-edit"></i></a>
+                                                        <a  onclick="deleteCompany({{$cover->id}})" class="btn btn-outline-danger btn-sm"> Delete <i class="fa fa-trash"></i></a>
                                                    </span>
                                                 </td>
                                             </tr>

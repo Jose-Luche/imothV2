@@ -40,21 +40,69 @@
                             @include('partials.info')
                             <form id="demo-form" data-parsley-validate="" method="post" action="{{ route('admin.comprehensive.update',$details->id) }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
-                                <div class="form-group">
-                                    <label for="fullname">Insurance Company * :</label>
-                                    <select name="company"  class="form-control @error('name') is-invalid @enderror" >
-                                        @foreach($companies as $company)
-                                            <option {{ $details->companyId == $company->id ? "selected":"" }} value="{{$company->id}}">{{ $company->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('company'))
-                                        <span class="help-block">
-                                                <strong>{{ $errors->first('company') }}</strong>
-                                            </span>
-                                    @endif
-                                </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="fullname">Insurance Company * :</label>
+                                            <select name="company"  class="form-control @error('name') is-invalid @enderror" >
+                                                @foreach($companies as $company)
+                                                    <option {{ $details->companyId == $company->id ? "selected":"" }} value="{{$company->id}}">{{ $company->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if ($errors->has('company'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('company') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="category">Cover Type * :</label>
+                                            <select name="category"  class="form-control @error('name') is-invalid @enderror" >
+                                                @if($details->category)
+                                                    <option value="{{$details->category}}">{{ucwords($details->category)}} Use</option>
+                                                @endif
+                                                <option value="personal">Personal/Private Use</option>
+                                                <option value="psv">PSV - Chauffeur Driven</option>
+                                                <option value="own-goods">Commercial - Own Goods</option>
+                                                <option value="general-cartage">Commercial - General Cartage</option>
+                                            </select>
+                                            @if ($errors->has('category'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('category') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="firstname">SI From* :</label>
+                                            <input type="text"  name="si_from" class="form-control" id="si-from"
+                                                   placeholder="SI From" value="{{ $details->si_from }}">
+                                            @if ($errors->has('si_from'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('si_from') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="firstname">SI To* :</label>
+                                            <input type="text"  name="si_to" class="form-control" id="si-to"
+                                                   placeholder="SI To" value="{{ $details->si_to }}">
+                                            @if ($errors->has('si_to'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('si_to') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="firstname">Rate in %* :</label>
                                             <input type="number"  name="rate" class="form-control" id="location"
@@ -66,7 +114,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="firstname">Minimum Premium (Ksh)* :</label>
                                             <input type="number"  name="minRate" class="form-control" id="location"

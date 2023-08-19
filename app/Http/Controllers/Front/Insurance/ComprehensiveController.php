@@ -95,7 +95,9 @@ class ComprehensiveController extends Controller
     public function covers($id)
     {
         $applicationDetails = MotorApplication::find($id);
-        $covers = Comprehensive::where('category', $applicationDetails->vehicleUse)->orderBy('rate','ASC')->paginate(10);
+        $covers = Comprehensive::where('category', $applicationDetails->vehicleUse)
+            ->where('si_from', '<=', $applicationDetails->value)->where('si_to', '>=', $applicationDetails->value)
+            ->orderBy('rate','ASC')->paginate(10);
         $applicationBenefits = $applicationDetails->benefits;
 
 

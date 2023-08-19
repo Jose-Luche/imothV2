@@ -9,14 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comprehensive extends Model
 {
     //Protected
-    protected $fillable = [
-        'companyId',
-        'category',
-        'rate',
-        'minRate',
-        'minYear',
-        'details'
-    ];
+    protected $guarded = ['id'];
+    
     public function company()
     {
         return $this->belongsTo(InsuranceCompany::class,'companyId');

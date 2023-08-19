@@ -77,7 +77,31 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="firstname">SI From* :</label>
+                                            <input type="text"  name="si_from" class="form-control" id="si-from"
+                                                   placeholder="SI From" value="{{ old('si_from') }}">
+                                            @if ($errors->has('si_from'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('si_from') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="firstname">SI To* :</label>
+                                            <input type="text"  name="si_to" class="form-control" id="si-to"
+                                                   placeholder="SI To" value="{{ old('si_to') }}">
+                                            @if ($errors->has('si_to'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('si_to') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="firstname">Rate in %* :</label>
                                             <input type="text"  name="rate" class="form-control" id="location"
@@ -89,7 +113,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="firstname">Minimum Premium (Ksh)* :</label>
                                             <input type="number"  name="minRate" class="form-control" id="location"

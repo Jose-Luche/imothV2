@@ -59,6 +59,8 @@ class ComprehensiveController extends Controller
             'companyId'=>$request->input('company'),
             'category'=>$request->input('category'),
             'rate'=>$request->input('rate'),
+            'si_from' => $request->input('si_from'),
+            'si_to' => $request->input('si_to'),
             'details'=>$request->input('details'),
             'minRate'=>$request->input('minRate'),
             'minYear'=>$request->input('minYear'),
@@ -141,6 +143,8 @@ class ComprehensiveController extends Controller
 
         $create = Comprehensive::where('id',$id)->update([
             'rate'=>$request->input('rate'),
+            'si_from' => $request->input('si_from'),
+            'si_to' => $request->input('si_to'),
             'category'=>$request->input('category'),
             'details'=>$request->input('details'),
             'minRate'=>$request->input('minRate'),
