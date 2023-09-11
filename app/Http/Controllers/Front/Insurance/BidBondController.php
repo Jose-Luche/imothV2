@@ -209,7 +209,7 @@ class BidBondController extends Controller
             return back()->with('error', 'An unexpected error occurred please try again.');
         }
 
-        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($applicationDetails));
+        //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($applicationDetails));
 
         return view('front.bond.details', [
             'total' => $totalPremiumPayable,
