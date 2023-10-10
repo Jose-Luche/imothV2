@@ -32,18 +32,12 @@
                                     <div class="col-sm-12">
                                         <div class="text-sm-right">
                                             <a href="{{ route('admin.health.create') }}" class="btn btn-success waves-effect waves-light">
-                                                Add Inpatient Limit <i data-feather="plus-circle"></i>
+                                                Add Limits <i data-feather="plus-circle"></i>
                                             </a> |
                                             <a href="{{ route('admin.health.create_ip_premiums') }}" class="btn btn-success waves-effect waves-light">
-                                                Add Inpatient Limit Premiums <i data-feather="plus-circle"></i>
-                                            </a> |
-                                            <a href="{{ route('admin.health.create') }}" class="btn btn-success waves-effect waves-light">
-                                                Add Outpatient Limit <i data-feather="plus-circle"></i>
+                                                Add Limit Premiums <i data-feather="plus-circle"></i>
                                             </a>
-                                            <a href="{{ route('admin.health.create_ip_premiums') }}" class="btn btn-success waves-effect waves-light">
-                                                Add Outpatient Limit Premiums <i data-feather="plus-circle"></i>
-                                            </a>
-
+                                        
                                         </div>
                                     </div><!-- end col-->
                                 </div>

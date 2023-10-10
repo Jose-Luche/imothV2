@@ -40,24 +40,45 @@
                             @include('partials.info')
                             <form id="demo-form" data-parsley-validate="" method="post" action="{{ route('admin.health.submit') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
-                                <div class="form-group">
-                                    <label for="fullname">Insurance Company * :</label>
-                                    <select name="company"  class="form-control @error('name') is-invalid @enderror" >
-                                        @foreach($companies as $company)
-                                            <option value="{{$company->id}}">{{ $company->name }}</option>
-                                        @endforeach
-                                    </select>
-                                   @if ($errors->has('company'))
-                                        <span class="help-block">
-                                                <strong>{{ $errors->first('company') }}</strong>
-                                            </span>
-                                    @endif
-                                </div>
+                                
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="inpatientLimit">Inpatient Limit:</label>
-                                            <input type="text"  name="limit" class="form-control" placeholder="Inpatient Limit" value="{{ old('limit') }}">
+                                            <label for="fullname">Insurance Company * :</label>
+                                            <select name="company"  class="form-control @error('name') is-invalid @enderror" >
+                                                @foreach($companies as $company)
+                                                    <option value="{{$company->id}}">{{ $company->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        @if ($errors->has('company'))
+                                                <span class="help-block">
+                                                        <strong>{{ $errors->first('company') }}</strong>
+                                                    </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="inpatientLimit">Limit Type:</label>
+                                            <select name="limitType"  class="form-control @error('limitType') is-invalid @enderror">
+                                                <option value="">Select Limit Type</option>
+                                                <option value="inpatient">Inpatient Limit</option>
+                                                <option value="outpatient">Outpatient Limit</option>
+                                                <option value="dental">Dental Limit</option>
+                                                <option value="optical">Optical Limit</option>
+                                                <option value="maternity">Maternity Limit</option>
+                                            </select>
+                                            @if ($errors->has('limit'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('limit') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="inpatientLimit">Limit Amount:</label>
+                                            <input type="text"  name="limit" class="form-control" placeholder="Limit Amount" value="{{ old('limit') }}">
                                             @if ($errors->has('limit'))
                                                 <span class="help-block">
                                                 <strong>{{ $errors->first('limit') }}</strong>

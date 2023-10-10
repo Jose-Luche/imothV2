@@ -34,14 +34,15 @@ class HealthController extends Controller
         $validatedData = $request->validate([
             'company' => 'required|integer',
             'limit' => 'required',
+            'limitType' => 'required',
             'details' => 'string',
 
         ]);
 
         $create = Health::create([
-            'companyId'=>$request->input('company'),
-            'limit'=>$request->input('limit'),
-
+            'companyId' => $request->input('company'),
+            'benefit_type' => $request->input('limitType'),
+            'limit' => $request->input('limit'),
             'details'=>$request->input('details'),
         ]);
         if (!$create)
