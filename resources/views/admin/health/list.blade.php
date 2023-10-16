@@ -32,16 +32,10 @@
                                     <div class="col-sm-12">
                                         <div class="text-sm-right">
                                             <a href="{{ route('admin.health.create') }}" class="btn btn-success waves-effect waves-light">
-                                                Add Inpatient Limit <i data-feather="plus-circle"></i>
+                                                Add Limits <i data-feather="plus-circle"></i>
                                             </a> |
                                             <a href="{{ route('admin.health.create_ip_premiums') }}" class="btn btn-success waves-effect waves-light">
-                                                Add Inpatient Limit Premiums <i data-feather="plus-circle"></i>
-                                            </a> |
-                                            <a href="{{ route('admin.health.create') }}" class="btn btn-success waves-effect waves-light">
-                                                Add Outpatient Limit <i data-feather="plus-circle"></i>
-                                            </a>
-                                            <a href="{{ route('admin.health.create_ip_premiums') }}" class="btn btn-success waves-effect waves-light">
-                                                Add Outpatient Limit Premiums <i data-feather="plus-circle"></i>
+                                                Add Limit Premiums <i data-feather="plus-circle"></i>
                                             </a>
 
                                         </div>
@@ -55,7 +49,9 @@
                                             <th>#</th>
                                             <th>Company Logo</th>
                                             <th>Company Name</th>
-                                            <th>Inpatient Limit</th>
+                                            <th>Benefit</th>
+                                            <th>PF/PP</th>
+                                            <th>Limit Amount</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -66,6 +62,8 @@
 
                                                 <td><img style="max-height: 30px" class="" src="{{ url('upload/company/'.$cover->company->logo) }}"></td>
                                                 <td>{{ $cover->company->name }}</td>
+                                                <td>{{ strtoupper($cover->benefit_type) }}</td>
+                                                <td>{{ strtoupper($cover->pp_pf) }}</td>
                                                 <td>{{ number_format($cover->limit) }}</td>
                                                 <td>
                                                     <span>

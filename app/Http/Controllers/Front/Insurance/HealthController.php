@@ -97,10 +97,11 @@ class HealthController extends Controller
         foreach($covers as $cover){
             /**Only Show Coveres whose Age Limits have been setup**/
             if(HealthPrincipalPremium::where('limitId', $cover->id)->first()){
+
+                /**Add a Hidden Input that will carry the Insurance Company ID**/
                 $totalPremium = 0;
                 $html = '<p>Inpatient Limit: <b style="margin-left: 20px">'. number_format($cover->limit).'</b></p>';
                 /**Basic Premium Part**/
-
                 $principalPremiumDetails = HealthPrincipalPremium::where('limitId', $cover->id)
                     ->where('age_from', '<=', $applicationDetails->principalAge)
                     ->where('age_to', '>=', $applicationDetails->principalAge)->first();
@@ -108,8 +109,6 @@ class HealthController extends Controller
                 $principalPremium = $principalPremiumDetails->princ_premium ?? 0;
                 $html .= '<p>Principal Premium: ';
                 $html .= '<span style="float: right">'.number_format($principalPremium,2).'</span>';
-
-
 
                 /**Spouse Premium**/
                 $spousePremium = 0;
@@ -138,6 +137,79 @@ class HealthController extends Controller
                 $totalPremiumPayable = $totalBasicPremium + $phcf + $itl + $stampDuty;
                 $html .= '</p>';
                 $html .= '<hr>';
+                $html .= '<h3>Optional Benefits</h3>';
+                $html .= '<div class="other-optional-benefits">';
+                $html .= '<input type="hidden" class="insurerId" name="insurerId" value="'.$cover->id.'">';
+                $html .= '<p> <input type="checkbox" name="outpatient" class="outpatient" value="yes"> Outpatient:';
+                $html .= '<span style="float: right" class="outpatient-premium">0</span>';
+                $html .= '</p>';
+                $html .= '<div style="display:none" class="show-outpatient-selector">
+                Per Person <input type="radio" name="op-type" value="pp" checked>
+                <span style="float: right"> Per Family <input type="radio" name="op-type" value="pf"></span>
+                <p> Select Plan:
+                <span style="float: right">
+                <select name="op-plan-limits" class="outpatient-plan-limits">
+                <option value="">--Select Plan--</option>';
+                foreach(Health::where('benefit_type', 'outpatient')->orderBy('limit', 'asc')->get() as $op){
+                    $html .= '<option value="'.$op->limit.'">'.number_format($op->limit).'</option>';
+                }
+                $html .= '</select>
+                </span>
+                </p>
+                <hr>
+                </div>';
+
+                $html .= '<p> <input type="checkbox" name="dental" class="dental" value="yes"> Dental:';
+                $html .= '<span style="float: right" class="dental-premium">0</span>';
+                $html .= '</p>';
+                $html .= '<div style="display:none" class="show-dental-selector">
+                <p> Select Plan:
+                <span style="float: right">
+                <select name="dental-plan-limits" class="dental-plan-limits">
+                <option value="">--Select Plan--</option>';
+                foreach(Health::where('benefit_type', 'dental')->orderBy('limit', 'asc')->get() as $dental){
+                    $html .= '<option value="'.$dental->limit.'">'.number_format($dental->limit).'</option>';
+                }
+                $html .= '</select>
+                </span>
+                </p>
+                <hr>
+                </div>';
+                $html .= '<p> <input type="checkbox" name="optical" class="optical" value="yes"> Optical: ';
+                $html .= '<span style="float: right" class="optical-premium">0</span>';
+                $html .= '</p>';
+                $html .= '<div style="display:none" class="show-optical-selector">
+
+                <p> Select Plan:
+                <span style="float: right">
+                <select name="optical-plan-limits" class="optical-plan-limits">
+                <option value="">--Select Plan--</option>';
+                foreach(Health::where('benefit_type', 'optical')->orderBy('limit', 'asc')->get() as $optical){
+                    $html .= '<option value="'.$optical->limit.'">'.number_format($optical->limit).'</option>';
+                }
+                $html .= '</select>
+                </span>
+                </p>
+                <hr>
+                </div>';
+                $html .= '<p> <input type="checkbox" name="maternity" class="maternity" value="yes"> Maternity:';
+                $html .= '<span style="float: right" class="maternity-premium">0</span>';
+                $html .= '</p>';
+                $html .= '<div style="display:none" class="show-maternity-selector">
+                <p> Select Plan:
+                <span style="float: right">
+                <select name="maternity-plan-limits" class="maternity-plan-limits">
+                <option value="">--Select Plan--</option>';
+                foreach(Health::where('benefit_type', 'maternity')->orderBy('limit', 'asc')->get() as $maternity){
+                    $html .= '<option value="'.$maternity->limit.'">'.number_format($maternity->limit).'</option>';
+                }
+                $html .= '</select>
+                </span>
+                </p>
+
+                </div>';
+                $html .= '<hr>';
+                $html .= '</div>';
                 $html .= '<p>Total Basic Premium: <span style="float: right">'.number_format($totalBasicPremium,2).'</span></p>';
                 $html .= '<p>PHCF (0.25%): <span style="float: right">'.number_format($phcf,2).'</span></p>';
                 $html .= '<p>ITL (0.2%): <span style="float: right">'.number_format($itl,2).'</span></p>';
@@ -160,6 +232,73 @@ class HealthController extends Controller
             'applicationDetails'=>$applicationDetails,
         ]);
     }
+
+     /**Update Limits for Outpatient Cover selected**/
+     public function updateOutpatientCover($id, $activator, $limit,$pp_pf)
+     {
+         $res = 'error';
+         if(HealthInsuranceApplication::where('id', $id)->update(
+             [
+             'op' => $activator,
+             'pp_pf' => $pp_pf,
+             'op_limit' => $limit
+             ])
+         ){
+             $res = 'success';
+             /**At this we can get the premium amount for the specified Item**/
+         }
+         return $res;
+
+     }
+
+    /**Update Limits for Dental Cover selected**/
+    public function updateDentalCover($id, $activator, $limit)
+    {
+        $res = 'error';
+        if(HealthInsuranceApplication::where('id', $id)->update(
+            [
+            'dental' => $activator,
+            'dental_limit' => $limit
+            ])
+        ){
+            $res = 'success';
+        }
+        return $res;
+
+    }
+
+    /**Update Limits for Optical Cover selected**/
+    public function updateOpticalCover($id, $activator, $limit)
+    {
+        $res = 'error';
+        if(HealthInsuranceApplication::where('id', $id)->update(
+            [
+            'optical' => $activator,
+            'optical_limit' => $limit
+            ])
+        ){
+            $res = 'success';
+        }
+        return $res;
+
+    }
+
+    /**Update Limits for Optical Cover selected**/
+    public function updateMaternityCover($id, $activator, $limit)
+    {
+        $res = 'error';
+        if(HealthInsuranceApplication::where('id', $id)->update(
+            [
+            'maternity' => $activator,
+            'maternity_limit' => $limit
+            ])
+        ){
+            $res = 'success';
+        }
+        return $res;
+
+    }
+
 
     public function coverDetails($applicationId,$id)
     {
@@ -242,13 +381,13 @@ class HealthController extends Controller
 
     public function submitApplication(Request $request,$id)
     {
-        
+
 
         //$message = "Your Health Insurance application to Imoth Insurance Brokers was successful.We will get back to you shortly.";
         //sendSms($create->phone,$message);
 
         //Mail::to($applicationDetails->email)->send(new BidBondEmail($applicationDetails));
-        
+
 
        $request->session()->put('quoteId', $id);
 
