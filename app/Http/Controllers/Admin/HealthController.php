@@ -35,6 +35,7 @@ class HealthController extends Controller
             'company' => 'required|integer',
             'limit' => 'required',
             'limitType' => 'required',
+            'pp_pf' => 'required',
             'details' => 'string',
 
         ]);
@@ -42,6 +43,7 @@ class HealthController extends Controller
         $create = Health::create([
             'companyId' => $request->input('company'),
             'benefit_type' => $request->input('limitType'),
+            'pp_pf' => $request->input('pp_pf'),
             'limit' => $request->input('limit'),
             'details'=>$request->input('details'),
         ]);
@@ -62,10 +64,19 @@ class HealthController extends Controller
         ]);
     }
     /**See Available Limits for a Given Insurer**/
-    public function viewLimits($id){
-        $limits = Health::where('companyId', $id)->get();
+    public function viewLimits($id,$benefit,$pp_pf){
+        $limits = Health::where('companyId', $id)->where('benefit_type', $benefit)->where('pp_pf', $pp_pf)->get();
         return view('admin.health.health-inpatient-limits', compact('limits'));
     }
+
+    /**Create a FUnction that will be used to fetch any available premium rates for the specified Limit**/
+    public function viewPremiums($id){
+        $principal = HealthPrincipalPremium::where('limitId', $id)->get();
+        $spouse = HealthSpousePremium::where('limitId', $id)->get();
+
+        return view('admin.health.available_premium_rates', compact('principal', 'spouse'));
+    }
+
     public function submitIpPremium(Request $request){
         $validatedData = $request->validate([
             'companyId' => 'required|integer',
@@ -107,15 +118,28 @@ class HealthController extends Controller
             $princPremium = $request['princ_premium'][$key];
             $childPremium = $request['child_premium'][$key];
 
-            $createPrincipal = HealthPrincipalPremium::create(
-                [
-                    'limitId' => $request['limitId'],
-                    'age_from' => $ageFrom,
-                    'age_to' => $ageTo,
-                    'princ_premium' => $princPremium,
-                    'child_premium' => $childPremium
-                ]
-            );
+            if(isset($request['principalPremiumId'][$key]) && $request['principalPremiumId'][$key] != 0){
+                /**At this point, we update an Existing Entry**/
+                $createPrincipal = HealthPrincipalPremium::where('id',$request['principalPremiumId'][$key])->update(
+                    [
+                        'limitId' => $request['limitId'],
+                        'age_from' => $ageFrom,
+                        'age_to' => $ageTo,
+                        'princ_premium' => $princPremium,
+                        'child_premium' => $childPremium
+                    ]
+                );
+            }else{
+                $createPrincipal = HealthPrincipalPremium::create(
+                    [
+                        'limitId' => $request['limitId'],
+                        'age_from' => $ageFrom,
+                        'age_to' => $ageTo,
+                        'princ_premium' => $princPremium,
+                        'child_premium' => $childPremium
+                    ]
+                );
+            }
         }
 
         /**Create Entry into both the Principal and Spouse Tables**/
@@ -124,14 +148,27 @@ class HealthController extends Controller
             $ageTo = $request['sp_age_to'][$key];
             $spPremium = $request['sp_premium'][$key];
 
-            $createSpouse = HealthSpousePremium::create(
-                [
-                    'limitId' => $request['limitId'],
-                    'sp_age_from' => $ageFrom,
-                    'sp_age_to' => $ageTo,
-                    'sp_premium' => $spPremium,
-                ]
-            );
+
+            if(isset($request['spousePremiumId'][$key]) && $request['spousePremiumId'][$key] != 0){
+                /**At this point, we update an Existing Entry**/
+                $createSpouse = HealthSpousePremium::where('id', $request['spousePremiumId'][$key])->update(
+                    [
+                        'limitId' => $request['limitId'],
+                        'sp_age_from' => $ageFrom,
+                        'sp_age_to' => $ageTo,
+                        'sp_premium' => $spPremium,
+                    ]
+                );
+            }else{
+                $createSpouse = HealthSpousePremium::create(
+                    [
+                        'limitId' => $request['limitId'],
+                        'sp_age_from' => $ageFrom,
+                        'sp_age_to' => $ageTo,
+                        'sp_premium' => $spPremium,
+                    ]
+                );
+            }
         }
 
 

@@ -189,7 +189,9 @@ Route::prefix('admin')->group(function() {
             /**Save IP Premium Routes**/
             Route::get('/new-premium', [HealthController::class,'createIpPremium'])->name('admin.health.create_ip_premiums');
             Route::post('/submit-premium', [HealthController::class,'submitIpPremium'])->name('admin.health.submit_ip_premiums');
-            Route::get('/limits/{id}', [HealthController::class,'viewLimits'])->name('admin.health.health-inpatient-limits');
+            Route::get('/limits/{id}/{benefit}/{pp_pf}', [HealthController::class,'viewLimits'])->name('admin.health.health-inpatient-limits');
+            Route::get('/premiums/{id}', [HealthController::class,'viewPremiums'])->name('admin.health.available_premium_rates');
+
             /**OP Limits Routes**/
             Route::get('/new/op', [HealthController::class,'createOp'])->name('admin.health.create-op');
             Route::post('/submit/op', [HealthController::class,'submitOp'])->name('admin.health.submit-op');

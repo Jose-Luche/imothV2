@@ -97,10 +97,11 @@ class HealthController extends Controller
         foreach($covers as $cover){
             /**Only Show Coveres whose Age Limits have been setup**/
             if(HealthPrincipalPremium::where('limitId', $cover->id)->first()){
+
+                /**Add a Hidden Input that will carry the Insurance Company ID**/
                 $totalPremium = 0;
                 $html = '<p>Inpatient Limit: <b style="margin-left: 20px">'. number_format($cover->limit).'</b></p>';
                 /**Basic Premium Part**/
-
                 $principalPremiumDetails = HealthPrincipalPremium::where('limitId', $cover->id)
                     ->where('age_from', '<=', $applicationDetails->principalAge)
                     ->where('age_to', '>=', $applicationDetails->principalAge)->first();
@@ -108,8 +109,6 @@ class HealthController extends Controller
                 $principalPremium = $principalPremiumDetails->princ_premium ?? 0;
                 $html .= '<p>Principal Premium: ';
                 $html .= '<span style="float: right">'.number_format($principalPremium,2).'</span>';
-
-
 
                 /**Spouse Premium**/
                 $spousePremium = 0;
@@ -139,6 +138,8 @@ class HealthController extends Controller
                 $html .= '</p>';
                 $html .= '<hr>';
                 $html .= '<h3>Optional Benefits</h3>';
+                $html .= '<div class="other-optional-benefits">';
+                $html .= '<input type="hidden" class="insurerId" name="insurerId" value="'.$cover->id.'">';
                 $html .= '<p> <input type="checkbox" name="outpatient" class="outpatient" value="yes"> Outpatient:';
                 $html .= '<span style="float: right" class="outpatient-premium">0</span>';
                 $html .= '</p>';
@@ -157,11 +158,11 @@ class HealthController extends Controller
                 </p>
                 <hr>
                 </div>';
-            
+
                 $html .= '<p> <input type="checkbox" name="dental" class="dental" value="yes"> Dental:';
                 $html .= '<span style="float: right" class="dental-premium">0</span>';
                 $html .= '</p>';
-                $html .= '<div style="display:none" class="show-dental-selector">                
+                $html .= '<div style="display:none" class="show-dental-selector">
                 <p> Select Plan:
                 <span style="float: right">
                 <select name="dental-plan-limits" class="dental-plan-limits">
@@ -178,7 +179,7 @@ class HealthController extends Controller
                 $html .= '<span style="float: right" class="optical-premium">0</span>';
                 $html .= '</p>';
                 $html .= '<div style="display:none" class="show-optical-selector">
-               
+
                 <p> Select Plan:
                 <span style="float: right">
                 <select name="optical-plan-limits" class="optical-plan-limits">
@@ -194,7 +195,7 @@ class HealthController extends Controller
                 $html .= '<p> <input type="checkbox" name="maternity" class="maternity" value="yes"> Maternity:';
                 $html .= '<span style="float: right" class="maternity-premium">0</span>';
                 $html .= '</p>';
-                $html .= '<div style="display:none" class="show-maternity-selector">               
+                $html .= '<div style="display:none" class="show-maternity-selector">
                 <p> Select Plan:
                 <span style="float: right">
                 <select name="maternity-plan-limits" class="maternity-plan-limits">
@@ -205,9 +206,10 @@ class HealthController extends Controller
                 $html .= '</select>
                 </span>
                 </p>
-            
+
                 </div>';
                 $html .= '<hr>';
+                $html .= '</div>';
                 $html .= '<p>Total Basic Premium: <span style="float: right">'.number_format($totalBasicPremium,2).'</span></p>';
                 $html .= '<p>PHCF (0.25%): <span style="float: right">'.number_format($phcf,2).'</span></p>';
                 $html .= '<p>ITL (0.2%): <span style="float: right">'.number_format($itl,2).'</span></p>';
@@ -243,9 +245,10 @@ class HealthController extends Controller
              ])
          ){
              $res = 'success';
+             /**At this we can get the premium amount for the specified Item**/
          }
-         return $res;    
-         
+         return $res;
+
      }
 
     /**Update Limits for Dental Cover selected**/
@@ -260,8 +263,8 @@ class HealthController extends Controller
         ){
             $res = 'success';
         }
-        return $res;    
-        
+        return $res;
+
     }
 
     /**Update Limits for Optical Cover selected**/
@@ -276,8 +279,8 @@ class HealthController extends Controller
         ){
             $res = 'success';
         }
-        return $res;    
-        
+        return $res;
+
     }
 
     /**Update Limits for Optical Cover selected**/
@@ -292,8 +295,8 @@ class HealthController extends Controller
         ){
             $res = 'success';
         }
-        return $res;    
-        
+        return $res;
+
     }
 
 
@@ -378,13 +381,13 @@ class HealthController extends Controller
 
     public function submitApplication(Request $request,$id)
     {
-        
+
 
         //$message = "Your Health Insurance application to Imoth Insurance Brokers was successful.We will get back to you shortly.";
         //sendSms($create->phone,$message);
 
         //Mail::to($applicationDetails->email)->send(new BidBondEmail($applicationDetails));
-        
+
 
        $request->session()->put('quoteId', $id);
 
