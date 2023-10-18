@@ -1,150 +1,243 @@
+
+
+
 {{--PRINCIPAL SECTION--}}
-@if(count($principal) > 0)
-    <div class="row" id="premiums-section">
-        <div id="principal-member">
-            <p style="color: red">1. Principal Member Details</p>
-            @foreach($principal as $pr)
+@if($limit->benefit_type != 'inpatient' && $limit->pp_pf == 'pf')
+    <input type="hidden" name="family_based" value="yes">
+    @if($family != 'empty')
+        <div class="row" id="premiums-section">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M:</label>
+                        <input type="hidden" name="family_id" value="{{$family->id}}">
+                        <input type="text"  name="m" class="form-control" placeholder="M" value="{{ $family->m }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+1:</label>
+                        <input type="text"  name="m_plus_one" class="form-control" placeholder="M+1" value="{{ $family->m_plus_one }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+2:</label>
+                        <input type="text"  name="m_plus_two" class="form-control" placeholder="M+2" value="{{ $family->m_plus_two }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+3:</label>
+                        <input type="text"  name="m_plus_three" class="form-control" placeholder="M+3" value="{{ $family->m_plus_three }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+4:</label>
+                        <input type="text"  name="m_plus_four" class="form-control" placeholder="M+4" value="{{ $family->m_plus_four }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+5:</label>
+                        <input type="text"  name="m_plus_five" class="form-control" placeholder="M+5" value="{{ $family->m_plus_five }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    @else
+        <div class="row" id="premiums-section">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M:</label>
+                        <input type="text"  name="m" class="form-control" placeholder="M" value="{{ old('m') }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+1:</label>
+                        <input type="text"  name="m_plus_one" class="form-control" placeholder="M+1" value="{{ old('m_plus_one') }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+2:</label>
+                        <input type="text"  name="m_plus_two" class="form-control" placeholder="M+2" value="{{ old('m_plus_two') }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+3:</label>
+                        <input type="text"  name="m_plus_three" class="form-control" placeholder="M+3" value="{{ old('m_plus_three') }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+4:</label>
+                        <input type="text"  name="m_plus_four" class="form-control" placeholder="M+4" value="{{ old('m_plus_four') }}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="ageFrom">M+5:</label>
+                        <input type="text"  name="m_plus_five" class="form-control" placeholder="M+5" value="{{ old('m_plus_five') }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+@else
+    @if(count($principal) > 0)
+        <div class="row" id="premiums-section">
+            <div id="principal-member">
+                <p style="color: red">1. Principal Member Details</p>
+                @foreach($principal as $pr)
+                    <div class="row">
+                        <input type="hidden" name="principalPremiumId[{{$pr->id}}]" value="{{$pr->id}}">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="ageFrom">Age:</label>
+                                <input type="text"  name="age_from[{{$pr->id}}]" class="form-control" placeholder="Age From" value="{{ $pr->age_from }}">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="ageTo">Age To:</label>
+                                <input type="text"  name="age_to[{{$pr->id}}]" class="form-control" placeholder="Age To" value="{{ $pr->age_to }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="principalPremium">IP Premium:</label>
+                                <input type="text"  name="princ_premium[{{$pr->id}}]" class="form-control" placeholder="Premium Amount" value="{{ $pr->princ_premium }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="childPremium">Child Premium:</label>
+                                <input type="text"  name="child_premium[{{$pr->id}}]" class="form-control" placeholder="Child Premium" value="{{ $pr->child_premium }}">
+                            </div>
+                        </div>
+
+                    </div>
+                @endforeach
+            </div>
+            <div style="padding-top: 10px" class="form-group mb-0">
+                <button type="button" name="add-principal-range" id="add-principal-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Range</button>
+            </div>
+        </div><hr>
+
+    @else
+        <div class="row" id="premiums-section">
+            <div id="principal-member">
+                <p style="color: red">1. Principal Member Details</p>
                 <div class="row">
-                    <input type="hidden" name="principalPremiumId[{{$pr->id}}]" value="{{$pr->id}}">
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="ageFrom">Age:</label>
-                            <input type="text"  name="age_from[{{$pr->id}}]" class="form-control" placeholder="Age From" value="{{ $pr->age_from }}">
+                            <input type="text"  name="age_from[]" class="form-control" placeholder="Age From" value="{{ old('age_from') }}">
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="ageTo">Age To:</label>
-                            <input type="text"  name="age_to[{{$pr->id}}]" class="form-control" placeholder="Age To" value="{{ $pr->age_to }}">
+                            <input type="text"  name="age_to[]" class="form-control" placeholder="Age To" value="{{ old('age_to') }}">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="principalPremium">IP Premium:</label>
-                            <input type="text"  name="princ_premium[{{$pr->id}}]" class="form-control" placeholder="Premium Amount" value="{{ $pr->princ_premium }}">
+                            <input type="text"  name="princ_premium[]" class="form-control" placeholder="Premium Amount" value="{{ old('princ_premium') }}">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="childPremium">Child Premium:</label>
-                            <input type="text"  name="child_premium[{{$pr->id}}]" class="form-control" placeholder="Child Premium" value="{{ $pr->child_premium }}">
+                            <input type="text"  name="child_premium[]" class="form-control" placeholder="Child Premium" value="{{ old('child_premium') }}">
                         </div>
                     </div>
 
                 </div>
-            @endforeach
-        </div>
-        <div style="padding-top: 10px" class="form-group mb-0">
-            <button type="button" name="add-principal-range" id="add-principal-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Range</button>
-        </div>
-    </div><hr>
+            </div>
+            <div style="padding-top: 10px" class="form-group mb-0">
+                <button type="button" name="add-principal-range" id="add-principal-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Range</button>
+            </div>
+        </div><hr>
+    @endif
 
-@else
-    <div class="row" id="premiums-section">
-        <div id="principal-member">
-            <p style="color: red">1. Principal Member Details</p>
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">Age:</label>
-                        <input type="text"  name="age_from[]" class="form-control" placeholder="Age From" value="{{ old('age_from') }}">
-                    </div>
-                </div>
 
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageTo">Age To:</label>
-                        <input type="text"  name="age_to[]" class="form-control" placeholder="Age To" value="{{ old('age_to') }}">
+    {{--SPOUSE SECTION--}}
+    @if(count($spouse) > 0)
+        <div class="row" id="premiums-section-spouse">
+            <div id="spouse-member">
+                <p style="color: red">2. Spouse Premium Details</p>
+
+                @foreach($spouse as $sp)
+                    <div class="row">
+                        <input type="hidden" name="spousePremiumId[{{$sp->id}}]" value="{{$sp->id}}">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="ageFrom">Spouse Age From:</label>
+                                <input type="text"  name="sp_age_from[{{$sp->id}}]" class="form-control" placeholder="Age From" value="{{ $sp->sp_age_from }}">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="ageTo">Spouse Age To:</label>
+                                <input type="text"  name="sp_age_to[{{$sp->id}}]" class="form-control" placeholder="Age To" value="{{ $sp->sp_age_to }}">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="principalPremium">Spouse Premium:</label>
+                                <input type="text"  name="sp_premium[{{$sp->id}}]" class="form-control" placeholder="Spouse Premium Amount" value="{{ $sp->sp_premium }}">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="principalPremium">IP Premium:</label>
-                        <input type="text"  name="princ_premium[]" class="form-control" placeholder="Premium Amount" value="{{ old('princ_premium') }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="childPremium">Child Premium:</label>
-                        <input type="text"  name="child_premium[]" class="form-control" placeholder="Child Premium" value="{{ old('child_premium') }}">
-                    </div>
-                </div>
+                @endforeach
 
             </div>
+            <div style="padding-top: 10px" class="form-group mb-0">
+                <button type="button" name="add-spouse-range" id="add-spouse-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Spouse Range</button>
+            </div>
         </div>
-        <div style="padding-top: 10px" class="form-group mb-0">
-            <button type="button" name="add-principal-range" id="add-principal-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Range</button>
-        </div>
-    </div><hr>
-@endif
-
-
-{{--SPOUSE SECTION--}}
-@if(count($spouse) > 0)
-    <div class="row" id="premiums-section-spouse">
-        <div id="spouse-member">
-            <p style="color: red">2. Spouse Premium Details</p>
-
-            @foreach($spouse as $sp)
+    @else
+        <div class="row" id="premiums-section-spouse">
+            <div id="spouse-member">
+                <p style="color: red">2. Spouse Premium Details</p>
                 <div class="row">
-                    <input type="hidden" name="spousePremiumId[{{$sp->id}}]" value="{{$sp->id}}">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="ageFrom">Spouse Age From:</label>
-                            <input type="text"  name="sp_age_from[{{$sp->id}}]" class="form-control" placeholder="Age From" value="{{ $sp->sp_age_from }}">
+                            <input type="text"  name="sp_age_from[]" class="form-control" placeholder="Age From" value="{{ old('sp_age_from') }}">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="ageTo">Spouse Age To:</label>
-                            <input type="text"  name="sp_age_to[{{$sp->id}}]" class="form-control" placeholder="Age To" value="{{ $sp->sp_age_to }}">
+                            <input type="text"  name="sp_age_to[]" class="form-control" placeholder="Age To" value="{{ old('sp_age_to') }}">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="principalPremium">Spouse Premium:</label>
-                            <input type="text"  name="sp_premium[{{$sp->id}}]" class="form-control" placeholder="Spouse Premium Amount" value="{{ $sp->sp_premium }}">
+                            <input type="text"  name="sp_premium[]" class="form-control" placeholder="Spouse Premium Amount" value="{{ old('sp_premium') }}">
                         </div>
                     </div>
                 </div>
-            @endforeach
-
-        </div>
-        <div style="padding-top: 10px" class="form-group mb-0">
-            <button type="button" name="add-spouse-range" id="add-spouse-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Spouse Range</button>
-        </div>
-    </div>
-@else
-    <div class="row" id="premiums-section-spouse">
-        <div id="spouse-member">
-            <p style="color: red">2. Spouse Premium Details</p>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="ageFrom">Spouse Age From:</label>
-                        <input type="text"  name="sp_age_from[]" class="form-control" placeholder="Age From" value="{{ old('sp_age_from') }}">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="ageTo">Spouse Age To:</label>
-                        <input type="text"  name="sp_age_to[]" class="form-control" placeholder="Age To" value="{{ old('sp_age_to') }}">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="principalPremium">Spouse Premium:</label>
-                        <input type="text"  name="sp_premium[]" class="form-control" placeholder="Spouse Premium Amount" value="{{ old('sp_premium') }}">
-                    </div>
-                </div>
+            </div>
+            <div style="padding-top: 10px" class="form-group mb-0">
+                <button type="button" name="add-spouse-range" id="add-spouse-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Spouse Range</button>
             </div>
         </div>
-        <div style="padding-top: 10px" class="form-group mb-0">
-            <button type="button" name="add-spouse-range" id="add-spouse-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Spouse Range</button>
-        </div>
-    </div>
+    @endif
 @endif
+
 
 <script type="text/javascript">
     $(document).ready(function(){

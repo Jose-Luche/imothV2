@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\HealthFamilyPremium;
 use App\Models\HealthPrincipalPremium;
 use App\Models\HealthSpousePremium;
 use App\Models\InsuranceCompany;
@@ -71,10 +72,12 @@ class HealthController extends Controller
 
     /**Create a FUnction that will be used to fetch any available premium rates for the specified Limit**/
     public function viewPremiums($id){
+        $limit = Health::find($id);
         $principal = HealthPrincipalPremium::where('limitId', $id)->get();
         $spouse = HealthSpousePremium::where('limitId', $id)->get();
+        $family = HealthFamilyPremium::where('limitId', $id)->first() ?? 'empty';
 
-        return view('admin.health.available_premium_rates', compact('principal', 'spouse'));
+        return view('admin.health.available_premium_rates', compact('limit','principal', 'spouse', 'family'));
     }
 
     public function submitIpPremium(Request $request){
@@ -84,97 +87,130 @@ class HealthController extends Controller
 
         ]);
 
-        $rules = [];
-        if ($request->has('princ_premium')) {
+        if($request->has('family_based')){
+            //we store per family premiums
+            if(isset($request['family_id'])){
+                /**At this point, we update an Existing Entry**/
+                $createFamily = HealthFamilyPremium::where('id', $request['family_id'])->update(
+                    [
+                        'limitId' => $request['limitId'],
+                        'm' => $request['m'],
+                        'm_plus_one' => $request['m_plus_one'],
+                        'm_plus_two' => $request['m_plus_two'],
+                        'm_plus_three' => $request['m_plus_three'],
+                        'm_plus_four' => $request['m_plus_four'],
+                        'm_plus_five' => $request['m_plus_five'],
+                    ]
+                );
+            }else{
+                $createFamily = HealthFamilyPremium::create(
+                    [
+                        'limitId' => $request['limitId'],
+                        'm' => $request['m'],
+                        'm_plus_one' => $request['m_plus_one'],
+                        'm_plus_two' => $request['m_plus_two'],
+                        'm_plus_three' => $request['m_plus_three'],
+                        'm_plus_four' => $request['m_plus_four'],
+                        'm_plus_five' => $request['m_plus_five'],
+                    ]
+                );
+            }
+            if (!$createFamily){
+                return back()->with('error','An unexpected error occurred.Please reload and try again');
+            }
+        }else{
+            //We store Per person Premiums -  Age Based
+            $rules = [];
+            if ($request->has('princ_premium')) {
+                foreach ($request->input('princ_premium') as $key => $value) {
+                    $rules["age_from.{$key}"] = 'required';
+                    $rules["age_to.{$key}"] = 'required';
+                    $rules["princ_premium.{$key}"] = 'required';
+                    $rules["child_premium.{$key}"] = 'required';
+                }
+                $validator = Validator::make($request->all(), $rules);
+                if ($validator->fails()) {
+                    return back()->withInput()->with('error', 'Please ensure you fill all the required fields on Principal Inpatient Premiums .');
+                }
+            }
+
+            $rules = [];
+            if ($request->has('sp_premium')) {
+                foreach ($request->input('sp_premium') as $key => $value) {
+                    $rules["sp_age_from.{$key}"] = 'required';
+                    $rules["sp_age_to.{$key}"] = 'required';
+                    $rules["sp_premium.{$key}"] = 'required';
+                }
+                $validator = Validator::make($request->all(), $rules);
+                if ($validator->fails()) {
+                    return back()->withInput()->with('error', 'Please ensure you fill all the required fields on Spouse Inpatient Premiums .');
+                }
+            }
+            $createSpouse = $createPrincipal = [];
+            /**Create Entry into both the Principal and Spouse Tables**/
             foreach ($request->input('princ_premium') as $key => $value) {
-                $rules["age_from.{$key}"] = 'required';
-                $rules["age_to.{$key}"] = 'required';
-                $rules["princ_premium.{$key}"] = 'required';
-                $rules["child_premium.{$key}"] = 'required';
-            }
-            $validator = Validator::make($request->all(), $rules);
-            if ($validator->fails()) {
-                return back()->withInput()->with('error', 'Please ensure you fill all the required fields on Principal Inpatient Premiums .');
-            }
-        }
+                $ageFrom = $request['age_from'][$key];
+                $ageTo = $request['age_to'][$key];
+                $princPremium = $request['princ_premium'][$key];
+                $childPremium = $request['child_premium'][$key];
 
-        $rules = [];
-        if ($request->has('sp_premium')) {
+                if(isset($request['principalPremiumId'][$key]) && $request['principalPremiumId'][$key] != 0){
+                    /**At this point, we update an Existing Entry**/
+                    $createPrincipal = HealthPrincipalPremium::where('id',$request['principalPremiumId'][$key])->update(
+                        [
+                            'limitId' => $request['limitId'],
+                            'age_from' => $ageFrom,
+                            'age_to' => $ageTo,
+                            'princ_premium' => $princPremium,
+                            'child_premium' => $childPremium
+                        ]
+                    );
+                }else{
+                    $createPrincipal = HealthPrincipalPremium::create(
+                        [
+                            'limitId' => $request['limitId'],
+                            'age_from' => $ageFrom,
+                            'age_to' => $ageTo,
+                            'princ_premium' => $princPremium,
+                            'child_premium' => $childPremium
+                        ]
+                    );
+                }
+            }
+
+            /**Create Entry into both the Principal and Spouse Tables**/
             foreach ($request->input('sp_premium') as $key => $value) {
-                $rules["sp_age_from.{$key}"] = 'required';
-                $rules["sp_age_to.{$key}"] = 'required';
-                $rules["sp_premium.{$key}"] = 'required';
-            }
-            $validator = Validator::make($request->all(), $rules);
-            if ($validator->fails()) {
-                return back()->withInput()->with('error', 'Please ensure you fill all the required fields on Spouse Inpatient Premiums .');
-            }
-        }
-        $createSpouse = $createPrincipal = [];
-        /**Create Entry into both the Principal and Spouse Tables**/
-        foreach ($request->input('princ_premium') as $key => $value) {
-            $ageFrom = $request['age_from'][$key];
-            $ageTo = $request['age_to'][$key];
-            $princPremium = $request['princ_premium'][$key];
-            $childPremium = $request['child_premium'][$key];
+                $ageFrom = $request['sp_age_from'][$key];
+                $ageTo = $request['sp_age_to'][$key];
+                $spPremium = $request['sp_premium'][$key];
 
-            if(isset($request['principalPremiumId'][$key]) && $request['principalPremiumId'][$key] != 0){
-                /**At this point, we update an Existing Entry**/
-                $createPrincipal = HealthPrincipalPremium::where('id',$request['principalPremiumId'][$key])->update(
-                    [
-                        'limitId' => $request['limitId'],
-                        'age_from' => $ageFrom,
-                        'age_to' => $ageTo,
-                        'princ_premium' => $princPremium,
-                        'child_premium' => $childPremium
-                    ]
-                );
-            }else{
-                $createPrincipal = HealthPrincipalPremium::create(
-                    [
-                        'limitId' => $request['limitId'],
-                        'age_from' => $ageFrom,
-                        'age_to' => $ageTo,
-                        'princ_premium' => $princPremium,
-                        'child_premium' => $childPremium
-                    ]
-                );
+
+                if(isset($request['spousePremiumId'][$key]) && $request['spousePremiumId'][$key] != 0){
+                    /**At this point, we update an Existing Entry**/
+                    $createSpouse = HealthSpousePremium::where('id', $request['spousePremiumId'][$key])->update(
+                        [
+                            'limitId' => $request['limitId'],
+                            'sp_age_from' => $ageFrom,
+                            'sp_age_to' => $ageTo,
+                            'sp_premium' => $spPremium,
+                        ]
+                    );
+                }else{
+                    $createSpouse = HealthSpousePremium::create(
+                        [
+                            'limitId' => $request['limitId'],
+                            'sp_age_from' => $ageFrom,
+                            'sp_age_to' => $ageTo,
+                            'sp_premium' => $spPremium,
+                        ]
+                    );
+                }
+            }
+            if (!$createSpouse || !$createPrincipal){
+                return back()->with('error','An unexpected error occurred.Please reload and try again');
             }
         }
 
-        /**Create Entry into both the Principal and Spouse Tables**/
-        foreach ($request->input('sp_premium') as $key => $value) {
-            $ageFrom = $request['sp_age_from'][$key];
-            $ageTo = $request['sp_age_to'][$key];
-            $spPremium = $request['sp_premium'][$key];
-
-
-            if(isset($request['spousePremiumId'][$key]) && $request['spousePremiumId'][$key] != 0){
-                /**At this point, we update an Existing Entry**/
-                $createSpouse = HealthSpousePremium::where('id', $request['spousePremiumId'][$key])->update(
-                    [
-                        'limitId' => $request['limitId'],
-                        'sp_age_from' => $ageFrom,
-                        'sp_age_to' => $ageTo,
-                        'sp_premium' => $spPremium,
-                    ]
-                );
-            }else{
-                $createSpouse = HealthSpousePremium::create(
-                    [
-                        'limitId' => $request['limitId'],
-                        'sp_age_from' => $ageFrom,
-                        'sp_age_to' => $ageTo,
-                        'sp_premium' => $spPremium,
-                    ]
-                );
-            }
-        }
-
-
-        if (!$createSpouse || !$createPrincipal){
-            return back()->with('error','An unexpected error occurred.Please reload and try again');
-        }
         return back()->with('success','Premium Rates submitted successfully.');
     }
 
