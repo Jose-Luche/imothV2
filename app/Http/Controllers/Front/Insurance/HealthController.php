@@ -490,7 +490,7 @@ class HealthController extends Controller
             ])
         ){
             $res = 0;
-            $specificCover = Health::where('companyId', $insurerId)->where('benefit_type', 'optical')->where('pp_pf', 'pp')->where('limit', $limit)->first();
+            $specificCover = Health::where('companyId', $insurerId)->where('benefit_type', 'maternity')->where('pp_pf', 'pp')->where('limit', $limit)->first();
             /**The Above Query will give us the Specific LimitID: Using it we can get premium Amounts Charged**/
             if($specificCover){
                 /**Our Premiums will be from the Health Principal and Spouse Premium Table**/

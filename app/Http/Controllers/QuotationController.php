@@ -88,7 +88,12 @@ class QuotationController extends Controller
         $cover = $details;
         //$html = '<p>Sum Insured: <b style="margin-left: 20px">'. number_format($applicationDetails->value).'</b></p>';
         /**Basic Premium Part**/
-        $html = '<p>Basic Premium: ';
+        if($type =="health"){
+            $html = '<p>Inpatient Basic Premium: ';
+        } else {
+            $html = '<p>Basic Premium: ';
+        }
+        
         /**Go thrugh DIfferent sections**/
         $basicPremium = 0;
         if($type == 'motor'){
@@ -128,7 +133,11 @@ class QuotationController extends Controller
                 $spousePremium = $spousePremiumDetails->sp_premium ?? 0;
             $childrenPremium = ($principalPremiumDetails->child_premium ?? 0) * $applicationDetails->childrenNumber ?? 0;
 
-            $basicPremium = $principalPremium + $spousePremium + $childrenPremium;
+
+
+            $basicPremium = $principalPremium + $spousePremium + $childrenPremium;// Inpatient Basic Premium
+
+            
         } elseif($type == 'attachment'){
             $details = Attachment::findorfail($id);
             /**Since we have the Duration Session Period Details, get the Premium Payable**/
@@ -199,7 +208,23 @@ class QuotationController extends Controller
             $html .= '</p>';
             $html .= '<hr>';
             $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>';
-        } else {
+        } elseif($type == 'health'){
+            
+            $totalPremiumPayable = $applicationDetails->premiumPayable;
+            $html .= '</p>';
+            $html .='<p>Outpatient Basic Premium: <span style="float: right">'.number_format($applicationDetails->op_premium,2).'</span></p>';
+            $html .='<p>Dental Basic Premium: <span style="float: right">'.number_format($applicationDetails->dental_premium,2).'</span> </p>';
+            $html .='<p>Optical Basic Premium: <span style="float: right">'.number_format($applicationDetails->optical_premium,2).'</span> </p>';
+            $html .='<p>Maternity Basic Premium: <span style="float: right">'.number_format($applicationDetails->maternity_premium,2).'</span> </p>';
+            
+            $html .= '<hr>';
+            $html .= '<p>Total Basic Premium: <span style="float: right">'.number_format($applicationDetails->total_basic_premium,2).'</span></p>';
+            $html .= '<p>PHCF (0.25%): <span style="float: right">'.number_format($applicationDetails->phcf,2).'</span></p>';
+            $html .= '<p>ITL (0.2%): <span style="float: right">'.number_format($applicationDetails->itl,2).'</span></p>';
+            $html .= '<p>Stamp Duty: <span style="float: right">'.number_format($applicationDetails->stamp_duty,2).'</span></p>';
+            $html .= '<hr>';
+            $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($applicationDetails->premiumPayable,2).'</b></span></p>';
+        }else {
             $totalBasicPremium = $totalBenefits + $basicPremium;
             $phcf = round(0.25/100 * $totalBasicPremium,2);
             $itl = round(0.2/100 * $totalBasicPremium,2);
@@ -266,6 +291,24 @@ class QuotationController extends Controller
             $table .= "<td>".$applicationDetails->principalAge."</td>";
             $table .= "<td>".$applicationDetails->spouseAge."</td>";
             $table .= "<td>".$applicationDetails->childrenNumber."</td>";
+            $table .= "</tr>";
+
+            $table .= "</table>";
+
+            $table .= "<h2>Optional Benefits</h2>";
+            $table .= "<table >";
+            $table .= "<tr class='table-header' style='background-color: #EC0000;color: white'>";
+            $table .= "<th>Outpatient Premium</th>";
+            $table .= "<th>Dental Premium</th>";
+            $table .= "<th>Optical Premium</th>";
+            $table .= "<th>Maternity Premium</th>";
+            $table .= "</tr>";
+
+            $table .= "<tr>";
+            $table .= "<td>".number_format($applicationDetails->op_premium)."</td>";
+            $table .= "<td>".number_format($applicationDetails->dental_premium)."</td>";
+            $table .= "<td>".number_format($applicationDetails->optical_premium)."</td>";
+            $table .= "<td>".number_format($applicationDetails->maternity_premium)."</td>";
             $table .= "</tr>";
 
             $table .= "</table>";

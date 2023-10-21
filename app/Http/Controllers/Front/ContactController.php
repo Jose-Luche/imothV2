@@ -20,6 +20,12 @@ class ContactController extends Controller
         return view('admin.contact.viewEnq', compact('enquiries'));
     }
 
+    public function show(string $id)
+    {
+        $details = ContactUs::find($id);
+        return view('admin.contact.details', compact('details'));
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
