@@ -80,37 +80,31 @@
     <div class="about-area pt-100 pb-100">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="single-about-image">
-                        <img src={{ asset('frontend/assets/images/home.jpg') }} style="padding:10px;">
-                    </div>
-                </div>
-                <div class="col-lg-6">
+                
+                <div class="col-lg-12">
                     <div class="single-about-content">
-                        <div class="section-title left-title">
-                            <span class="top-title">About Imoth Insurance Brokers</span>
-                            <h2>Get Reliable Insurance Coverage Today!</h2>
-                            <p>We are your trusted partner in safeguarding your future. We offer comprehensive
-                                insurance solutions tailored to your unique needs. Our strengths include:</p>
+                        <div class="section-title left-title" >
+                            <span class="top-title" >About Imoth Insurance Brokers</span>
+                            <a href="{{ asset('frontend/assets/profile.pdf') }}" style="float: right;" class="default-btn" target="_blank">Company Profile</a>
+                            <h2>Who we are</h2>
+                            <p style="font-size: 25px;">Imoth Insurance Brokers is a financial services private limited company registered under the companies
+                                Act of Kenya. We are an insurance intermediary providing convenient and comparative services
+                                for the insurance services sector to consumers in Kenya.
+                            </p>
+
+                            <h2>Our Vision</h2>
+                            <p style="font-size: 25px;">To become the leading insurance intermediary firm, while delivering service that consistently exceed
+                                international standards and provide exceptional customer satisfaction. To continually deliver excellent value and innovative
+                                insurance solutions tomeet our clients' requirements, using modern principles and efficiency.
+                            </p>
+
+                            <h2>Our Mission</h2>
+                            <p style="font-size: 25px;">To be a leading insurance intermediary in the global market. To become the customers' most preffered choice
+                                by attaining excellence in quality and timely completed value added services. To provide the highest level of service in the insurance
+                                industry while offering superior solutions to every service we handle.
+                            </p>
                         </div>
-                        <ul>
-                            <li class="list-inline"><img src={{ asset('frontend/assets/images/about/about-icon.svg') }}
-                                    alt="about-icon">
-                                Robust Customer Support.
-                            </li>
-                            <li class="list-inline"><img src={{ asset('frontend/assets/images/about/about-icon.svg') }}
-                                    alt="about-icon">Trustworthy partnerships with the panel of insurance companies we
-                                work with.
-                            </li>
-                            <li class="list-inline"><img src={{ asset('frontend/assets/images/about/about-icon.svg') }}
-                                    alt="about-icon">Extensive coverage options tailor-made to suit your insurance
-                                needs.
-                            </li>
-                            <li class="list-inline"><img src={{ asset('frontend/assets/images/about/about-icon.svg') }}
-                                    alt="about-icon">Financial protection for your Insurance assets by guaranteeing
-                                quick and effective claims processing.
-                            </li>
-                        </ul>
+                        
                         <div class="about-btn d-flex align-items-center">
 
                             <div class="call-experts">

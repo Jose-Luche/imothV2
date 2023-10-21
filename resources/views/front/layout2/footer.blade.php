@@ -54,7 +54,7 @@
                             <a href="{{ route('ourLocation') }}"><i class='bx bx-chevron-right'></i>Location</a>
                         </li>
                         <li>
-                            <a href="{{ route('contact') }}"><i class='bx bx-chevron-right'></i>Contact Us</a>
+                            <a href="{{ route('contact.index') }}"><i class='bx bx-chevron-right'></i>Contact Us</a>
                         </li>
                     </ul>
                 </div>

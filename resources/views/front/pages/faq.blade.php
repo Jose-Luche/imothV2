@@ -55,21 +55,6 @@
 
     @include('front.pages.master.header')
 
-
-    <div class="search-area">
-        <div class="container">
-            <button type="button" class="close-searchbox">
-                <i class="bx bx-x"></i>
-            </button>
-            <form action="#" class="search-form">
-                <div class="form-group">
-                    <input type="search" placeholder="Search Here" />
-                </div>
-            </form>
-        </div>
-    </div>
-
-
     <div class="page-banner-area portfolio-page-area">
         <div class="container">
             <div class="single-page-banner-content">
@@ -207,34 +192,36 @@
         <div class="container">
             <div class="massage-item">
                 <div class="section-title">
+                    @include('partials.info')
                     <span class="top-title">Message Us</span>
                     <h2>Do You Have Any Questions</h2>
                 </div>
-                <form>
+                <form action="{{route('contact.store')}}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-6 col-sm-12 col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name">
+                                <input type="text" name="name" class="form-control" placeholder="Name">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-md-6">
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Your Email">
+                                <input type="email" name="email" class="form-control" placeholder="Your Email">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Phone">
+                                <input type="text" name="phone" class="form-control" placeholder="Phone">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject">
                             </div>
                         </div>
                         <div class="col-lg-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="Message" rows="4"></textarea>
+                                <textarea class="form-control" name="message" placeholder="Message" rows="4"></textarea>
                             </div>
                         </div>
                     </div>
@@ -244,15 +231,7 @@
                 </form>
             </div>
         </div>
-        <div class="faqs-shape-1">
-            <img src={{ asset('frontend/assets/images/faqs-shape-1.webp') }} alt="faqs">
-        </div>
-        <div class="faqs-shape-2">
-            <img src={{ asset('frontend/assets/images/faqs-shape-2.webp') }} alt="faqs">
-        </div>
-        <div class="faqs-shape-3">
-            <img src={{ asset('frontend/assets/images/faqs-shape-3.webp') }} alt="faqs">
-        </div>
+
     </div>
 
 

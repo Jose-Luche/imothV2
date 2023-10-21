@@ -10,17 +10,18 @@ use App\Http\Controllers\Admin\HealthController;
 use App\Http\Controllers\Admin\TravelController;
 use App\Http\Controllers\Admin\ClausesController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Admin\BidBondsController;
-use App\Http\Controllers\Admin\BusinessController;
 USE App\Http\Controllers\Admin\PerformanceBondsController;
+use App\Http\Controllers\Admin\BusinessController;
 use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\RequestsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ThirdPartyController;
 use App\Http\Controllers\Admin\ComprehensiveController;
+use App\Http\Controllers\Admin\PersonalAccidentController;
 use App\Http\Controllers\Admin\InsuranceCompaniesController;
 use App\Http\Controllers\Admin\IndustrialAttachmentController;
-use App\Http\Controllers\Admin\PersonalAccidentController;
 
 
 
@@ -41,6 +42,9 @@ Route::prefix('admin')->group(function() {
     });
     Route::middleware(['admin'])->group(function() {
         Route::get('/', [DashboardController::class,'dashboard'])->name('admin.dashboard');
+
+        Route::get('/contactsUs', [ContactController::class, 'viewEnquiries'])->name('view.enquiries');
+        Route::post('/enquiry/details', [ContactController::class, 'details'])->name('enquiries.details');
 
         Route::prefix('profile')->group(function() {
             Route::get('/', [ProfileController::class,'profile'])->name('admin.profile');

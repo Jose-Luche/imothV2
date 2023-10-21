@@ -30,9 +30,12 @@ Route::view('/bond-insurance', 'front.pages.products.bid_bond')->name('bid_bond'
 Route::view('/life-insurance', 'front.pages.products.life')->name('life');
 Route::view('/student-attachment-insurance', 'front.pages.products.attachment')->name('attachment');
 Route::view('/personal-accident', 'front.pages.products.personal-accident')->name('pa'); //Other Personal Accidents
-Route::view('/contact', 'front.pages.contact')->name('contact');
+//Route::view('/contact', 'front.pages.contact')->name('contact');
 Route::view('/products', 'front.pages.products.products')->name('products');
 Route::view('/faq-insurance', 'front.pages.faq')->name('faq');
 Route::view('/location', 'front.pages.location')->name('ourLocation');
 
 Route::get('/mpesa-confirmation', [PaymentController::class, 'generateAccessToken']);
+
+Route::resource('contact', ContactController::class);
+

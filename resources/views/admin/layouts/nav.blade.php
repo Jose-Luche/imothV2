@@ -106,8 +106,15 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('view.enquiries') }}">
+                        <i class="fa fa-dollar"></i>
+                        <span>Enquiries</span>
+{{--                        <span class="fa fa-users pull-right"></span>--}}
+                    </a>
+                </li>
 
-
+                
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fa fa-money-check"></i>
@@ -123,6 +130,8 @@
                         </li>
                     </ul>
                 </li>
+
+                
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fa fa-inbox"></i>

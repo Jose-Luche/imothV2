@@ -124,7 +124,7 @@
                         
 
                         <li class="nav-item">
-                            <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
+                            <a href="{{ route('contact.index') }}" class="nav-link">Contact Us</a>
                         </li>
 
                         <li class="nav-item">
@@ -132,11 +132,7 @@
                         </li>
                     </ul>
                     <div class="others-options d-flex align-items-center">
-                        <div class="option-item">
-                            <button class="searchbtn" type="button">
-                                <i class='bx bx-search'></i>
-                            </button>
-                        </div>
+                        
 
                     </div>
                 </div>

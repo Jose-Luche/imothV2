@@ -122,23 +122,10 @@
 
                             </ul>
                         </li>
-                        <!--<li class="nav-item">
-                            <a href="#" class="nav-link">
-                                Claims
-                                <i class='bx bx-down-arrow-alt'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="portfolio.html" class="nav-link">Register Claim</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="portfolio-details.html" class="nav-link">Download Forms</a>
-                                </li>
-                            </ul>
-                        </li>-->
+                        
 
                         <li class="nav-item">
-                            <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
+                            <a href="{{ route('contact.index') }}" class="nav-link">Contact Us</a>
                         </li>
 
                         <li class="nav-item">
@@ -147,13 +134,9 @@
                     </ul>
                     <div class="others-options d-flex align-items-center">
                         <div class="option-item">
-                            <button class="searchbtn" type="button">
-                                <i class='bx bx-search'></i>
-                            </button>
+                            
                         </div>
-                        <div class="option-item">
-                            <a href="{{ route('products') }}" class="default-btn">Get A Quote</a>
-                        </div>
+                        
                     </div>
                 </div>
             </nav>
@@ -172,13 +155,9 @@
                 <div class="option-inner">
                     <div class="others-options d-flex align-items-center">
                         <div class="option-item">
-                            <button class="searchbtn" type="button">
-                                <i class='bx bx-search'></i>
-                            </button>
+                            
                         </div>
-                        <div class="option-item">
-                            <a href="{{ route('products') }}" class="default-btn">Get A Quote</a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -74,6 +74,7 @@
     <div class="contact-us-area pt-100">
         <div class="container">
             <div class="section-title">
+                @include('partials.info')
                 <span class="top-title">Get In Touch</span>
                 <h2>Fill In The Contact Now</h2>
             </div>
@@ -102,44 +103,41 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-form">
-                        <form id="contactForm">
+                        <form action="{{route('contact.store')}}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" id="name" class="form-control" placeholder="Name"
-                                            required data-error="Please enter your name">
-                                        <div class="help-block with-errors"></div>
+                                        <input type="text" name="name" class="form-control" placeholder="Name">
+                                        @error('name') <span class="with-errors">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" id="email" class="form-control"
-                                            placeholder="Your Email" required data-error="Please enter your email">
-                                        <div class="help-block with-errors"></div>
+                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                        @error('email') <span class="with-errors">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" id="phone_number" placeholder="Phone" required
-                                            data-error="Please enter your number" class="form-control">
-                                        <div class="help-block with-errors"></div>
+                                        <input type="text" name="phone" class="form-control" placeholder="Phone">
+                                        @error('phone') <span class="with-errors">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" id="Subject" placeholder="Subject" required
-                                            data-error="Please enter your subject" class="form-control">
-                                        <div class="help-block with-errors"></div>
+                                        <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                        @error('subject') <span class="with-errors">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <textarea name="message" type="text" class="form-control" id="message" cols="30" rows="5"
-                                            placeholder="Message" required data-error="Write your message"></textarea>
-                                        <div class="help-block with-errors"></div>
+                                        <textarea  type="text" class="form-control" name="message" cols="30" rows="5"
+                                            placeholder="Message"></textarea>
+                                        @error('message') <span class="with-errors">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                {{--<div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
                                             <input name="gridCheck" value="I agree to the terms and privacy policy."
@@ -151,13 +149,11 @@
                                             <div class="help-block with-errors gridCheck-error"></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--}}
                                 <div class="col-lg-12 col-md-12">
                                     <button type="submit" class="default-btn">
                                         Submit Now
                                     </button>
-                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                    <div class="clearfix"></div>
                                 </div>
                             </div>
                         </form>
@@ -179,7 +175,7 @@
                             </div>
                             <h2>Phone Number</h2>
                             <p><a href="tel: +254 759 642797">+254 759 642797</a></p>
-                            <a href="tel: +254 759 642797">+254 759 642797</a>
+                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6 col-md-6">
@@ -187,11 +183,11 @@
                             <div class="contact-icon">
                                 <img src={{ asset('frontend/assets/images/contact-email.svg') }} alt="Email">
                             </div>
-                            <h2>Sent Us Email</h2>
+                            <h2>Send Us Email</h2>
                             <p>
                                 <a href="mailto:insurance@imoth.co.ke">insurance@imoth.co.ke</a>
                             </p>
-                            <a href="mailto:insurance@imoth.co.ke">insurance@imoth.co.ke</a>
+                            
 
                         </div>
                     </div>

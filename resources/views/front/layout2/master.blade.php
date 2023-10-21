@@ -27,12 +27,13 @@
 <link rel="stylesheet" href={{asset('frontend/assets/css/blog-details.css')}} />
 <title>Imoth Insurance Company</title>
 <link rel="icon" type="image/png" href={{ asset('frontend/assets/images/favicon/favicon.ico') }} />
+@livewireStyles
 </head>
 <body>
 
 
 
-<div class="preloader">
+{{--<div class="preloader">
 <div class="lds-ripple">
 
 <div></div>
@@ -40,7 +41,7 @@
 <div></div>
 <div></div>
 </div>
-</div>
+</div>--}}
 
 
 
@@ -67,6 +68,7 @@
 <script src={{asset('frontend/assets/js/scrollCue.min.js')}}></script>
 <script src={{asset('frontend/assets/js/subscribe-custom.js')}}></script>
 <script src={{asset('frontend/assets/js/main.js')}}></script>
+@livewireScripts
 </body>
 @include('front.layout2.tawk-to')
 </html>
