@@ -40,9 +40,9 @@
                             @include('partials.info')
                             <form id="demo-form" data-parsley-validate="" method="post" action="{{ route('admin.health.submit') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
-                                
+
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="fullname">Insurance Company * :</label>
                                             <select name="company"  class="form-control @error('name') is-invalid @enderror" >
@@ -57,7 +57,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="inpatientLimit">Limit Type:</label>
                                             <select name="limitType"  class="form-control @error('limitType') is-invalid @enderror">
@@ -75,7 +75,21 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="inpatientLimit">PF/PP:</label>
+                                            <select name="pp_pf"  class="form-control @error('pp_pf') is-invalid @enderror">
+                                                <option value="pf">Per Family (PF)</option>
+                                                <option value="pp">Per Person (PP)</option>
+                                            </select>
+                                            @if ($errors->has('pp_pf'))
+                                                <span class="help-block">
+                                                <strong>{{ $errors->first('pp_pf') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="inpatientLimit">Limit Amount:</label>
                                             <input type="text"  name="limit" class="form-control" placeholder="Limit Amount" value="{{ old('limit') }}">
