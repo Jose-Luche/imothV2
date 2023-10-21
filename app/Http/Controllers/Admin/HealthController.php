@@ -75,7 +75,7 @@ class HealthController extends Controller
         $limit = Health::find($id);
         $principal = HealthPrincipalPremium::where('limitId', $id)->get();
         $spouse = HealthSpousePremium::where('limitId', $id)->get();
-        $family = HealthFamilyPremium::where('limitId', $id)->first() ?? 'empty';
+        $family = HealthFamilyPremium::where('limitId', $id)->get();
 
         return view('admin.health.available_premium_rates', compact('limit','principal', 'spouse', 'family'));
     }
@@ -88,32 +88,61 @@ class HealthController extends Controller
         ]);
 
         if($request->has('family_based')){
-            //we store per family premiums
-            if(isset($request['family_id'])){
-                /**At this point, we update an Existing Entry**/
-                $createFamily = HealthFamilyPremium::where('id', $request['family_id'])->update(
-                    [
-                        'limitId' => $request['limitId'],
-                        'm' => $request['m'],
-                        'm_plus_one' => $request['m_plus_one'],
-                        'm_plus_two' => $request['m_plus_two'],
-                        'm_plus_three' => $request['m_plus_three'],
-                        'm_plus_four' => $request['m_plus_four'],
-                        'm_plus_five' => $request['m_plus_five'],
-                    ]
-                );
-            }else{
-                $createFamily = HealthFamilyPremium::create(
-                    [
-                        'limitId' => $request['limitId'],
-                        'm' => $request['m'],
-                        'm_plus_one' => $request['m_plus_one'],
-                        'm_plus_two' => $request['m_plus_two'],
-                        'm_plus_three' => $request['m_plus_three'],
-                        'm_plus_four' => $request['m_plus_four'],
-                        'm_plus_five' => $request['m_plus_five'],
-                    ]
-                );
+            $rules = [];
+            if ($request->has('family_id')) {
+                foreach ($request->input('family_id') as $key => $value) {
+                    $rules["fm_age_from.{$key}"] = 'required';
+                    $rules["fm_age_to.{$key}"] = 'required';
+                }
+                $validator = Validator::make($request->all(), $rules);
+                if ($validator->fails()) {
+                    return back()->withInput()->with('error', 'Please ensure you fill all the required fields on Family Premiums .');
+                }
+            }
+
+            $createFamily = [];
+            /**Create Entry into both the Principal and Spouse Tables**/
+            foreach ($request->input('fm_age_from') as $key => $value) {
+                $ageFrom = $request['fm_age_from'][$key];
+                $ageTo = $request['fm_age_to'][$key];
+                $m = $request['m'][$key];
+                $m_plus_one = $request['m_plus_one'][$key];
+                $m_plus_two = $request['m_plus_two'][$key];
+                $m_plus_three = $request['m_plus_three'][$key];
+                $m_plus_four = $request['m_plus_four'][$key];
+                $m_plus_five = $request['m_plus_five'][$key];
+
+
+                if(isset($request['family_id'][$key]) && $request['family_id'][$key] != 0){
+                    /**At this point, we update an Existing Entry**/
+                    $createFamily = HealthFamilyPremium::where('id', $request['family_id'][$key])->update(
+                        [
+                            'limitId' => $request['limitId'],
+                            'fm_age_from' => $ageFrom,
+                            'fm_age_to' => $ageTo,
+                            'm' => $m,
+                            'm_plus_one' => $m_plus_one,
+                            'm_plus_two' => $m_plus_two,
+                            'm_plus_three' => $m_plus_three,
+                            'm_plus_four' => $m_plus_four,
+                            'm_plus_five' => $m_plus_five,
+                        ]
+                    );
+                }else{
+                    $createFamily = HealthFamilyPremium::create(
+                        [
+                            'limitId' => $request['limitId'],
+                            'fm_age_from' => $ageFrom,
+                            'fm_age_to' => $ageTo,
+                            'm' => $m,
+                            'm_plus_one' => $m_plus_one,
+                            'm_plus_two' => $m_plus_two,
+                            'm_plus_three' => $m_plus_three,
+                            'm_plus_four' => $m_plus_four,
+                            'm_plus_five' => $m_plus_five,
+                        ]
+                    );
+                }
             }
             if (!$createFamily){
                 return back()->with('error','An unexpected error occurred.Please reload and try again');

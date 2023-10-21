@@ -1,91 +1,129 @@
-
-
-
 {{--PRINCIPAL SECTION--}}
 @if($limit->benefit_type != 'inpatient' && $limit->pp_pf == 'pf')
     <input type="hidden" name="family_based" value="yes">
-    @if($family != 'empty')
+    @if(count($family))
         <div class="row" id="premiums-section">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M:</label>
-                        <input type="hidden" name="family_id" value="{{$family->id}}">
-                        <input type="text"  name="m" class="form-control" placeholder="M" value="{{ $family->m }}">
+            <div id="family-members">
+                @foreach($family as $fam)
+                    <input type="hidden" name="family_id[{{$fam->id}}]" value="{{$fam->id}}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ageFrom">Age From:</label>
+                                <input type="text"  name="fm_age_from[{{$fam->id}}]" class="form-control" placeholder="Age From" value="{{ $fam->fm_age_from }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ageFrom">Age To:</label>
+                                <input type="text"   name="fm_age_to[{{$fam->id}}]" class="form-control" placeholder="Age To" value="{{ $fam->fm_age_to }}">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+1:</label>
-                        <input type="text"  name="m_plus_one" class="form-control" placeholder="M+1" value="{{ $family->m_plus_one }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+2:</label>
-                        <input type="text"  name="m_plus_two" class="form-control" placeholder="M+2" value="{{ $family->m_plus_two }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+3:</label>
-                        <input type="text"  name="m_plus_three" class="form-control" placeholder="M+3" value="{{ $family->m_plus_three }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+4:</label>
-                        <input type="text"  name="m_plus_four" class="form-control" placeholder="M+4" value="{{ $family->m_plus_four }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+5:</label>
-                        <input type="text"  name="m_plus_five" class="form-control" placeholder="M+5" value="{{ $family->m_plus_five }}">
-                    </div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="ageFrom">M:</label>
+                                <input type="text"  name="m[{{$fam->id}}]" class="form-control" placeholder="M" value="{{ $fam->m }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="ageFrom">M+1:</label>
+                                <input type="text"  name="m_plus_one[{{$fam->id}}]" class="form-control" placeholder="M+1" value="{{ $fam->m_plus_one }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="ageFrom">M+2:</label>
+                                <input type="text"  name="m_plus_two[{{$fam->id}}]" class="form-control" placeholder="M+2" value="{{ $fam->m_plus_two }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="ageFrom">M+3:</label>
+                                <input type="text"  name="m_plus_three[{{$fam->id}}]" class="form-control" placeholder="M+3" value="{{ $fam->m_plus_three }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="ageFrom">M+4:</label>
+                                <input type="text"  name="m_plus_four[{{$fam->id}}]" class="form-control" placeholder="M+4" value="{{ $fam->m_plus_four }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="ageFrom">M+5:</label>
+                                <input type="text"  name="m_plus_five[{{$fam->id}}]" class="form-control" placeholder="M+5" value="{{ $fam->m_plus_five }}">
+                            </div>
+                        </div>
+                    </div><hr>
+                @endforeach
+            </div>
+            <div style="padding-top: 10px" class="form-group mb-0">
+                <button type="button" name="add-family-range" id="add-family-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Another Range</button>
             </div>
         </div>
     @else
         <div class="row" id="premiums-section">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M:</label>
-                        <input type="text"  name="m" class="form-control" placeholder="M" value="{{ old('m') }}">
+            <div id="family-members">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ageFrom">Age From:</label>
+                            <input type="text"  name="fm_age_from[]" class="form-control" placeholder="M" value="{{ old('fm_age_from') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ageFrom">Age To:</label>
+                            <input type="text" name="fm_age_to[]" class="form-control" placeholder="M" value="{{ old('fm_age_to') }}">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+1:</label>
-                        <input type="text"  name="m_plus_one" class="form-control" placeholder="M+1" value="{{ old('m_plus_one') }}">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="ageFrom">M:</label>
+                            <input type="text"  name="m[]" class="form-control" placeholder="M" value="{{ old('m') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="ageFrom">M+1:</label>
+                            <input type="text"  name="m_plus_one[]" class="form-control" placeholder="M+1" value="{{ old('m_plus_one') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="ageFrom">M+2:</label>
+                            <input type="text"  name="m_plus_two[]" class="form-control" placeholder="M+2" value="{{ old('m_plus_two') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="ageFrom">M+3:</label>
+                            <input type="text"  name="m_plus_three[]" class="form-control" placeholder="M+3" value="{{ old('m_plus_three') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="ageFrom">M+4:</label>
+                            <input type="text"  name="m_plus_four[]" class="form-control" placeholder="M+4" value="{{ old('m_plus_four') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="ageFrom">M+5:</label>
+                            <input type="text"  name="m_plus_five[]" class="form-control" placeholder="M+5" value="{{ old('m_plus_five') }}">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+2:</label>
-                        <input type="text"  name="m_plus_two" class="form-control" placeholder="M+2" value="{{ old('m_plus_two') }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+3:</label>
-                        <input type="text"  name="m_plus_three" class="form-control" placeholder="M+3" value="{{ old('m_plus_three') }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+4:</label>
-                        <input type="text"  name="m_plus_four" class="form-control" placeholder="M+4" value="{{ old('m_plus_four') }}">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="ageFrom">M+5:</label>
-                        <input type="text"  name="m_plus_five" class="form-control" placeholder="M+5" value="{{ old('m_plus_five') }}">
-                    </div>
-                </div>
+            </div><hr>
+            <div style="padding-top: 10px" class="form-group mb-0">
+                <button type="button" name="add-family-range" id="add-family-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Another Range</button>
             </div>
+
         </div>
     @endif
 
@@ -130,7 +168,6 @@
                 <button type="button" name="add-principal-range" id="add-principal-range" class="btn btn-success"> <i class="fa fa-plus-circle"></i>  Add Range</button>
             </div>
         </div><hr>
-
     @else
         <div class="row" id="premiums-section">
             <div id="principal-member">
@@ -169,8 +206,6 @@
             </div>
         </div><hr>
     @endif
-
-
     {{--SPOUSE SECTION--}}
     @if(count($spouse) > 0)
         <div class="row" id="premiums-section-spouse">
@@ -243,6 +278,7 @@
     $(document).ready(function(){
         var i=1;
         var j=1;
+        var k=1;
         $('#add-principal-range').click(function(){
             i++;
             $('#principal-member').append(' <div class="container" id="contain'+i+'">\n' +
@@ -284,7 +320,7 @@
         });
         $('#add-spouse-range').click(function(){
             j++;
-            $('#spouse-member').append(' <div class="container" id="contain2'+i+'">\n' +
+            $('#spouse-member').append(' <div class="container" id="contain2'+j+'">\n' +
                 '                                            <div class="row">\n' +
                 '                                                <div class="col-md-3">\n' +
                 '                                                    <div class="form-group">\n' +
@@ -316,6 +352,71 @@
                 '                                            </div>\n' +
                 '                                        </div><hr>');
         });
+        $('#add-family-range').click(function(){
+            k++;
+            $('#family-members').append(' <div class="container" id="contain3'+k+'">\n' +
+                '                                            <div class="row">\n' +
+                '                                                <div class="col-md-6">\n' +
+                '                                                    <div class="form-group">\n' +
+                '                                                        <label for="ageFrom">Age From:</label>\n' +
+                '                                                        <input type="text"  name="fm_age_from[]" class="form-control" placeholder="Age From" value="">\n' +
+                '                                                    </div>\n' +
+                '                                                </div>\n' +
+                '                                                <div class="col-md-6">\n' +
+                '                                                    <div class="form-group">\n' +
+                '                                                        <label for="ageFrom">Age To:</label>\n' +
+                '                                                        <input type="text"  name="fm_age_to[]" class="form-control" placeholder="Age To" value="">\n' +
+                '                                                    </div>\n' +
+                '                                                </div>\n' +
+                '                                            </div>\n' +
+                '                                            <div class="row">' +
+                '                                                <div class="col-md-2">\n' +
+                '                                                    <div class="form-group">\n' +
+                '                                                        <label for="ageFrom">M:</label>\n' +
+                '                                                        <input type="text"  name="m[]" class="form-control" placeholder="M" value="">\n' +
+                '                                                    </div>\n' +
+                '                                                </div>\n' +
+                '                                                <div class="col-md-2">\n' +
+                '                                                    <div class="form-group">\n' +
+                '                                                        <label for="ageFrom">M+1:</label>\n' +
+                '                                                        <input type="text"  name="m_plus_one[]" class="form-control" placeholder="M+1" value="">\n' +
+                '                                                    </div>\n' +
+                '                                                </div>\n' +
+                '                                                <div class="col-md-2">\n' +
+                '                                                    <div class="form-group">\n' +
+                '                                                        <label for="ageFrom">M+2:</label>\n' +
+                '                                                        <input type="text"  name="m_plus_two[]" class="form-control" placeholder="M+2" value="">\n' +
+                '                                                    </div>\n' +
+                '                                                </div>\n' +
+                '                                                <div class="col-md-2">\n' +
+                '                                                    <div class="form-group">\n' +
+                '                                                        <label for="ageFrom">M+3:</label>\n' +
+                '                                                        <input type="text"  name="m_plus_three[]" class="form-control" placeholder="M+3" value="">\n' +
+                '                                                    </div>\n' +
+                '                                                </div>\n' +
+                '                                                <div class="col-md-2">\n' +
+                '                                                    <div class="form-group">\n' +
+                '                                                        <label for="ageFrom">M+4:</label>\n' +
+                '                                                        <input type="text"  name="m_plus_four[]" class="form-control" placeholder="M+4" value="">\n' +
+                '                                                    </div>\n' +
+                '                                                </div>\n' +
+                '                                                <div class="col-md-2">\n' +
+                '                                                    <div class="form-group">\n' +
+                '                                                        <label for="ageFrom">M+5:</label>\n' +
+                '                                                        <input type="text"  name="m_plus_five[]" class="form-control" placeholder="M+5" value="">\n' +
+                '                                                    </div>\n' +
+                '                                                </div>\n' +
+                '                                            </div>'+
+                '                                                <div class="col-md-3">\n' +
+                '                                                    <div class="form-group">\n' +
+                '                                                        <div class="form-group"  style="padding-top: 25px;">\n' +
+                '                                                            <button type="button" name="add" id="'+k+'"\n' +
+                '                                                                    class="btn btn-outline-danger btn_remove3">Remove <i class="fa fa-trash-alt"></i></button>\n' +
+                '                                                        </div>\n' +
+                '                                                    </div>\n' +
+                '                                                </div>\n' +
+                '                                        </div><hr>');
+        });
         $(document).on('click', '.btn_remove', function(){
             var button_id = $(this).attr("id");
             $('#contain'+button_id+'').remove();
@@ -323,6 +424,10 @@
         $(document).on('click', '.btn_remove2', function(){
             var button_id = $(this).attr("id");
             $('#contain2'+button_id+'').remove();
+        });
+        $(document).on('click', '.btn_remove3', function(){
+            var button_id = $(this).attr("id");
+            $('#contain3'+button_id+'').remove();
         });
 
 
