@@ -96,19 +96,19 @@
                             <span class="top-title" >About Imoth Insurance Brokers</span>
                             <a href="{{ asset('frontend/assets/profile.pdf') }}" style="float: right;" class="default-btn" target="_blank">Company Profile</a>
                             <h2>Who we are</h2>
-                            <p style="font-size: 25px;">Imoth Insurance Brokers is a financial services private limited company registered under the companies
+                            <p style="font-size: 20px;">Imoth Insurance Brokers is a financial services private limited company registered under the companies
                                 Act of Kenya. We are an insurance intermediary providing convenient and comparative services
                                 for the insurance services sector to consumers in Kenya.
                             </p>
 
                             <h2>Our Vision</h2>
-                            <p style="font-size: 25px;">To become the leading insurance intermediary firm, while delivering service that consistently exceed
+                            <p style="font-size: 20px;">To become the leading insurance intermediary firm, while delivering service that consistently exceed
                                 international standards and provide exceptional customer satisfaction. To continually deliver excellent value and innovative
                                 insurance solutions tomeet our clients' requirements, using modern principles and efficiency.
                             </p>
 
                             <h2>Our Mission</h2>
-                            <p style="font-size: 25px;">To be a leading insurance intermediary in the global market. To become the customers' most preffered choice
+                            <p style="font-size: 20px;">To be a leading insurance intermediary in the global market. To become the customers' most preffered choice
                                 by attaining excellence in quality and timely completed value added services. To provide the highest level of service in the insurance
                                 industry while offering superior solutions to every service we handle.
                             </p>

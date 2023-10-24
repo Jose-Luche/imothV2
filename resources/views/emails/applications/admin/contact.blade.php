@@ -219,13 +219,13 @@
                                 <td align="left" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                     <!-- section text ======-->
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        A client has placed a <strong>Health Insurance</strong> application
+                                        A client has placed an <strong>Enquiry</strong>.
                                     </p>
                                     <h2 style="line-height: 24px; margin-bottom:20px;">
-                                        <u>Application Details.</u>
+                                        <u>Enquiry Details.</u>
                                     </h2>
                                     <p style="line-height: 24px; margin-bottom:20px;">
-                                        Name : {{ $details->firstName." ".$details->lastName }}
+                                        Name : {{ $details->name}}
                                     </p>
                                     <p style="line-height: 24px; margin-bottom:20px;">
                                         Phone : {{ $details->phone }}

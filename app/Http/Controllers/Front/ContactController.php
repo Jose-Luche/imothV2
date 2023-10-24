@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\Admin\AdminContactEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
@@ -44,7 +46,9 @@ class ContactController extends Controller
             return redirect()->back()->with($notification);
         } else {
             $data = $request->except(['_token']);
-            ContactUs::create($data);
+            $application = ContactUs::create($data);
+
+            Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminContactEmail($application));
 
             return redirect()->back()->with('success', 'Enquiry sent successfully.We will get back to you shortly.');
         }
