@@ -146,9 +146,9 @@
                 <div class="main-responsive-menu">
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                            <img src={{ asset('frontend/assets/images/imoth.jpeg') }} class="black-logo"
+                            <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="black-logo"
                                 style="width:180px; height:140px" alt="imoth">
-                            <img src={{ asset('frontend/assets/images/imoth.jpeg') }} class="white-logo"
+                            <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="white-logo"
                                 style="width:180px; height:140px" alt="imoth">
                         </a>
                     </div>
@@ -159,9 +159,9 @@
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src={{ asset('frontend/assets/images/imoth.jpeg') }} class="black-logo"
+                        <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="black-logo"
                             style="width:180px; height:140px" alt="imoth">
-                        <img src={{ asset('frontend/assets/images/imoth.jpeg') }} class="white-logo"
+                        <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="white-logo"
                             style="width:180px; height:140px" alt="imoth">
                     </a>
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -282,7 +282,7 @@
                                 <div class="card-body p-5 d-flex flex-row">
                                     <div class="p-2">
                                         <img style="max-width: 100px"
-                                            src="{{ asset('frontend/assets/images/imoth.jpeg') }}">
+                                            src="{{ asset('frontend/assets/images/imoth.jpg') }}">
                                     </div>
                                     <div>
                                         {{--                                                        <span class="badge bg-pale-blue text-blue rounded py-1 mb-2">Full Time</span> --}}

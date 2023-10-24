@@ -78,7 +78,7 @@
                         <div class="single-features-card bg-color-2 my-available-limits-division">
                             <div class="features-icon">
                                 <img style="width: 120px"
-                                    src="{{ asset('upload/company/' . $cover['cover']->company->logo) ?? asset('frontend/assets/images/imoth.jpeg') }}">
+                                    src="{{ asset('upload/company/' . $cover['cover']->company->logo) ?? asset('frontend/assets/images/imoth.jpg') }}">
                             </div>
                             <h3>{{ $cover['cover']->company->name }}</h3>
                             <p>{{ $cover['cover']->type }} </p>
