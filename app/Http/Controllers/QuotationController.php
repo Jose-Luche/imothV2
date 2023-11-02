@@ -224,6 +224,14 @@ class QuotationController extends Controller
             $html .= '<p>Stamp Duty: <span style="float: right">'.number_format($applicationDetails->stamp_duty,2).'</span></p>';
             $html .= '<hr>';
             $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($applicationDetails->premiumPayable,2).'</b></span></p>';
+            $html .= '<hr>';
+            $html .= '<h3>Optional Benefits Limits</h3>';
+            $html .= '<p>Outpatient Limit: <span>'.number_format($applicationDetails->op_limit ?? '').'</span></p>';
+            $html .= '<p>Optical Limit: <span>'.number_format($applicationDetails->optical_limit ?? '').'</span></p>';
+            $html .= '<p>Dental Limit: <span>'.number_format($applicationDetails->dental_limit ?? '').'</span></p>';
+            $html .= '<p>Maternity Limit: <span>'.number_format($applicationDetails->dental_limit ?? '').'</span></p>';
+            
+
         }else {
             $totalBasicPremium = $totalBenefits + $basicPremium;
             $phcf = round(0.25/100 * $totalBasicPremium,2);
