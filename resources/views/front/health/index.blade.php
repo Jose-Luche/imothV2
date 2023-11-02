@@ -167,7 +167,7 @@
                                     <div class="form-group">
                                         <input type="text" id="spouseAge" class="form-control"
                                             placeholder="Spouse Age" name="spouseAge" value="{{ old('spouseAge') }}"
-                                            required data-error="Please enter Spouse Age">
+                                            data-error="Please enter Spouse Age">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>

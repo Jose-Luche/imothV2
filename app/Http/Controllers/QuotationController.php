@@ -226,10 +226,10 @@ class QuotationController extends Controller
             $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($applicationDetails->premiumPayable,2).'</b></span></p>';
             $html .= '<hr>';
             $html .= '<h3>Optional Benefits Limits</h3>';
-            $html .= '<p>Outpatient Limit: <span>'.number_format($applicationDetails->op_limit ?? '').'</span></p>';
-            $html .= '<p>Optical Limit: <span>'.number_format($applicationDetails->optical_limit ?? '').'</span></p>';
-            $html .= '<p>Dental Limit: <span>'.number_format($applicationDetails->dental_limit ?? '').'</span></p>';
-            $html .= '<p>Maternity Limit: <span>'.number_format($applicationDetails->dental_limit ?? '').'</span></p>';
+            $html .= '<p>Outpatient Limit: <span>'.number_format($applicationDetails->op_limit ?? 0).'</span></p>';
+            $html .= '<p>Optical Limit: <span>'.number_format($applicationDetails->optical_limit ?? 0).'</span></p>';
+            $html .= '<p>Dental Limit: <span>'.number_format($applicationDetails->dental_limit ?? 0).'</span></p>';
+            $html .= '<p>Maternity Limit: <span>'.number_format($applicationDetails->dental_limit ?? 0).'</span></p>';
             
 
         }else {
