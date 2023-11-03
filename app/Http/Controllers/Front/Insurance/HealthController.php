@@ -246,6 +246,10 @@ class HealthController extends Controller
                 $html .= '<div style="display:none" class="show-maternity-selector">
                 <table style="width: 100%; border-collapse: collapse">
                 <tr>
+                    <td>Per Person <input type="radio" name="maternity-type" class="maternity-pp" value="pp"></td>
+                    <td>Per Family <input type="radio" name="maternity-type" class="maternity-pf" value="pf"></span></td>
+                </tr>
+                <tr>
                     <td>Select Plan:</td>
                     <td>
                         <select name="maternity-plan-limits" class="maternity-plan-limits form-control" style="float: right;width: 100px">
@@ -490,7 +494,7 @@ class HealthController extends Controller
             ])
         ){
             $res = 0;
-            $specificCover = Health::where('companyId', $insurerId)->where('benefit_type', 'optical')->where('pp_pf', 'pp')->where('limit', $limit)->first();
+            $specificCover = Health::where('companyId', $insurerId)->where('benefit_type', 'maternity')->where('pp_pf', 'pp')->where('limit', $limit)->first();
             /**The Above Query will give us the Specific LimitID: Using it we can get premium Amounts Charged**/
             if($specificCover){
                 /**Our Premiums will be from the Health Principal and Spouse Premium Table**/
