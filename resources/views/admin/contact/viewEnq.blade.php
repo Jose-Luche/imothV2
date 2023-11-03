@@ -66,7 +66,7 @@
                                                 </td>
                                                 <td>
                                                     <span>
-                                                        <button class="btn btn-info btn-xs" data-bs-toggle="modal" data-bs-target="#requestDetailsModal" >Details</button>
+                                                        <a class="btn btn-info btn-xs" href="{{route('contact.show', $enquiry->id)}}">Details</a>
                                                        {{--<button id="{{$enquiry->id}}_button" class="btn btn-info btn-xs" onclick="requestDetails({{$enquiry->id}})">Details</button>--}}
                                                        
                                                     </span>

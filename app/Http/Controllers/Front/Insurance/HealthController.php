@@ -82,7 +82,7 @@ class HealthController extends Controller
             'expectedValue'=>0
         ]);
         //Mail::to($create->email)->send(new BidBondEmail($create));
-        //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminBidBondEmail($create));
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminHealthEmail($create));
 
         return redirect()->route('front.health.covers',$create->id);
     }

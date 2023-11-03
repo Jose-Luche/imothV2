@@ -54,7 +54,7 @@
 <body>
     <div class="section" style="text-align: center">
         <div class="logo">
-            <img src="frontend/assets/images/imoth.jpeg" style="width: 120px; height:100px" alt="Company Logo">
+            <img src="frontend/assets/images/imoth.jpg" style="width: 120px; height:100px" alt="Company Logo">
 
         </div>
         <p>Imoth Insurance Brokers</p>

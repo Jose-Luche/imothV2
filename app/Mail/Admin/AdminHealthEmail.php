@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class AdminBidBondEmail extends Mailable implements ShouldQueue
+class AdminHealthEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $details;

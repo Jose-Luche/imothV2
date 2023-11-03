@@ -233,51 +233,7 @@
                                     <p style="line-height: 24px; margin-bottom:20px;">
                                         Email : {{ $details->email }}
                                     </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Company : {{ $details->company }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Tender No. : {{ $details->tenderNo }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Bond Value : {{ $details->bondValue }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Physical Address : {{ $details->physicalAddress }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Tender Name : {{ $details->tenderName }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Contract Price : {{ $details->contractPrice }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Period : {{ $details->period }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Commencement Date : {{ $details->commencementDate }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        End Date : {{ $details->endDate }}
-                                    </p>
-                                    <p>
-                                        <strong>Description:</strong><br>
-                                        {!! $details->description  !!}
-                                    </p>
-
-                                    <h2 style="line-height: 24px; margin-bottom:20px;">
-                                        <u>Cover Details.</u>
-                                    </h2>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Insurance Company : {{ $details->quoteDetails->company->name }}
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        Amount Payable : Ksh {{ number_format($details->expectedValue) }}
-                                    </p>
-                                    <p>
-                                        <strong>Details:</strong><br>
-                                        {!! $details->quoteDetails->details  !!}
-                                    </p>
+                                    
                                     <p style="line-height: 24px; margin-bottom:20px;">
                                         Login to view more details
                                     </p>

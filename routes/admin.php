@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function() {
         Route::get('/', [DashboardController::class,'dashboard'])->name('admin.dashboard');
 
         Route::get('/contactsUs', [ContactController::class, 'viewEnquiries'])->name('view.enquiries');
-        Route::post('/enquiry/details', [ContactController::class, 'details'])->name('enquiries.details');
+        Route::get('/enquiry/details', [ContactController::class, 'details'])->name('enquiries.details');
 
         Route::prefix('profile')->group(function() {
             Route::get('/', [ProfileController::class,'profile'])->name('admin.profile');
