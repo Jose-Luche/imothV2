@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta name="description"
-          content="We are the number one Student personal accident insurance broker, also known as Student Attachment, in Kenya. Despite the period for your industrial attachment, as a student, we got you covered with competitive rates.">
+          content="We are the number one funeral expense insurance broker, also known as Last expense, in Kenya. Get an insurance cover to protect you and your family.">
     <meta name="keywords"
-          content="student attachment insurance, student personal accident insurance, industrial attachment insurance, , personal accident insurance">
+          content="last expense insurance, funeral expense insurance.">
     <meta name="robots" content="index, follow" />
 
 
-    <meta property="og:title" content="Student Attachment Insurance">
+    <meta property="og:title" content="Funeral Expense Insurance">
     <meta property="og:description"
           content="We are the number one Student personal accident insurance broker, also known as Student Attachment, in Kenya. Despite the period for your industrial attachment, as a student, we got you covered with competitive rates.">
     <meta property="og:image" content="https://www.imoth.co.ke/frontend/assets/images/banner/safety.jpg">
@@ -99,38 +99,32 @@
             <div class="col-lg-8">
                 <div class="single-services-details-content">
                     <div class="services-details-img">
-                        <img src={{ asset('frontend/assets/images/banner/safety.jpg') }} alt="services-details" />
+                        <img src={{ asset('frontend/assets/images/banner/candle.jpg') }} alt="services-details" />
                     </div>
                     <h2 class="services-text">Description For Our Services</h2>
                     <p>
-                        Accidents can happen at any time, and their impact on your life can be significant.
-                        That's why it's important to have personal accident insurance—a financial safety net that
-                        provides you and your loved ones with protection and peace of mind.
+                        At Imoth Insurance Brokers, we are determined to EASE the need to fundraise for a funeral by bereaved
+                        families in kenya. To this end, we have developed a unique product that guarantees cash pay-outs to provide
+                        a befiting farewell in case of demise of a member
                     </p>
                     <p>
-                        Personal accident insurance is designed to cover unexpected events resulting in bodily
-                        injury,
-                        disability, or death caused solely by accidents.
-                        It goes beyond traditional health insurance by providing specific benefits and compensation
-                        for accident-related expenses.
+                        We guarantee a one off payment towards funeral expenses. The cover caters for both natural and accidental death. Also,
+                        it extends to parents and parents-in-law. The criteria below will make you qualify for this cover, as follows:
                     </p>
                     <div class="row">
                         <div class="col-lg-6 col-sm-6 col-md-6">
                             <ul class="blog-details-list">
                                 <li>
                                     <img src={{ asset('frontend/assets/images/services/services-check.svg') }}
-                                            alt="blog-check" />The process
-                                    is completely online.
+                                            alt="blog-check" />A registered organization with a minimum of 10 principal members.
                                 </li>
                                 <li>
                                     <img src={{ asset('frontend/assets/images/services/services-check.svg') }}
-                                            alt="blog-check" />Get quotes
-                                    from top insurers instantly.
+                                            alt="blog-check" />Members and their families including spouse, 4 children, 2 parents, and 2 parents-in-law.
                                 </li>
                                 <li>
                                     <img src={{ asset('frontend/assets/images/services/services-check.svg') }}
-                                            alt="blog-check" />Unbiased
-                                    advice. Exceptional Experience.
+                                            alt="blog-check" />Principal members aged between 18 to 70 years.
                                 </li>
                             </ul>
                         </div>
@@ -138,26 +132,17 @@
                             <ul class="blog-details-list">
                                 <li>
                                     <img src={{ asset('frontend/assets/images/services/services-check.svg') }}
-                                            alt="blog-check" />Get quotes
-                                    from top insurers instantly.
+                                            alt="blog-check" />Maximum entry age for parents and in-laws is 80 years.
                                 </li>
                                 <li>
                                     <img src={{ asset('frontend/assets/images/services/services-check.svg') }}
-                                            alt="blog-check" />Unbiased
-                                    advice. Exceptional Experience.
+                                            alt="blog-check" />Children from 30 days to 18 years and up to 25 years with proof of dependency.
                                 </li>
-                                <li>
-                                    <img src={{ asset('frontend/assets/images/services/services-check.svg') }}
-                                            alt="blog-check" />The process
-                                    is completely online.
-                                </li>
+                                
                             </ul>
                         </div>
                     </div>
-                    <h3>Better Strategy With Quality Business​</h3>
-                    <p>
-                        We provide guidance on how you can get cover on any related Personal Accident Covers
-                    </p>
+                    
                 </div>
             </div>
             <div class="col-lg-4">
