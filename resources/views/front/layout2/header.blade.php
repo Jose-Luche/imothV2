@@ -99,6 +99,9 @@
                                 <li class="nav-item">
                                     <a href="{{ route('medical') }}" class="nav-link">Health Insurance</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('last_expense') }}" class="nav-link">Funeral Expense Insurance</a>
+                                </li>
 
                                 <li class="nav-item">
                                     <a href="{{ route('home.ins') }}" class="nav-link">Home Insurance</a>

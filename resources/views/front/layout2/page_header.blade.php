@@ -32,7 +32,7 @@
                     <ul class="list-inline">
                         <li class="d-inline">
                             <img src={{ asset('frontend/assets/images/phone.svg') }} alt="Phone" />
-                            <a href="tel: +254 759 642797"">+254 759 642797</a>
+                            <a href="tel: +254 759 642797">+254 759 642797</a>
                         </li>
                         <li class="d-inline">
                             <img src={{ asset('frontend/assets/images/email.svg') }} alt="Email" />
@@ -98,6 +98,9 @@
                                 <li class="nav-item">
                                     <a href="{{ route('medical') }}" class="nav-link">Health Insurance</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('last_expense') }}" class="nav-link">Funeral Expense Insurance</a>
+                                </li>
 
                                 <li class="nav-item">
                                     <a href="{{ route('home.ins') }}" class="nav-link">Home Insurance</a>
@@ -109,16 +112,7 @@
                                     <a href="{{ route('business') }}" class="nav-link">Business Insurance</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Bonds
-                                        <i class='bx bx-down-arrow-alt'></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a href="{{ route('bid_bond') }}" class="nav-link">Bid Bond</a>
-                                        </li>
-
-                                    </ul>
+                                    <a href="{{ route('bid_bond') }}" class="nav-link">Bid Bond Insurance</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('life') }}" class="nav-link">Life Insurance</a>

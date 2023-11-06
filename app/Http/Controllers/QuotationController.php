@@ -17,6 +17,8 @@ use App\Models\HealthSpousePremium;
 use App\Models\HealthPrincipalPremium;
 use Illuminate\Support\Facades\Session;
 use App\Models\HealthInsuranceApplication;
+use App\Models\LastExpense;
+use App\Models\LastExpenseApplication;
 use App\Models\OtherPersonalAccidentApplication;
 use App\Models\PersonalAccidentApplication;
 
@@ -69,6 +71,12 @@ class QuotationController extends Controller
             $class = 'Personal Accident Cover';
             $startDate = $applicationDetails->startDate;
             $phone = $applicationDetails->phone;
+        }elseif($type == 'lastExpense'){
+            $details = LastExpense::findOrfail($id);
+            $applicationDetails = LastExpenseApplication::find($applicationId); 
+            $class = 'Last Expense Cover';
+            $startDate = $applicationDetails->commencementDate;
+            $phone = $applicationDetails->phone;
         }
         else{
             $class = "";
@@ -106,10 +114,12 @@ class QuotationController extends Controller
             }else{
                 $basicPremium = $cover->rate;
             }
+        }elseif($type == 'lastExpense'){
+            $basicPremium = $cover->premium;
+
         }elseif($type == 'travel'){
         
             $basicPremium = Travel::where('limit', $applicationDetails->limit)->where('companyId', $id)->first()->premium;
-        
 
         }elseif($type == 'bond'){
             if($cover->rate < 100){
@@ -232,6 +242,57 @@ class QuotationController extends Controller
             $html .= '<p>Maternity Limit: <span>'.number_format($applicationDetails->dental_limit ?? 0).'</span></p>';
             
 
+        }elseif($type == 'lastExpense'){
+            $totalBasicPremium = $totalBenefits + $basicPremium;
+            $phcf = round(0.25/100 * $totalBasicPremium,2);
+            $itl = round(0.2/100 * $totalBasicPremium,2);
+            $stampDuty = 40;
+            $totalPremiumPayable = $totalBasicPremium + $phcf + $itl + $stampDuty;
+            $html .= '</p>';
+            $html .= '<hr>';
+            $html .= '<p>Total Basic Premium: <span style="float: right">'.number_format($totalBasicPremium,2).'</span></p>';
+            $html .= '<p>PHCF (0.25%): <span style="float: right">'.number_format($phcf,2).'</span></p>';
+            $html .= '<p>ITL (0.2%): <span style="float: right">'.number_format($itl,2).'</span></p>';
+            $html .= '<p>Stamp Duty: <span style="float: right">'.number_format($stampDuty,2).'</span></p>';
+            $html .= '<hr>';
+            $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>'; 
+            $html .= '<hr>';
+            $html .= '<p></p>';
+            $html .= '<p></p>';
+            $html .= '<h3 style="text-align:center">Beneficiaries/Dependants</h3>';
+            $html .= '<p>Spouse: <span>'.$applicationDetails->spouseName ?? ''.'</span></p>';
+            $childNames = [
+                $applicationDetails->childOneName ?? '',
+                $applicationDetails->childTwoName ?? '',
+                $applicationDetails->childThreeName ?? '', // Add more as needed
+                $applicationDetails->childFourName ?? '', // Add more as needed
+                $applicationDetails->childFiveName ?? '', // Add more as needed
+                $applicationDetails->childSixName ?? '', // Add more as needed
+            ];
+            
+            
+            $html .= '<p>Children: <span>'.implode(", ", array_filter($childNames)).'</span></p>';
+            $parentNames = [
+                $applicationDetails->fatherName ?? '',
+                $applicationDetails->motherName ?? '',
+                
+            ];
+            $html .= '<p>Parents: <span>'.implode(", ", array_filter($parentNames)).'</span></p>';
+            $inLawNames = [
+                $applicationDetails->fatherInLawName ?? '',
+                $applicationDetails->motherInLawName ?? '',
+                
+            ];
+            $html .= '<p>Parents in Law: <span>'.implode(", ", array_filter($inLawNames)).'</span></p>';
+
+            
+            $html .= '<h3 style="text-align:center">Cover Limits</h3>';
+            $html .= '<p>Principal Limit: <span>'.number_format($cover->limit ?? 0).'</span></p>';
+            $html .= '<p>Spouse Limit: <span>'.number_format($cover->spouse_limit ?? 0).'</span></p>';
+            $html .= '<p>Children Limit: <span>'.number_format($cover->child_limit ?? 0).'</span></p>';
+            $html .= '<p>Parents Limit: <span>'.number_format($cover->parent_limit ?? 0).'</span></p>';
+            
+
         }else {
             $totalBasicPremium = $totalBenefits + $basicPremium;
             $phcf = round(0.25/100 * $totalBasicPremium,2);
@@ -248,6 +309,7 @@ class QuotationController extends Controller
             $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>';
 
         }
+        
         /**Create a Table to carry our Quote Details**/
         $table = "";
         if($type == 'motor'){
@@ -347,7 +409,6 @@ class QuotationController extends Controller
 
             $table .= "</table>";
         }
-
        
         $data = [
             'total' => $totalPremiumPayable,
