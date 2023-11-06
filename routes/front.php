@@ -1,7 +1,7 @@
 <?php
 
 
-
+use App\Http\Controllers\Front\Insurance\LastExpenseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\Front\AttachmentController;
@@ -126,5 +126,17 @@ Route::prefix('covers')->group(function () {
         Route::get('/details/{id}', [OtherPersonalAccidentController::class, 'quoteDetails'])->name('front.personalAccident.details');
         Route::get('/submit/{id}', [OtherPersonalAccidentController::class, 'submitApplication'])->name('front.personalAccident.details.submit');
         Route::get('/pay/{id}', [OtherPersonalAccidentController::class, 'pay'])->name('front.personalAccident.pay');
+    });
+
+    Route::prefix('lastExpense')->group(function () {
+        Route::get('/', [LastExpenseController::class, 'index'])->name('front.lastExpense.index');
+        Route::post('/lastExpense', [LastExpenseController::class, 'submit'])->name('front.lastExpense.submit');
+        Route::get('/bio', [LastExpenseController::class, 'userBio'])->name('front.lastExpense.bio');
+        Route::post('/bio/submit', [LastExpenseController::class, 'submitBio'])->name('front.lastExpense.bio.submit');
+        Route::get('/covers/{id}', [LastExpenseController::class, 'covers'])->name('front.lastExpense.covers');
+        Route::get('/details/{applicationId}/{id}', [LastExpenseController::class, 'coverDetails'])->name('front.lastExpense.details');
+        Route::get('/submit/{applicationId}/{id}', [LastExpenseController::class, 'submitApplication'])->name('front.lastExpense.details.submit');
+        Route::post('/documents/{id}', [LastExpenseController::class, 'uploadDocuments'])->name('front.lastExpense.upload');
+        Route::get('/pay/{id}', [LastExpenseController::class, 'pay'])->name('front.lastExpense.pay');
     });
 });

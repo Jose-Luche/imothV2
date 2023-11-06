@@ -79,7 +79,10 @@
                         <li>
                             <a href="{{ route('admin.personalAccident') }}">Personal Accident</a>
                         </li>
-                        
+                        <li>
+                            <a href="{{ route('admin.lastExpense') }}">Last Expense</a>
+                        </li>
+
                     </ul>
                 </li>
 
@@ -114,7 +117,7 @@
                     </a>
                 </li>
 
-                
+
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fa fa-money-check"></i>
@@ -131,7 +134,7 @@
                     </ul>
                 </li>
 
-                
+
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fa fa-inbox"></i>
@@ -172,7 +175,7 @@
                         <li>
                             <a href="{{ route('admin.reports.home') }}">Home Insurance</a>
                         </li>
-                        
+
                     </ul>
                 </li>
 

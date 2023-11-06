@@ -27,6 +27,7 @@ Route::view('/home-insurance', 'front.pages.products.home_ins')->name('home.ins'
 Route::view('/travel-insurance', 'front.pages.products.travel')->name('travel');
 Route::view('/business-insurance', 'front.pages.products.business_ins')->name('business');
 Route::view('/bond-insurance', 'front.pages.products.bid_bond')->name('bid_bond');
+Route::view('/funeral-expense-insurance', 'front.pages.products.last_expense')->name('last_expense');
 Route::view('/life-insurance', 'front.pages.products.life')->name('life');
 Route::view('/student-attachment-insurance', 'front.pages.products.attachment')->name('attachment');
 Route::view('/personal-accident', 'front.pages.products.personal-accident')->name('pa'); //Other Personal Accidents

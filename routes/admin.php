@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LastExpenseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
@@ -229,6 +230,16 @@ Route::prefix('admin')->group(function() {
             Route::get('/details/{id}', [BusinessController::class,'details'])->name('admin.business.details');
             Route::post('/update/{id}', [BusinessController::class,'update'])->name('admin.business.update');
             Route::get('/delete/{id}', [BusinessController::class,'delete'])->name('admin.business.delete');
+        });
+
+        Route::prefix('lastExpense')->group(function() {
+            Route::get('/', [LastExpenseController::class,'index'])->name('admin.lastExpense');
+            Route::get('/new', [LastExpenseController::class,'create'])->name('admin.lastExpense.create');
+            Route::post('/submit', [LastExpenseController::class,'submit'])->name('admin.lastExpense.submit');
+            Route::get('/{id}/edit', [LastExpenseController::class,'edit'])->name('admin.lastExpense.edit');
+            Route::get('/details/{id}', [LastExpenseController::class,'details'])->name('admin.lastExpense.details');
+            Route::post('/update/{id}', [LastExpenseController::class,'update'])->name('admin.lastExpense.update');
+            Route::get('/delete/{id}', [LastExpenseController::class,'delete'])->name('admin.lastExpense.delete');
         });
 
 

@@ -15,7 +15,6 @@
         </div>
     </div>
 
-    
     <div class="services-area pt-100 pb-70">
         <div class="container">
             <div class="services-top-item d-flex align-items-end justify-content-between">
@@ -96,6 +95,14 @@
                             <img src={{ asset('frontend/assets/images/services/lightbulb.svg') }} alt="lightbulb">
                         </div>
                         <h3><a href="{{ route('bid_bond') }}">Bid Bond</a></h3>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6">
+                    <div class="single-services-card d-flex align-items-center">
+                        <div class="services-icon bg-icon-color">
+                            <img src={{ asset('frontend/assets/images/services/couple.svg') }} alt="lightbulb">
+                        </div>
+                        <h3><a href="{{ route('last_expense') }}">Funeral Expense</a></h3>
                     </div>
                 </div>
             </div>
@@ -198,7 +205,7 @@
         </div>
     @endif
 
-    
+
 
     </div>
     @include('front.layout2.footer')
