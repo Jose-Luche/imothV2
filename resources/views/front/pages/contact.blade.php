@@ -29,11 +29,14 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-BC22MLW7ZY');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-BC22MLW7ZY');
 </script>
 
 <body>
@@ -112,41 +115,50 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-form">
-                        <form action="{{route('contact.store')}}" method="POST">
+                        <form action="{{ route('contact.store') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="name" class="form-control" placeholder="Name">
-                                        @error('name') <span class="with-errors">{{ $message }}</span> @enderror
+                                        @error('name')
+                                            <span class="with-errors">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
                                         <input type="email" name="email" class="form-control" placeholder="Email">
-                                        @error('email') <span class="with-errors">{{ $message }}</span> @enderror
+                                        @error('email')
+                                            <span class="with-errors">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="phone" class="form-control" placeholder="Phone">
-                                        @error('phone') <span class="with-errors">{{ $message }}</span> @enderror
+                                        @error('phone')
+                                            <span class="with-errors">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="subject" class="form-control" placeholder="Subject">
-                                        @error('subject') <span class="with-errors">{{ $message }}</span> @enderror
+                                        @error('subject')
+                                            <span class="with-errors">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <textarea  type="text" class="form-control" name="message" cols="30" rows="5"
-                                            placeholder="Message"></textarea>
-                                        @error('message') <span class="with-errors">{{ $message }}</span> @enderror
+                                        <textarea type="text" class="form-control" name="message" cols="30" rows="5" placeholder="Message"></textarea>
+                                        @error('message')
+                                            <span class="with-errors">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
-                                {{--<div class="col-lg-12">
+                                {{-- <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
                                             <input name="gridCheck" value="I agree to the terms and privacy policy."
@@ -158,7 +170,7 @@
                                             <div class="help-block with-errors gridCheck-error"></div>
                                         </div>
                                     </div>
-                                </div>--}}
+                                </div> --}}
                                 <div class="col-lg-12 col-md-12">
                                     <button type="submit" class="default-btn">
                                         Submit Now
@@ -183,8 +195,8 @@
                                 <img src={{ asset('frontend/assets/images/contact-phone-2.svg') }} alt="Phone">
                             </div>
                             <h2>Phone Number</h2>
-                            <p><a href="tel: +254 759 642797">+254 759 642797</a></p>
-                            
+                            <p><a href="tel:  +254112476114"> +254112476114</a></p>
+
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6 col-md-6">
@@ -196,7 +208,7 @@
                             <p>
                                 <a href="mailto:insurance@imoth.co.ke">insurance@imoth.co.ke</a>
                             </p>
-                            
+
 
                         </div>
                     </div>

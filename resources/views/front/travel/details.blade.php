@@ -2,15 +2,18 @@
 <html lang="en">
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-BC22MLW7ZY');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BC22MLW7ZY');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -126,7 +129,7 @@
                         <ul class="list-inline">
                             <li class="d-inline">
                                 <img src={{ asset('frontend/assets/images/phone.svg') }} alt="Phone" />
-                                <a href="tel: +254 759 642797">+254 759 642797</a>
+                                <a href="tel:  +254112476114"> +254112476114</a>
                             </li>
                             <li class="d-inline">
                                 <img src={{ asset('frontend/assets/images/email.svg') }} alt="Email" />

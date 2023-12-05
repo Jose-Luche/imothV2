@@ -1,4 +1,4 @@
-<div class="footer-area pt-100" >
+<div class="footer-area pt-100">
     <div class="container">
         <div class="row pb-100">
             <div class="col-lg-3 col-sm-6 col-md-6" data-cue="slideInUp">
@@ -88,7 +88,7 @@
                         <div class="contact-icon">
                             <img src={{ asset('frontend/assets/images/contact-phone.svg') }} alt="svg">
                         </div>
-                        <a href="tel:+254 759 642797">+254 759 642797</a>
+                        <a href="tel: +254112476114"> +254112476114</a>
                     </div>
                     <div class="touch-content">
                         <div class="contact-icon">

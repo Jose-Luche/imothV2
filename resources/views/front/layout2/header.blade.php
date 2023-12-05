@@ -32,7 +32,7 @@
                     <ul class="list-inline">
                         <li class="d-inline">
                             <img src={{ asset('frontend/assets/images/phone.svg') }} alt="Phone">
-                            <a href="tel: +254 759 642797">+254 759 642797</a>
+                            <a href="tel:  +254112476114"> +254112476114</a>
                         </li>
                         <li class="d-inline">
                             <img src={{ asset('frontend/assets/images/email.svg') }} alt="Email">
@@ -100,7 +100,8 @@
                                     <a href="{{ route('medical') }}" class="nav-link">Health Insurance</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('last_expense') }}" class="nav-link">Funeral Expense Insurance</a>
+                                    <a href="{{ route('last_expense') }}" class="nav-link">Funeral Expense
+                                        Insurance</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -115,7 +116,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('bid_bond') }}" class="nav-link">Bid Bond Insurance</a>
                                 </li>
-                                
+
                                 <li class="nav-item">
                                     <a href="{{ route('life') }}" class="nav-link">Life Insurance</a>
                                 </li>
@@ -125,7 +126,7 @@
 
                             </ul>
                         </li>
-                        
+
 
                         <li class="nav-item">
                             <a href="{{ route('contact.index') }}" class="nav-link">Contact Us</a>
@@ -137,9 +138,9 @@
                     </ul>
                     <div class="others-options d-flex align-items-center">
                         <div class="option-item">
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
             </nav>
@@ -158,9 +159,9 @@
                 <div class="option-inner">
                     <div class="others-options d-flex align-items-center">
                         <div class="option-item">
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

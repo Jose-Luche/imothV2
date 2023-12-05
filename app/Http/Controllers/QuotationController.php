@@ -259,7 +259,7 @@ class QuotationController extends Controller
             $html .= '<hr>';
             $html .= '<p></p>';
             $html .= '<p></p>';
-            $html .= '<h3 style="text-align:center">Beneficiaries/Dependants</h3>';
+            /*$html .= '<h3 style="text-align:center">Beneficiaries/Dependants</h3>';
             $html .= '<p>Spouse: <span>'.$applicationDetails->spouseName ?? ''.'</span></p>';
             $childNames = [
                 $applicationDetails->childOneName ?? '',
@@ -290,7 +290,7 @@ class QuotationController extends Controller
             $html .= '<p>Principal Limit: <span>'.number_format($cover->limit ?? 0).'</span></p>';
             $html .= '<p>Spouse Limit: <span>'.number_format($cover->spouse_limit ?? 0).'</span></p>';
             $html .= '<p>Children Limit: <span>'.number_format($cover->child_limit ?? 0).'</span></p>';
-            $html .= '<p>Parents Limit: <span>'.number_format($cover->parent_limit ?? 0).'</span></p>';
+            $html .= '<p>Parents Limit: <span>'.number_format($cover->parent_limit ?? 0).'</span></p>';*/
             
 
         }else {

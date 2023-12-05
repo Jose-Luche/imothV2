@@ -99,7 +99,7 @@
             <div class="col-lg-8">
                 <div class="single-services-details-content">
                     <div class="services-details-img">
-                        <img src={{ asset('frontend/assets/images/banner/candle.jpg') }} alt="services-details" />
+                        <img src={{ asset('frontend/assets/images/last_expense.jpeg') }} alt="services-details" />
                     </div>
                     <h2 class="services-text">Description For Our Services</h2>
                     <p>

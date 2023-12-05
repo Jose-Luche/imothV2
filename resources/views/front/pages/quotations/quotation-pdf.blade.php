@@ -41,13 +41,12 @@
             border: 1px solid #ccc;
         }
 
-    
+
 
         h2 {
             text-align: center;
             color: #0031AA;
         }
-        
     </style>
 </head>
 
@@ -60,52 +59,52 @@
         <p>Imoth Insurance Brokers</p>
         <p>Salama House, Wabera street, suite 305.
             Nairobi, Kenya.</p>
-        <p>+254 759 642797</p>
+        <p> +254112476114</p>
         <hr>
     </div>
 
     <div class="section">
-        <h2>Quotation #000{{$applicationDetails->id}}</h2>
+        <h2>Quotation #000{{ $applicationDetails->id }}</h2>
         <table style="width: 100%; border-collapse:collapse">
             <tr>
                 <th>Name</th>
-                <td>{{$applicationDetails->firstName}} {{$applicationDetails->lastName}}</td>
+                <td>{{ $applicationDetails->firstName }} {{ $applicationDetails->lastName }}</td>
             </tr>
             <tr>
                 <th>Email</th>
-                <td>{{$applicationDetails->email}}</td>
+                <td>{{ $applicationDetails->email }}</td>
             </tr>
             <tr>
                 <th>Phone</th>
-                <td>{{$phone}}</td>
+                <td>{{ $phone }}</td>
             </tr>
             <tr>
                 <th>Expected Start Date</th>
-                <td> {{date('d M Y', strtotime($startDate))}}</td>
+                <td> {{ date('d M Y', strtotime($startDate)) }}</td>
             </tr>
             <tr>
                 <th>Cover Type</th>
-                <td>{!! $class!!}</td>
+                <td>{!! $class !!}</td>
             </tr>
 
         </table>
-    
+
         <hr>
     </div>
 
     <div class="section">
         <h2>Quotation Details</h2>
-        {{--Display your table with Contents--}}
+        {{-- Display your table with Contents --}}
         {!! $table !!}
     </div>
 
-    <div  class="section">
-        
-            {!! $html !!}
+    <div class="section">
+
+        {!! $html !!}
     </div>
 
-    <div >
-        
+    <div>
+
         {!! $details->details !!}
 
 

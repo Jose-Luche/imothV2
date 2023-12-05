@@ -40,11 +40,14 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-BC22MLW7ZY');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-BC22MLW7ZY');
 </script>
 
 <body>
@@ -89,31 +92,39 @@
     <div class="about-area pt-100 pb-100">
         <div class="container">
             <div class="row align-items-center">
-                
+
                 <div class="col-lg-12">
                     <div class="single-about-content">
-                        <div class="section-title left-title" >
-                            <span class="top-title" >About Imoth Insurance Brokers</span>
-                            <a href="{{ asset('frontend/assets/profile.pdf') }}" style="float: right;" class="default-btn" target="_blank">Company Profile</a>
+                        <div class="section-title left-title">
+                            <span class="top-title">About Imoth Insurance Brokers</span>
+                            <a href="{{ asset('frontend/assets/profile.pdf') }}" style="float: right;"
+                                class="default-btn" target="_blank">Company Profile</a>
                             <h2>Who we are</h2>
-                            <p style="font-size: 20px;">Imoth Insurance Brokers is a financial services private limited company registered under the companies
-                                Act of Kenya. We are an insurance intermediary providing convenient and comparative services
+                            <p style="font-size: 20px;">Imoth Insurance Brokers is a financial services private limited
+                                company registered under the companies
+                                Act of Kenya. We are an insurance intermediary providing convenient and comparative
+                                services
                                 for the insurance services sector to consumers in Kenya.
                             </p>
 
                             <h2>Our Vision</h2>
-                            <p style="font-size: 20px;">To become the leading insurance intermediary firm, while delivering service that consistently exceed
-                                international standards and provide exceptional customer satisfaction. To continually deliver excellent value and innovative
-                                insurance solutions tomeet our clients' requirements, using modern principles and efficiency.
+                            <p style="font-size: 20px;">To become the leading insurance intermediary firm, while
+                                delivering service that consistently exceed
+                                international standards and provide exceptional customer satisfaction. To continually
+                                deliver excellent value and innovative
+                                insurance solutions tomeet our clients' requirements, using modern principles and
+                                efficiency.
                             </p>
 
                             <h2>Our Mission</h2>
-                            <p style="font-size: 20px;">To be a leading insurance intermediary in the global market. To become the customers' most preffered choice
-                                by attaining excellence in quality and timely completed value added services. To provide the highest level of service in the insurance
+                            <p style="font-size: 20px;">To be a leading insurance intermediary in the global market. To
+                                become the customers' most preffered choice
+                                by attaining excellence in quality and timely completed value added services. To provide
+                                the highest level of service in the insurance
                                 industry while offering superior solutions to every service we handle.
                             </p>
                         </div>
-                        
+
                         <div class="about-btn d-flex align-items-center">
 
                             <div class="call-experts">
@@ -121,7 +132,7 @@
                                     <img src={{ asset('frontend/assets/images/phone-call.svg') }} alt="phone-call">
                                 </div>
                                 <span>Call To Our Experts</span>
-                                <a href="tel:+254759642797">+254 759 642797</a>
+                                <a href="tel: +254112476114"> +254112476114</a>
                             </div>
                         </div>
                     </div>
@@ -200,7 +211,7 @@
 
 
 
-    
+
 
 
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front\Insurance;
 
 use App\Http\Controllers\Controller;
 use App\Mail\Admin\AdminIndustrialAttachment;
+use App\Mail\Admin\AdminLastExpenseEmail;
+use App\Mail\AdminLastExpenseMail;
 use App\Models\InsuranceCompany;
 use App\Models\LastExpense;
 use App\Models\LastExpenseApplication;
@@ -120,7 +122,7 @@ class LastExpenseController extends Controller
 
         ]);
         //Mail::to($create->email)->send(new BidBondEmail($create));
-        //Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminHealthEmail($create));
+        Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminLastExpenseEmail($create));
 
         return redirect()->route('front.lastExpense.covers',$create->id);
     }
@@ -136,10 +138,11 @@ class LastExpenseController extends Controller
         foreach($covers as $cover){
             $totalPremium = 0;
 
-            $html = '<p>Principal Limit: <b style="margin-left: 20px">'. number_format($cover->limit).'</b></p>';
-            $html .= '<p>Spouse Limit: <b style="margin-left: 20px">'. number_format($cover->spouse_limit).'</b></p>';
-            $html .= '<p>Child Limit: <b style="margin-left: 20px">'. number_format($cover->child_limit).'</b></p>';
-            $html .= '<p>Parents Limit: <b style="margin-left: 20px">'. number_format($cover->parent_limit).'</b></p>';
+            $html = '<p>Principal Limit: <b style="float:right">'. number_format($cover->limit).'</b></p>';
+            $html .= '<p>Spouse Limit: <b style="float:right">'. number_format($cover->spouse_limit).'</b></p>';
+            $html .= '<p>Child Limit: <b style="float:right">'. number_format($cover->child_limit).'</b></p>';
+            $html .= '<p>Parents Limit: <b style="float:right">'. number_format($cover->parent_limit).'</b></p>';
+            $html .= '<hr>';
             /**Basic Premium Part**/
             $html .= '<p>Basic Premium: ';
             $html .= '<span style="float: right">'.number_format($cover->premium,2).'</span>';
