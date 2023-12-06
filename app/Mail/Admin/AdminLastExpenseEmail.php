@@ -25,37 +25,9 @@ class AdminLastExpenseEmail extends Mailable
         $this->create = $create;
     }
 
-    /**
-     * Get the message envelope.
-     *
-     * @return \Illuminate\Mail\Mailables\Envelope
-     */
-    public function envelope()
+    public function build()
     {
-        return new Envelope(
-            subject: 'Last Expense Application',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
-     */
-    public function content()
-    {
-        return new Content(
-            view: 'emails.applications.admin.last_expense',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array
-     */
-    public function attachments()
-    {
-        return [];
+        return $this->subject('Last Expense Insurance Application.')->to('imothinsurance@gmail.com')
+            ->view('emails.applications.admin.last_expense');
     }
 }
