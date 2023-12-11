@@ -3,15 +3,18 @@
 
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-BC22MLW7ZY');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BC22MLW7ZY');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,11 +205,14 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input name="gridCheck" style="border:2px solid black;" value="I agree to the terms and privacy policy."
+                                            <input name="gridCheck" style="border:2px solid black;"
+                                                value="I agree to the terms and privacy policy."
                                                 class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
-                                                Accept <a href="{{ asset('frontend/assets/medical.pdf') }}">Terms Of Services</a> And<a
-                                                    href="{{ asset('frontend/assets/privacy.pdf') }}">Privacy Policy</a>
+                                                Accept <a href="{{ asset('frontend/assets/medical.pdf') }}">Terms Of
+                                                    Services</a> And<a
+                                                    href="{{ asset('frontend/assets/Privacy.pdf') }}">Privacy
+                                                    Policy</a>
                                             </label>
                                             <div class="help-block with-errors gridCheck-error"></div>
                                         </div>

@@ -3,28 +3,28 @@
 
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-BC22MLW7ZY');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BC22MLW7ZY');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Get your Motor Insurance Comprehensive Quote instantly,anywhere in Kenya.">
-    <meta name="keywords"
-        content="motor insurance quotation">
+    <meta name="description" content="Get your Motor Insurance Comprehensive Quote instantly,anywhere in Kenya.">
+    <meta name="keywords" content="motor insurance quotation">
     <meta name="robots" content="index, follow" />
-    
+
     <meta property="og:title" content="Motor Insurance Quotation">
-    <meta property="og:description"
-        content="Get your motor insurance quotation instantly in Kenya.">
+    <meta property="og:description" content="Get your motor insurance quotation instantly in Kenya.">
     <meta property="og:url" content="https://www.imoth.co.ke/covers/comprehensive">
     <meta property="og:type" content="website">
     <title>Motor Insurance Quotation | Imoth Insurance Brokers, Nairobi, Kenya</title>
@@ -222,9 +222,9 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="RegNo" id="RegNo"
-                                            placeholder="Reg No.." required
-                                            data-error="Please enter Car Registration Number" class="form-control">
+                                        <input type="text" name="RegNo" id="RegNo" placeholder="Reg No.."
+                                            required data-error="Please enter Car Registration Number"
+                                            class="form-control">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -239,11 +239,14 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input name="gridCheck" style="border:2px solid black;" value="I agree to the terms and privacy policy."
+                                            <input name="gridCheck" style="border:2px solid black;"
+                                                value="I agree to the terms and privacy policy."
                                                 class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
-                                                Accept <a href="{{ asset('frontend/assets/motor.pdf') }}">Terms Of Services</a> And<a
-                                                    href="{{ asset('frontend/assets/privacy.pdf') }}">Privacy Policy</a>
+                                                Accept <a href="{{ asset('frontend/assets/motor.pdf') }}">Terms Of
+                                                    Services</a> And<a
+                                                    href="{{ asset('frontend/assets/Privacy.pdf') }}">Privacy
+                                                    Policy</a>
                                             </label>
                                             <div class="help-block with-errors gridCheck-error"></div>
                                         </div>
@@ -289,7 +292,7 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="form_name">When do you want your cover to start?*</label>
@@ -301,9 +304,9 @@
 
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="RegNo" id="RegNo"
-                                            placeholder="Reg No.." required
-                                            data-error="Please enter Car Registration Number" class="form-control">
+                                        <input type="text" name="RegNo" id="RegNo" placeholder="Reg No.."
+                                            required data-error="Please enter Car Registration Number"
+                                            class="form-control">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -324,11 +327,14 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input name="gridCheck" style="border:2px solid black;" value="I agree to the terms and privacy policy."
+                                            <input name="gridCheck" style="border:2px solid black;"
+                                                value="I agree to the terms and privacy policy."
                                                 class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
-                                                Accept <a href="{{ asset('frontend/assets/motor.pdf') }}">Terms Of Services</a> And<a
-                                                    href="{{ asset('frontend/assets/privacy.pdf') }}">Privacy Policy</a>
+                                                Accept <a href="{{ asset('frontend/assets/motor.pdf') }}">Terms Of
+                                                    Services</a> And<a
+                                                    href="{{ asset('frontend/assets/Privacy.pdf') }}">Privacy
+                                                    Policy</a>
                                             </label>
                                             <div class="help-block with-errors gridCheck-error"></div>
                                         </div>
@@ -350,9 +356,9 @@
             </div>
         </div>
     </div>
-    
 
-    
+
+
 
     @include('front.layout2.footer')
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

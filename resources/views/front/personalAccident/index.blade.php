@@ -3,15 +3,18 @@
 
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-BC22MLW7ZY');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BC22MLW7ZY');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,17 +131,18 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" id="firstName" name="firstName"
-                                               value="{{ old('firstName') }}" class="form-control"
-                                               placeholder="Enter First name" required
-                                               data-error="Please enter your First Name">
+                                            value="{{ old('firstName') }}" class="form-control"
+                                            placeholder="Enter First name" required
+                                            data-error="Please enter your First Name">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" id="lastName" name="lastName"
-                                               value="{{ old('lastName') }}" class="form-control"
-                                               placeholder="Enter Last Name" required data-error="Please enter Last Name">
+                                            value="{{ old('lastName') }}" class="form-control"
+                                            placeholder="Enter Last Name" required
+                                            data-error="Please enter Last Name">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -146,24 +150,24 @@
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
                                         <input id="phoneNumber" type="text" name="phoneNumber"
-                                               value="{{ old('phoneNumber') }}" placeholder="Phone Number" required
-                                               data-error="Please enter your Phone Number" class="form-control">
+                                            value="{{ old('phoneNumber') }}" placeholder="Phone Number" required
+                                            data-error="Please enter your Phone Number" class="form-control">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <input id="email" type="email" name="email"
-                                               value="{{ old('email') }}" placeholder="Email Address" required
-                                               data-error="Please enter your Email Address" class="form-control">
+                                            value="{{ old('email') }}" placeholder="Email Address" required
+                                            data-error="Please enter your Email Address" class="form-control">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" id="companyName" name="companyName"
-                                               value="{{ old('companyName') }}" placeholder="Institution"
-                                               required data-error="Attachment Institution" class="form-control">
+                                            value="{{ old('companyName') }}" placeholder="Institution" required
+                                            data-error="Attachment Institution" class="form-control">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -195,19 +199,22 @@
                                     <div class="form-group">
                                         <label for="form_name">When do you want your cover to start?*</label>
                                         <input type="date" id="startDate" name="startDate"
-                                               value="{{ old('startDate') }}" class="form-control" required
-                                               data-error="Please enter Duration" min="{{date('Y-m-d')}}">
+                                            value="{{ old('startDate') }}" class="form-control" required
+                                            data-error="Please enter Duration" min="{{ date('Y-m-d') }}">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input name="gridCheck" style="border:2px solid black;" value="I agree to the terms and privacy policy."
-                                                   class="form-check-input" type="checkbox" id="gridCheck" required>
+                                            <input name="gridCheck" style="border:2px solid black;"
+                                                value="I agree to the terms and privacy policy."
+                                                class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
-                                                Accept <a href="{{ asset('frontend/assets/pa.pdf') }}">Terms Of Services</a> And<a
-                                                    href="{{ asset('frontend/assets/privacy.pdf') }}">Privacy Policy</a>
+                                                Accept <a href="{{ asset('frontend/assets/pa.pdf') }}">Terms Of
+                                                    Services</a> And<a
+                                                    href="{{ asset('frontend/assets/Privacy.pdf') }}">Privacy
+                                                    Policy</a>
                                             </label>
                                             <div class="help-block with-errors gridCheck-error"></div>
                                         </div>

@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="student attachment insurance, student personal accident insurance, industrial attachment insurance, personal accident insurance">
     <meta name="robots" content="index, follow" />
-    
+
 
     <meta property="og:title" content="Student Attachment Insurance">
     <meta property="og:description"
@@ -43,11 +43,14 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BC22MLW7ZY"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-BC22MLW7ZY');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-BC22MLW7ZY');
 </script>
 
 <body>
@@ -141,7 +144,8 @@
                                     <div class="form-group">
                                         <input type="text" id="lastName" name="lastName"
                                             value="{{ old('lastName') }}" class="form-control"
-                                            placeholder="Enter Last Name" required data-error="Please enter Last Name">
+                                            placeholder="Enter Last Name" required
+                                            data-error="Please enter Last Name">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -202,11 +206,14 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input name="gridCheck" style="border:2px solid black;" value="I agree to the terms and privacy policy."
+                                            <input name="gridCheck" style="border:2px solid black;"
+                                                value="I agree to the terms and privacy policy."
                                                 class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
-                                                Accept <a href="{{ asset('frontend/assets/pa.pdf') }}">Terms Of Services</a> And<a
-                                                    href="{{ asset('frontend/assets/privacy.pdf') }}">Privacy Policy</a>
+                                                Accept <a href="{{ asset('frontend/assets/pa.pdf') }}">Terms Of
+                                                    Services</a> And<a
+                                                    href="{{ asset('frontend/assets/Privacy.pdf') }}">Privacy
+                                                    Policy</a>
                                             </label>
                                             <div class="help-block with-errors gridCheck-error"></div>
                                         </div>

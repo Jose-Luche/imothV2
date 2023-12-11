@@ -306,7 +306,7 @@
                                                 class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
                                                 Accept <a href="terms-of-service.html">Terms Of Services</a> And<a
-                                                    href="privacy-policy.html">privacy policy</a>
+                                                    href="{{ asset('frontend/assets/Privacy.pdf') }}">Privacy Policy</a>
                                             </label>
                                             <div class="help-block with-errors gridCheck-error"></div>
                                         </div>
