@@ -32,23 +32,119 @@ class LastExpenseController extends Controller
         $validator = Validator::make($request->all(), [
             'principalName' => 'required',
             'principalAge' => 'required|numeric|min:18|max:70',
-            'spouseAge' => 'required|numeric|min:18|max:70',
-            'fatherAge' => 'required|numeric|min:18|max:70',
-            'motherAge' => 'required|numeric|min:18|max:70',
-            'fatherInLawAge' => 'required|numeric|min:18|max:70',
-            'motherInLawAge' => 'required|numeric|min:18|max:70',
             'commencementDate' => 'required|date',
+            
         ]);
 
         
     
         if ($validator->fails()) {
-
-            
             return redirect()
                 ->back()
                 ->withErrors($validator)
                 ->withInput();
+        }
+
+        if($request->spouseAge){
+            if ($request->spouseAge < 18 || $request->spouseAge > 70) {
+                $validator->errors()->add('spouseAge', 'Spouse age must be between 18 and 70.');
+                return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+
+        if($request->fatherAge){
+            if ($request->fatherAge < 18 || $request->fatherAge > 70) {
+                $validator->errors()->add('fatherAge', 'Father age must be between 18 and 70.');
+                return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+
+        if($request->motherAge){
+            if ($request->motherAge < 18 || $request->motherAge > 70) {
+                $validator->errors()->add('motherAge', 'Mother age must be between 18 and 70.');
+                return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+
+        if($request->fatherInLawAge){
+            if ($request->fatherInLawAge < 18 || $request->fatherInLawAge > 70) {
+                $validator->errors()->add('fatherInLawAge', 'Father-in-law age must be between 18 and 70.');
+                return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+
+        if($request->motherInLawAge){
+            if ($request->motherInLawAge < 18 || $request->motherInLawAge > 70) {
+                $validator->errors()->add('moherInLawAge', 'Mother-in-law age must be between 18 and 70.');
+                return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+        }
+
+        if($request->hasChildren){
+            if($request->childOneAge){
+                if ($request->childOneAge > 25) {
+                    $validator->errors()->add('childOneAge', 'Child age must be between 1 month and 25 years.');
+                    return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            } elseif($request->childTwoAge){
+                if ($request->childTwoAge > 25) {
+                    $validator->errors()->add('childTwoAge', 'Child age must be between 1 month and 25 years.');
+                    return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            } elseif($request->childThreeAge){
+                if ($request->childThreeAge > 25) {
+                    $validator->errors()->add('childThreeAge', 'Child age must be between 1 month and 25 years.');
+                    return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            } elseif($request->childFourAge > 25){
+                if ($request->childFourAge > 25) {
+                    $validator->errors()->add('childFourAge', 'Child age must be between 1 month and 25 years.');
+                    return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            } elseif($request->childFiveAge){
+                if ($request->childFiveAge > 25) {
+                    $validator->errors()->add('childFiveAge', 'Child age must be between 1 month and 25 years.');
+                    return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            } elseif($request->childSixAge){
+                if ($request->childSixAge > 25) {
+                    $validator->errors()->add('childSixAge', 'Child age must be between 1 month and 25 years.');
+                    return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            }
         }
         
 

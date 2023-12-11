@@ -208,7 +208,17 @@
                 <h2>Provide Details below to get a Quote</h2>
             </div>
             <div class="row">
-                @include('partials.info')
+                {{--@include('partials.info')--}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="col-lg-6">
                     <div class="single-contact-img">
                         <div class="contact-main-img">
@@ -325,13 +335,16 @@
                                                 placeholder="Child One Age" name="childOneAge"
                                                 value="{{ old('childOneAge') }}"
                                                 data-error="Please enter Child One Age">
-                                            <div class="help-block with-errors"></div>
+                                            <div class="help-block with-errors">
+                                                <span class="error-danger">
+                                                    @error('childOneAge')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span>
+                                            </div>
+                                            
                                         </div>
-                                        <span class="error-danger">
-                                            @error('childOneAge')
-                                                {{ $message }}
-                                            @enderror
-                                        </span>
+                                        
                                     </div>
                                     <div class="row" id="child-one-buttons">
                                         <div class="col-lg-6 col-md-6">
