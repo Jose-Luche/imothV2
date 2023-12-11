@@ -32,6 +32,7 @@ class LastExpenseController extends Controller
         $validator = Validator::make($request->all(), [
             'principalName' => 'required',
             'principalAge' => 'required|numeric|min:18|max:70',
+            'spouseAge' => 'required|numeric|min:18|max:70',
             'fatherAge' => 'required|numeric|min:18|max:70',
             'motherAge' => 'required|numeric|min:18|max:70',
             'fatherInLawAge' => 'required|numeric|min:18|max:70',
