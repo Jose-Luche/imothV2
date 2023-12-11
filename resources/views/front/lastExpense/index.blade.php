@@ -45,6 +45,13 @@
     <link rel="stylesheet" href={{ asset('frontend/assets/css/responsive.css') }}>
 
     <link rel="icon" type="image/png" href={{ asset('frontend/assets/images/favicon/favicon.ico') }} />
+    <style>
+        .error-danger{
+            color:#EA5455;
+            font-weight: bold;
+        }
+    </style>
+
     <script src={{ asset('frontend/assets/js/jquery.min.js') }}></script>
 
     <script>
@@ -235,6 +242,9 @@
                                                    data-error="Please enter Principal Name">
                                             <div class="help-block with-errors"></div>
                                         </div>
+                                        <span class="error-danger">
+                                            @error('principalName'){{ $message }}@enderror
+                                        </span>
                                     </div>
                                     <div class="col-lg-4 col-md-4">
                                         <div class="form-group">
@@ -244,6 +254,9 @@
                                                    data-error="Please enter your Age">
                                             <div class="help-block with-errors"></div>
                                         </div>
+                                        <span class="error-danger">
+                                            @error('principalAge'){{ $message }}@enderror
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -271,6 +284,9 @@
                                                    data-error="Please enter Spouse Age">
                                             <div class="help-block with-errors"></div>
                                         </div>
+                                        <span class="error-danger">
+                                            @error('spouseAge'){{ $message }}@enderror
+                                        </span>
                                     </div>
                                 </div>
 
@@ -302,6 +318,9 @@
                                                    data-error="Please enter Child One Age">
                                             <div class="help-block with-errors"></div>
                                         </div>
+                                        <span class="error-danger">
+                                            @error('childOneAge'){{ $message }}@enderror
+                                        </span>
                                     </div>
                                     <div class="row" id="child-one-buttons">
                                         <div class="col-lg-6 col-md-6">
@@ -330,6 +349,9 @@
                                                        data-error="Please enter Child Two Age">
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            <span class="error-danger">
+                                                @error('childTwoAge'){{ $message }}@enderror
+                                            </span>
                                         </div>
                                         <div  class="row" id="child-two-buttons">
                                             <div class="col-lg-6 col-md-6">
@@ -359,6 +381,9 @@
                                                        data-error="Please enter Child Three Age">
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            <span class="error-danger">
+                                                @error('childThreeAge'){{ $message }}@enderror
+                                            </span>
                                         </div>
                                         <div  class="row" id="child-three-buttons">
                                             <div class="col-lg-6 col-md-6">
@@ -388,6 +413,9 @@
                                                        data-error="Please enter Child Four Age">
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            <span class="error-danger">
+                                                @error('childFourAge'){{ $message }}@enderror
+                                            </span>
                                         </div>
                                         <div  class="row" id="child-four-buttons">
                                             <div class="col-lg-6 col-md-6">
@@ -417,6 +445,9 @@
                                                        data-error="Please enter Child Five Age">
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            <span class="error-danger">
+                                                @error('childFiveAge'){{ $message }}@enderror
+                                            </span>
                                         </div>
                                         <div  class="row" id="child-five-buttons">
                                             <div class="col-lg-6 col-md-6">
@@ -446,6 +477,9 @@
                                                        data-error="Please enter Child Six Age">
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            <span class="error-danger">
+                                                @error('childSixAge'){{ $message }}@enderror
+                                            </span>
                                         </div>
                                         <div  class="row" id="child-six-buttons">
                                             <div class="col-lg-6 col-md-6">
@@ -485,6 +519,9 @@
                                                        data-error="Please enter Father's Age">
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            <span class="error-danger">
+                                                @error('fatherAge'){{ $message }}@enderror
+                                            </span>
                                         </div>
                                     </div>
 
@@ -506,6 +543,9 @@
                                                        data-error="Please enter Mother's Age">
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            <span class="error-danger">
+                                                @error('motherAge'){{ $message }}@enderror
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -540,6 +580,9 @@
                                                        data-error="Please enter Father in Law Age">
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            <span class="error-danger">
+                                                @error('fatherInLawAge'){{ $message }}@enderror
+                                            </span>
                                         </div>
                                     </div>
 
@@ -561,6 +604,9 @@
                                                        data-error="Please enter Mother in Law Age">
                                                 <div class="help-block with-errors"></div>
                                             </div>
+                                            <span class="error-danger">
+                                                @error('motherInLawAge'){{ $message }}@enderror
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

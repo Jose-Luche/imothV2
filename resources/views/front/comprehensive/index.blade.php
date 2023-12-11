@@ -242,8 +242,8 @@
                                             <input name="gridCheck" style="border:2px solid black;" value="I agree to the terms and privacy policy."
                                                 class="form-check-input" type="checkbox" id="gridCheck" required>
                                             <label class="form-check-label" for="gridCheck">
-                                                Accept <a href="#">Terms Of Services</a> And<a
-                                                    href="#">privacy policy</a>
+                                                Accept <a href="{{ asset('frontend/assets/motor.pdf') }}">Terms Of Services</a> And<a
+                                                    href="{{ asset('frontend/assets/privacy.pdf') }}">Privacy Policy</a>
                                             </label>
                                             <div class="help-block with-errors gridCheck-error"></div>
                                         </div>

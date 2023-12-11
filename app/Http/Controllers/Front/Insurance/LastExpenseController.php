@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Payment;
 use App\Models\LastExpense;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Models\InsuranceCompany;
 use App\Models\PersonalAccident;
 use App\Mail\AdminLastExpenseMail;
@@ -15,6 +16,7 @@ use App\Models\LastExpenseApplication;
 use Illuminate\Support\Facades\Session;
 use App\Mail\Admin\AdminLastExpenseEmail;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\Front\ClientLastExpenseEmail;
 use App\Mail\Admin\AdminIndustrialAttachment;
 use App\Models\OtherPersonalAccidentApplication;
 
@@ -30,15 +32,21 @@ class LastExpenseController extends Controller
         $validator = Validator::make($request->all(), [
             'principalName' => 'required',
             'principalAge' => 'required|numeric|min:18|max:70',
+            'fatherAge' => 'required|numeric|min:18|max:70',
+            'motherAge' => 'required|numeric|min:18|max:70',
+            'fatherInLawAge' => 'required|numeric|min:18|max:70',
+            'motherInLawAge' => 'required|numeric|min:18|max:70',
             'commencementDate' => 'required|date',
         ]);
+
+        
     
         if ($validator->fails()) {
 
-            $message = "Your age should be between 18 and 70 years";
+            
             return redirect()
                 ->back()
-                ->withErrors($validator)->with('error','Your age should be between 18 and 70 years.')
+                ->withErrors($validator)
                 ->withInput();
         }
         
@@ -132,7 +140,7 @@ class LastExpenseController extends Controller
             'premiumPayable'=>0,
 
         ]);
-        //Mail::to($create->email)->send(new BidBondEmail($create));
+        Mail::to($create->email)->send(new ClientLastExpenseEmail($create));
         Mail::to(env('ADMIN_NOTIF_MAIL'))->send(new AdminLastExpenseEmail($create));
 
         return redirect()->route('front.lastExpense.covers',$create->id);
@@ -196,11 +204,13 @@ class LastExpenseController extends Controller
         $coverDetails = [];
         $totalPremium = 0;
 
-        $html = '<p>Principal Limit: <b style="margin-left: 20px">'. number_format($details->limit).'</b></p>';
-        $html .= '<p>Spouse Limit: <b style="margin-left: 20px">'. number_format($details->spouse_limit).'</b></p>';
-        $html .= '<p>Child Limit: <b style="margin-left: 20px">'. number_format($details->child_limit).'</b></p>';
-        $html .= '<p>Parents Limit: <b style="margin-left: 20px">'. number_format($details->parent_limit).'</b></p>';
+        $html = '<p>Principal Limit: <b><span style="float: right">'.number_format($details->limit,2).'</span></b></p>';
+        $html .= '<p>Spouse Limit: <b><span style="float: right">'.number_format($details->spouse_limit,2).'</span></b></p>';
+        $html .= '<p>Child Limit: <b><span style="float: right">'.number_format($details->child_limit,2).'</span></b></p>';
+        $html .= '<p>Parents Limit: <b><span style="float: right">'.number_format($details->parent_limit,2).'</span></b></p>';
+        $html .= '<hr>';
         /**Basic Premium Part**/
+
         $html .= '<p>Basic Premium: ';
         $html .= '<span style="float: right">'.number_format($details->premium,2).'</span>';
 
