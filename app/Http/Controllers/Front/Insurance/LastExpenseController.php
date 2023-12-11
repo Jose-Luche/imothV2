@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Front\Insurance;
 
-use App\Http\Controllers\Controller;
-use App\Mail\Admin\AdminIndustrialAttachment;
-use App\Mail\Admin\AdminLastExpenseEmail;
-use App\Mail\AdminLastExpenseMail;
-use App\Models\InsuranceCompany;
-use App\Models\LastExpense;
-use App\Models\LastExpenseApplication;
-use App\Models\OtherPersonalAccidentApplication;
-use App\Models\Payment;
-use App\Models\PersonalAccident;
 use Carbon\Carbon;
+use App\Models\Payment;
+use App\Models\LastExpense;
 use Illuminate\Http\Request;
+use App\Models\InsuranceCompany;
+use App\Models\PersonalAccident;
+use App\Mail\AdminLastExpenseMail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Models\LastExpenseApplication;
 use Illuminate\Support\Facades\Session;
+use App\Mail\Admin\AdminLastExpenseEmail;
+use Illuminate\Support\Facades\Validator;
+use App\Mail\Admin\AdminIndustrialAttachment;
+use App\Models\OtherPersonalAccidentApplication;
 
 class LastExpenseController extends Controller
 {
@@ -26,11 +27,21 @@ class LastExpenseController extends Controller
 
     public function submit(Request $request)
     {
-        $validator = $request->validate([
+        $validator = Validator::make($request->all(), [
             'principalName' => 'required',
-            'principalAge' => 'required|numeric',
+            'principalAge' => 'required|numeric|min:18|max:70',
             'commencementDate' => 'required|date',
         ]);
+    
+        if ($validator->fails()) {
+
+            $message = "Your age should be between 18 and 70 years";
+            return redirect()
+                ->back()
+                ->withErrors($validator)->with('error','Your age should be between 18 and 70 years.')
+                ->withInput();
+        }
+        
 
         $endDate = Carbon::parse($request->commencementDate)->addYear();
 

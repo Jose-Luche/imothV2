@@ -198,6 +198,7 @@
                 <h2>Provide Details below to get a Quote</h2>
             </div>
             <div class="row">
+                @include('partials.info')
                 <div class="col-lg-6">
                     <div class="single-contact-img">
                         <div class="contact-main-img">
