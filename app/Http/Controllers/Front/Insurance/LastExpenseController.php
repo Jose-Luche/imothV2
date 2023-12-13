@@ -33,11 +33,11 @@ class LastExpenseController extends Controller
             'principalName' => 'required',
             'principalAge' => 'required|numeric|min:18|max:70',
             'commencementDate' => 'required|date',
-            
+
         ]);
 
-        
-    
+
+
         if ($validator->fails()) {
             return redirect()
                 ->back()
@@ -146,7 +146,7 @@ class LastExpenseController extends Controller
                 }
             }
         }
-        
+
 
         $endDate = Carbon::parse($request->commencementDate)->addYear();
 
@@ -262,13 +262,31 @@ class LastExpenseController extends Controller
             /**Basic Premium Part**/
             $html .= '<p>Basic Premium: ';
             $html .= '<span style="float: right">'.number_format($cover->premium,2).'</span>';
+            $html .= '</p>';
+            /**If there is additional Children, Include the premiums**/
+            $additionalChildren = 0;
+            if($applicationDetails->childFiveName != null && $applicationDetails->childFiveAge != 0){
+                $additionalChildren += 1;
+                if($applicationDetails->childSixName != null && $applicationDetails->childSixAge != 0){
+                    $additionalChildren += 1;
+                }
+            }
+            /**Only when there is additional Children, show additional Children Section**/
+            $additionalChildrenPremium = 0;
+            if($additionalChildren > 0){
+                $additionalChildrenPremium = $cover->additional_child_premium*$additionalChildren;
+                //$html .= '<hr>';
+                //$html .= '<p>Additional Children: <span style="float: right">'.$additionalChildren.'</span></p>';
+                //$html .= '<p>Premium per Child: <span style="float: right">'.number_format($cover->additional_child_premium,2).'</span></p>';
+                $html .= '<p style="font-size: 11px">Additional Premium for <b style="color: red">'.$additionalChildren.'</b> Children: <span style="float: right">'.number_format($additionalChildrenPremium,2).'</span></p>';
+            }
 
-            $totalBasicPremium = $cover->premium;
+            $totalBasicPremium = $cover->premium + $additionalChildrenPremium;
             $phcf = round(0.25/100 * $totalBasicPremium,2);
             $itl = round(0.2/100 * $totalBasicPremium,2);
             $stampDuty = 40;
             $totalPremiumPayable = $totalBasicPremium + $phcf + $itl + $stampDuty;
-            $html .= '</p>';
+
             $html .= '<hr>';
             $html .= '<p>Total Basic Premium: <span style="float: right">'.number_format($totalBasicPremium,2).'</span></p>';
             $html .= '<p>PHCF (0.25%): <span style="float: right">'.number_format($phcf,2).'</span></p>';
@@ -311,7 +329,24 @@ class LastExpenseController extends Controller
         $html .= '<p>Basic Premium: ';
         $html .= '<span style="float: right">'.number_format($details->premium,2).'</span>';
 
-        $totalBasicPremium = $details->premium;
+        /**If there is additional Children, Include the premiums**/
+        $additionalChildren = 0;
+        if($applicationDetails->childFiveName != null && $applicationDetails->childFiveAge != 0){
+            $additionalChildren += 1;
+            if($applicationDetails->childSixName != null && $applicationDetails->childSixAge != 0){
+                $additionalChildren += 1;
+            }
+        }
+        /**Only when there is additional Children, show additional Children Section**/
+        $additionalChildrenPremium = 0;
+        if($additionalChildren > 0){
+            $additionalChildrenPremium = $cover->additional_child_premium*$additionalChildren;
+            //$html .= '<hr>';
+            //$html .= '<p>Additional Children: <span style="float: right">'.$additionalChildren.'</span></p>';
+            //$html .= '<p>Premium per Child: <span style="float: right">'.number_format($cover->additional_child_premium,2).'</span></p>';
+            $html .= '<p>Additional Premium for <b style="color: red">'.$additionalChildren.'</b> Children: <span style="float: right">'.number_format($additionalChildrenPremium,2).'</span></p>';
+        }
+        $totalBasicPremium = $details->premium + $additionalChildrenPremium;
         $phcf = round(0.25/100 * $totalBasicPremium,2);
         $itl = round(0.2/100 * $totalBasicPremium,2);
         $stampDuty = 40;

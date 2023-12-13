@@ -342,9 +342,9 @@
                                                     @enderror
                                                 </span>
                                             </div>
-                                            
+
                                         </div>
-                                        
+
                                     </div>
                                     <div class="row" id="child-one-buttons">
                                         <div class="col-lg-6 col-md-6">
@@ -515,7 +515,7 @@
                                         <div class="col-lg-4 col-md-4">
                                             <div class="form-group">
                                                 <input type="text" id="childSixAge" class="form-control"
-                                                    placeholder="Child Five Age" name="childSixAge"
+                                                    placeholder="Child Six Age" name="childSixAge"
                                                     value="{{ old('childSixAge') }}"
                                                     data-error="Please enter Child Six Age">
                                                 <div class="help-block with-errors"></div>

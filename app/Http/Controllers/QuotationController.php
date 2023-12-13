@@ -40,7 +40,7 @@ class QuotationController extends Controller
             }
             $startDate = $applicationDetails->date;
             $phone = $applicationDetails->phone;
-    
+
         }elseif($type == 'travel'){
             $details = Travel::findOrfail($id);
             $applicationDetails = TravelApplication::find($applicationId);
@@ -49,31 +49,31 @@ class QuotationController extends Controller
             $phone = $applicationDetails->mobile;
         }elseif($type == 'bond'){
             $details = BidBond::findOrfail($id);
-            $applicationDetails = BidBondApplication::find($applicationId); 
+            $applicationDetails = BidBondApplication::find($applicationId);
             $class = 'Bid Bond Insurance Cover';
             $startDate = $applicationDetails->commencementDate;
             $phone = $applicationDetails->phone;
         }elseif($type == 'health'){
             $details = Health::findOrfail($id);
-            $applicationDetails = HealthInsuranceApplication::find($applicationId); 
+            $applicationDetails = HealthInsuranceApplication::find($applicationId);
             $class = 'Health Insurance Cover';
             $startDate = $applicationDetails->commencementDate;
             $phone = $applicationDetails->phone;
         }elseif($type == 'attachment'){
             $details = Attachment::findOrfail($id);
-            $applicationDetails = PersonalAccidentApplication::find($applicationId); 
+            $applicationDetails = PersonalAccidentApplication::find($applicationId);
             $class = 'Personal Accident Cover';
             $startDate = $applicationDetails->startDate;
             $phone = $applicationDetails->phone;
         }elseif($type == 'personalAccident'){
             $details = PersonalAccident::findOrfail($id);
-            $applicationDetails = OtherPersonalAccidentApplication::find($applicationId); 
+            $applicationDetails = OtherPersonalAccidentApplication::find($applicationId);
             $class = 'Personal Accident Cover';
             $startDate = $applicationDetails->startDate;
             $phone = $applicationDetails->phone;
         }elseif($type == 'lastExpense'){
             $details = LastExpense::findOrfail($id);
-            $applicationDetails = LastExpenseApplication::find($applicationId); 
+            $applicationDetails = LastExpenseApplication::find($applicationId);
             $class = 'Last Expense Cover';
             $startDate = $applicationDetails->commencementDate;
             $phone = $applicationDetails->phone;
@@ -83,7 +83,7 @@ class QuotationController extends Controller
             die();
         }
 
-        
+
         $updateApplication = $applicationDetails->update([
             'quoteId'=>$details->id
         ]);
@@ -101,7 +101,7 @@ class QuotationController extends Controller
         } else {
             $html = '<p>Basic Premium: ';
         }
-        
+
         /**Go thrugh DIfferent sections**/
         $basicPremium = 0;
         if($type == 'motor'){
@@ -118,7 +118,7 @@ class QuotationController extends Controller
             $basicPremium = $cover->premium;
 
         }elseif($type == 'travel'){
-        
+
             $basicPremium = Travel::where('limit', $applicationDetails->limit)->where('companyId', $id)->first()->premium;
 
         }elseif($type == 'bond'){
@@ -136,7 +136,7 @@ class QuotationController extends Controller
                     ->where('age_from', '<=', $applicationDetails->principalAge)
                     ->where('age_to', '>=', $applicationDetails->principalAge)->first();
                 $principalPremium = $principalPremiumDetails->princ_premium ?? 0;
-            
+
             $spousePremiumDetails = HealthSpousePremium::where('limitId', $cover->id)
                     ->where('sp_age_from', '<=', $applicationDetails->spouseAge)
                     ->where('sp_age_to', '>=', $applicationDetails->spouseAge)->first();
@@ -147,7 +147,7 @@ class QuotationController extends Controller
 
             $basicPremium = $principalPremium + $spousePremium + $childrenPremium;// Inpatient Basic Premium
 
-            
+
         } elseif($type == 'attachment'){
             $details = Attachment::findorfail($id);
             /**Since we have the Duration Session Period Details, get the Premium Payable**/
@@ -175,7 +175,7 @@ class QuotationController extends Controller
 
             $basicPremium = $total;
         }
-        
+
         $html .= '<span style="float: right">'.number_format($basicPremium,2).'</span>';
 
         /**Available Benefits Section**/
@@ -199,9 +199,9 @@ class QuotationController extends Controller
                     }
                     $html .= '</p>';
                     $totalBenefits += $benefitAmount;
-    
+
                 }
-    
+
             }
         }
 
@@ -211,7 +211,7 @@ class QuotationController extends Controller
             $html .= '</p>';
             $html .= '<hr>';
             $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>';
-            
+
         } elseif($type == 'personalAccident'){
             $totalBasicPremium = $basicPremium;
             $totalPremiumPayable = $totalBasicPremium;
@@ -219,14 +219,14 @@ class QuotationController extends Controller
             $html .= '<hr>';
             $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>';
         } elseif($type == 'health'){
-            
+
             $totalPremiumPayable = $applicationDetails->premiumPayable;
             $html .= '</p>';
             $html .='<p>Outpatient Basic Premium: <span style="float: right">'.number_format($applicationDetails->op_premium,2).'</span></p>';
             $html .='<p>Dental Basic Premium: <span style="float: right">'.number_format($applicationDetails->dental_premium,2).'</span> </p>';
             $html .='<p>Optical Basic Premium: <span style="float: right">'.number_format($applicationDetails->optical_premium,2).'</span> </p>';
             $html .='<p>Maternity Basic Premium: <span style="float: right">'.number_format($applicationDetails->maternity_premium,2).'</span> </p>';
-            
+
             $html .= '<hr>';
             $html .= '<p>Total Basic Premium: <span style="float: right">'.number_format($applicationDetails->total_basic_premium,2).'</span></p>';
             $html .= '<p>PHCF (0.25%): <span style="float: right">'.number_format($applicationDetails->phcf,2).'</span></p>';
@@ -240,10 +240,28 @@ class QuotationController extends Controller
             $html .= '<p>Optical Limit: <span>'.number_format($applicationDetails->optical_limit ?? 0).'</span></p>';
             $html .= '<p>Dental Limit: <span>'.number_format($applicationDetails->dental_limit ?? 0).'</span></p>';
             $html .= '<p>Maternity Limit: <span>'.number_format($applicationDetails->dental_limit ?? 0).'</span></p>';
-            
+
 
         }elseif($type == 'lastExpense'){
-            $totalBasicPremium = $totalBenefits + $basicPremium;
+
+            /**If there is additional Children, Include the premiums**/
+            $additionalChildren = 0;
+            if($applicationDetails->childFiveName != null && $applicationDetails->childFiveAge != 0){
+                $additionalChildren += 1;
+                if($applicationDetails->childSixName != null && $applicationDetails->childSixAge != 0){
+                    $additionalChildren += 1;
+                }
+            }
+            /**Only when there is additional Children, show additional Children Section**/
+            $additionalChildrenPremium = 0;
+            if($additionalChildren > 0){
+                $additionalChildrenPremium = $cover->additional_child_premium*$additionalChildren;
+                //$html .= '<hr>';
+                //$html .= '<p>Additional Children: <span style="float: right">'.$additionalChildren.'</span></p>';
+                //$html .= '<p>Premium per Child: <span style="float: right">'.number_format($cover->additional_child_premium,2).'</span></p>';
+                $html .= '<p>Additional Premium for <b style="color: red">'.$additionalChildren.'</b> Children: <span style="float: right">'.number_format($additionalChildrenPremium,2).'</span></p>';
+            }
+            $totalBasicPremium = $totalBenefits + $basicPremium + $additionalChildrenPremium;
             $phcf = round(0.25/100 * $totalBasicPremium,2);
             $itl = round(0.2/100 * $totalBasicPremium,2);
             $stampDuty = 40;
@@ -255,7 +273,7 @@ class QuotationController extends Controller
             $html .= '<p>ITL (0.2%): <span style="float: right">'.number_format($itl,2).'</span></p>';
             $html .= '<p>Stamp Duty: <span style="float: right">'.number_format($stampDuty,2).'</span></p>';
             $html .= '<hr>';
-            $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>'; 
+            $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>';
             $html .= '<hr>';
             $html .= '<p></p>';
             $html .= '<p></p>';
@@ -269,29 +287,29 @@ class QuotationController extends Controller
                 $applicationDetails->childFiveName ?? '', // Add more as needed
                 $applicationDetails->childSixName ?? '', // Add more as needed
             ];
-            
-            
+
+
             $html .= '<p>Children: <span>'.implode(", ", array_filter($childNames)).'</span></p>';
             $parentNames = [
                 $applicationDetails->fatherName ?? '',
                 $applicationDetails->motherName ?? '',
-                
+
             ];
             $html .= '<p>Parents: <span>'.implode(", ", array_filter($parentNames)).'</span></p>';
             $inLawNames = [
                 $applicationDetails->fatherInLawName ?? '',
                 $applicationDetails->motherInLawName ?? '',
-                
+
             ];
             $html .= '<p>Parents in Law: <span>'.implode(", ", array_filter($inLawNames)).'</span></p>';
 
-            
+
             $html .= '<h3 style="text-align:center">Cover Limits</h3>';
             $html .= '<p>Principal Limit: <span>'.number_format($cover->limit ?? 0).'</span></p>';
             $html .= '<p>Spouse Limit: <span>'.number_format($cover->spouse_limit ?? 0).'</span></p>';
             $html .= '<p>Children Limit: <span>'.number_format($cover->child_limit ?? 0).'</span></p>';
             $html .= '<p>Parents Limit: <span>'.number_format($cover->parent_limit ?? 0).'</span></p>';
-            
+
 
         }else {
             $totalBasicPremium = $totalBenefits + $basicPremium;
@@ -309,7 +327,7 @@ class QuotationController extends Controller
             $html .= ' <p>Total Premium Payable:  <span style="float: right"><b>'.number_format($totalPremiumPayable,2).'</b></span></p>';
 
         }
-        
+
         /**Create a Table to carry our Quote Details**/
         $table = "";
         if($type == 'motor'){
@@ -409,7 +427,7 @@ class QuotationController extends Controller
 
             $table .= "</table>";
         }
-       
+
         $data = [
             'total' => $totalPremiumPayable,
             'html' => $html,
