@@ -15,9 +15,9 @@
 
     <meta property="og:title" content="Funeral Expense Insurance">
     <meta property="og:description"
-          content="We are the number one Student personal accident insurance broker, also known as Student Attachment, in Kenya. Despite the period for your industrial attachment, as a student, we got you covered with competitive rates.">
-    <meta property="og:image" content="https://www.imoth.co.ke/frontend/assets/images/banner/safety.jpg">
-    <meta property="og:url" content="https://www.imoth.co.ke/student-attachment-insurance">
+          content="We are the number one funeral expense insurance broker, also known as Last expense, in Kenya. Get an insurance cover to protect you and your family.">
+    <meta property="og:image" content="https://www.imoth.co.ke/frontend/assets/images/last_expense.jpeg">
+    <meta property="og:url" content="https://www.imoth.co.ke/funeral-expense-insurance">
     <meta property="og:type" content="website">
     <title>Last Expense Insurance | Imoth Insurance Brokers, Nairobi, Kenya</title>
 
