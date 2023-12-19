@@ -19,14 +19,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Get your Bid Bond Quote instantly.">
+    <meta name="description" content="Get a Personal Accident Quotation instantly, anywhere in Kenya..">
     <meta name="keywords" content="bid bond insurance, bid bond quote">
     <meta name="robots" content="index, follow" />
 
 
-    <meta property="og:title" content="Bid Bond Quotation">
-    <meta property="og:description" content="Get a bid bond quotation instantly in Kenya.">
-    <meta property="og:url" content="https://www.imoth.co.ke/covers/bid-bond">
+    <meta property="og:title" content="Personal Accident Quotation">
+    <meta property="og:description" content="Get a Personal Accident Quotation instantly.">
+    <meta property="og:url" content="https://www.imoth.co.ke/covers/pa">
     <meta property="og:type" content="website">
     <title>Personal Accident Quotation | Imoth Insurance Brokers, Nairobi, Kenya</title>
 
