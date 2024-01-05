@@ -671,7 +671,7 @@
                                     <div class="col-md-12">
                                         <div class="form-floating mb-4">
                                             <input id="commencementDate" type="date" name="commencementDate"
-                                                value="{{ old('commencementDate') }}" class="form-control" required>
+                                                value="{{ old('commencementDate') }}" class="form-control" min="{{ date('Y-m-d') }}" required>
                                             <label for="commencementDate">Commencement Date *</label>
                                             <div class="help-block with-errors"></div>
                                         </div>
