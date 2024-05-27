@@ -64,7 +64,7 @@
                                                 <td>{{ $cover->company->name }}</td>
                                                 <td>{{ strtoupper($cover->benefit_type) }}</td>
                                                 <td>{{ strtoupper($cover->pp_pf) }}</td>
-                                                <td>{{ number_format($cover->limit) }}</td>
+                                                <td>{{ $cover->limit }}</td>
                                                 <td>
                                                     <span>
                                                          <a  href="{{ route('admin.health.details',$cover->id) }}" class="btn btn-outline-info btn-sm"> Details <i class="fa fa-eye"></i></a> |

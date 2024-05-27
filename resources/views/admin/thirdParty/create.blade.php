@@ -1,7 +1,8 @@
 @extends('admin.layouts.layout')
-@section('title','New Institution')
+@section('title', 'New Institution')
 @section('content')
-    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=29qj3xynrj1ylz6s6pcvt0sfrztqxlu52k55du7ph1yjnwes"></script>
+    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=29qj3xynrj1ylz6s6pcvt0sfrztqxlu52k55du7ph1yjnwes">
+    </script>
     <script>
         tinymce.init({
             selector: '#mytextarea'
@@ -39,28 +40,30 @@
                             <h2 class="header-title">Cover Details</h2>
                             <hr>
                             @include('partials.info')
-                            <form id="demo-form" data-parsley-validate="" method="post" action="{{ route('admin.thirdParty.submit') }}" enctype="multipart/form-data">
+                            <form id="demo-form" data-parsley-validate="" method="post"
+                                action="{{ route('admin.thirdParty.submit') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fullname">Insurance Company * :</label>
-                                            <select name="company"  class="form-control @error('name') is-invalid @enderror" >
-                                                @foreach($companies as $company)
-                                                    <option value="{{$company->id}}">{{ $company->name }}</option>
+                                            <select name="company" class="form-control @error('name') is-invalid @enderror">
+                                                @foreach ($companies as $company)
+                                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
                                                 @endforeach
                                             </select>
                                             @if ($errors->has('company'))
                                                 <span class="help-block">
-                                                <strong>{{ $errors->first('company') }}</strong>
-                                            </span>
+                                                    <strong>{{ $errors->first('company') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="category">Cover Type * :</label>
-                                            <select name="category"  class="form-control @error('name') is-invalid @enderror" >
+                                            <select name="category"
+                                                class="form-control @error('name') is-invalid @enderror">
                                                 <option value="">--Select Vehicle Use--</option>
                                                 <option value="personal">Personal/Private Use</option>
                                                 <option value="psv">PSV - Chauffeur Driven</option>
@@ -69,8 +72,8 @@
                                             </select>
                                             @if ($errors->has('category'))
                                                 <span class="help-block">
-                                                <strong>{{ $errors->first('category') }}</strong>
-                                            </span>
+                                                    <strong>{{ $errors->first('category') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
@@ -79,12 +82,12 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="firstname">Standard Fee :</label>
-                                            <input type="text"  name="rate" class="form-control" id="location"
-                                                   placeholder="Standared Fee" value="{{ old('rate') }}">
+                                            <input type="text" name="rate" class="form-control" id="location"
+                                                placeholder="Standared Fee" value="{{ old('rate') }}">
                                             @if ($errors->has('rate'))
                                                 <span class="help-block">
-                                                <strong>{{ $errors->first('rate') }}</strong>
-                                            </span>
+                                                    <strong>{{ $errors->first('rate') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
@@ -95,25 +98,25 @@
                                             <label for="firstname">Policy Duration * :</label>
                                             <select class="form-control" name="type">
                                                 <option value="Annually">Annually</option>
-                                                <option value="Monthly" >Monthly</option>
+                                                <option value="Monthly">Monthly</option>
                                             </select>
                                             @if ($errors->has('type'))
                                                 <span class="help-block">
-                                                <strong>{{ $errors->first('type') }}</strong>
-                                            </span>
+                                                    <strong>{{ $errors->first('type') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="fullname">Details(Optional)  :</label>
-                                    <textarea id="mytextarea" rows="5" name="details"
-                                              class="form-control @error('details')
-                                                      is-invalid @enderror" >{{ old('details') }}</textarea> <!-- end Snow-editor-->
+                                    <label for="fullname">Details(Optional) :</label>
+                                    <textarea rows="5" name="details"
+                                        class="form-control @error('details')
+                                                      is-invalid @enderror">{{ old('details') }}</textarea> <!-- end Snow-editor-->
                                     @if ($errors->has('details'))
                                         <span class="help-block">
-                                                <strong style="color: red">{{ $errors->first('details') }}</strong>
-                                            </span>
+                                            <strong style="color: red">{{ $errors->first('details') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                                 <br>

@@ -1,7 +1,8 @@
 @extends('admin.layouts.layout')
 @section('title','New Institution')
 @section('content')
-    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=29qj3xynrj1ylz6s6pcvt0sfrztqxlu52k55du7ph1yjnwes"></script>
+
+    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=el10nm9y1p1ac1opfal1yarz6fodknkyv7zj6x11aijer3u8"></script>
     <script>
         tinymce.init({
             selector: '#mytextarea'

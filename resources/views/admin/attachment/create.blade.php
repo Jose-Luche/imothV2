@@ -1,7 +1,8 @@
 @extends('admin.layouts.layout')
-@section('title','New Institution')
+@section('title', 'New Institution')
 @section('content')
-    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=29qj3xynrj1ylz6s6pcvt0sfrztqxlu52k55du7ph1yjnwes"></script>
+    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=29qj3xynrj1ylz6s6pcvt0sfrztqxlu52k55du7ph1yjnwes">
+    </script>
     <script>
         tinymce.init({
             selector: '#mytextarea'
@@ -39,69 +40,70 @@
                             <h2 class="header-title">Cover Details</h2>
                             <hr>
                             @include('partials.info')
-                            <form id="demo-form" data-parsley-validate="" method="post" action="{{ route('admin.attachment.submit') }}" enctype="multipart/form-data">
+                            <form id="demo-form" data-parsley-validate="" method="post"
+                                action="{{ route('admin.attachment.submit') }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="fullname">Insurance Company * :</label>
-                                    <select name="company"  class="form-control @error('name') is-invalid @enderror" >
-                                        @foreach($companies as $company)
-                                            <option value="{{$company->id}}">{{ $company->name }}</option>
+                                    <select name="company" class="form-control @error('name') is-invalid @enderror">
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}">{{ $company->name }}</option>
                                         @endforeach
                                     </select>
-                                   @if ($errors->has('company'))
+                                    @if ($errors->has('company'))
                                         <span class="help-block">
-                                                <strong>{{ $errors->first('company') }}</strong>
-                                            </span>
+                                            <strong>{{ $errors->first('company') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
 
-                                    <div class="form-group">
-                                        <label for="firstname">Three months Fee :</label>
-                                        <input type="text"  name="three_month" class="form-control" id="location"
-                                               placeholder="Three months Fee" value="{{ old('three_month') }}">
-                                        @if ($errors->has('three_month'))
-                                            <span class="help-block">
+                                <div class="form-group">
+                                    <label for="firstname">Three months Fee :</label>
+                                    <input type="text" name="three_month" class="form-control" id="location"
+                                        placeholder="Three months Fee" value="{{ old('three_month') }}">
+                                    @if ($errors->has('three_month'))
+                                        <span class="help-block">
                                             <strong>{{ $errors->first('three_month') }}</strong>
                                         </span>
-                                        @endif
-                                    </div>
+                                    @endif
+                                </div>
 
-
-                                    <div class="form-group">
-                                        <label for="firstname">Six months Fee :</label>
-                                        <input type="text"  name="six_month" class="form-control" id="location"
-                                               placeholder="Six months Fee" value="{{ old('six_month') }}">
-                                        @if ($errors->has('six_month'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('six_month') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label for="firstname">One year Fee :</label>
-                                        <input type="text"  name="one_year" class="form-control" id="one_year"
-                                               placeholder="One year Fee" value="{{ old('one_year') }}">
-                                        @if ($errors->has('one_year'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('one_year') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-
-                                <input type="hidden"  name="minYear" class="form-control" id="location"
-                                       placeholder="Minimum Car Year" value="1">
 
                                 <div class="form-group">
-                                    <label for="fullname">Details(Optional)  :</label>
-                                    <textarea id="mytextarea" rows="5" name="details"
-                                              class="form-control @error('details')
-                                                      is-invalid @enderror" >{{ old('details') }}</textarea> <!-- end Snow-editor-->
+                                    <label for="firstname">Six months Fee :</label>
+                                    <input type="text" name="six_month" class="form-control" id="location"
+                                        placeholder="Six months Fee" value="{{ old('six_month') }}">
+                                    @if ($errors->has('six_month'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('six_month') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="firstname">One year Fee :</label>
+                                    <input type="text" name="one_year" class="form-control" id="one_year"
+                                        placeholder="One year Fee" value="{{ old('one_year') }}">
+                                    @if ($errors->has('one_year'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('one_year') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <input type="hidden" name="minYear" class="form-control" id="location"
+                                    placeholder="Minimum Car Year" value="1">
+
+                                <div class="form-group">
+                                    <label for="fullname">Details(Optional) :</label>
+                                    <textarea rows="5" name="details"
+                                        class="form-control @error('details')
+                                                      is-invalid @enderror">{{ old('details') }}</textarea> <!-- end Snow-editor-->
                                     @if ($errors->has('details'))
                                         <span class="help-block">
-                                                <strong style="color: red">{{ $errors->first('details') }}</strong>
-                                            </span>
+                                            <strong style="color: red">{{ $errors->first('details') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                                 <br>
@@ -116,7 +118,7 @@
                                                     <div class="form-group">
                                                         <label for="firstname">Benefit Name* :</label>
                                                         <input type="text" placeholder="Benefit Name"
-                                                               class="form-control" name="benefitName[]" required>
+                                                            class="form-control" name="benefitName[]" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,14 +127,15 @@
                                                     <div class="form-group">
                                                         <label for="firstname">Rate * :</label>
                                                         <input type="text" class="form-control"
-                                                               placeholder="Benefit Rate" name="benefitRate[]" required>
+                                                            placeholder="Benefit Rate" name="benefitRate[]" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="firstname">Rate Type * :</label>
-                                                        <select class="form-control @error('benefitRateType') is-invalid @enderror"
-                                                                name="benefitRateType[]" required>
+                                                        <select
+                                                            class="form-control @error('benefitRateType') is-invalid @enderror"
+                                                            name="benefitRateType[]" required>
                                                             <option value="1">Percentage(%)</option>
                                                             <option value="2">Ksh</option>
                                                         </select>
@@ -140,9 +143,10 @@
                                                 </div> <!-- end col -->
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <div class="form-group"  style="padding-top: 25px;">
+                                                        <div class="form-group" style="padding-top: 25px;">
                                                             <button type="button" name="add" id="0"
-                                                                    class="btn btn-outline-danger btn_remove">Remove <i class="fa fa-trash-alt"></i></button>
+                                                                class="btn btn-outline-danger btn_remove">Remove <i
+                                                                    class="fa fa-trash-alt"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,7 +160,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <button type="button" name="add" id="add" class="btn btn-success">Add More <i class="fa fa-plus-circle"></i> </button>
+                                                    <button type="button" name="add" id="add"
+                                                        class="btn btn-success">Add More <i class="fa fa-plus-circle"></i>
+                                                    </button>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div>
@@ -178,11 +184,11 @@
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            var i=1;
-            $('#add').click(function(){
+        $(document).ready(function() {
+            var i = 1;
+            $('#add').click(function() {
                 i++;
-                $('#dynamic_field').append(' <div class="container" id="contain'+i+'">\n' +
+                $('#dynamic_field').append(' <div class="container" id="contain' + i + '">\n' +
                     '                                            <div class="row">\n' +
                     '                                                <div class="col-md-10">\n' +
                     '                                                    <div class="form-group">\n' +
@@ -211,16 +217,18 @@
                     '                                                   <div class="col-md-2">\n' +
                     '                                                <div class="form-group">\n' +
                     '                                                    <div class="form-group" style="padding-top: 25px;" >\n' +
-                    '                                                        <button type="button" name="add" id="'+i+'" class="btn btn-outline-danger btn_remove">Remove <i class="fa fa-trash-alt"></i></button>\n' +
+                    '                                                        <button type="button" name="add" id="' +
+                    i +
+                    '" class="btn btn-outline-danger btn_remove">Remove <i class="fa fa-trash-alt"></i></button>\n' +
                     '                                                    </div>\n' +
                     '                                                </div>\n' +
-                    '                                            </div>\n'+
+                    '                                            </div>\n' +
                     '                                            </div>\n' +
                     '                                        </div><hr>');
             });
-            $(document).on('click', '.btn_remove', function(){
+            $(document).on('click', '.btn_remove', function() {
                 var button_id = $(this).attr("id");
-                $('#contain'+button_id+'').remove();
+                $('#contain' + button_id + '').remove();
             });
 
 
@@ -230,18 +238,18 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            $(document).on('click', '#remove', function(){
+            $(document).on('click', '#remove', function() {
                 var button_id = $(this).attr("id");
-                $('#row'+button_id+'').remove();
+                $('#row' + button_id + '').remove();
             });
 
 
-            function printErrorMsg (msg) {
+            function printErrorMsg(msg) {
                 $(".print-error-msg").find("ul").html('');
-                $(".print-error-msg").css('display','block');
-                $(".print-success-msg").css('display','none');
-                $.each( msg, function( key, value ) {
-                    $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+                $(".print-error-msg").css('display', 'block');
+                $(".print-success-msg").css('display', 'none');
+                $.each(msg, function(key, value) {
+                    $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
                 });
             }
         });

@@ -1,10 +1,11 @@
 @extends('admin.layouts.layout')
-@section('title','Motor Limits/Clauses Details')
+@section('title', 'Motor Limits/Clauses Details')
 @section('content')
-    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.core.css') }}" rel="stylesheet" type="text/css" />--}}
-    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.bubble.css') }}" rel="stylesheet" type="text/css" />--}}
-    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.snow.css') }}" rel="stylesheet" type="text/css" />--}}
-    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=29qj3xynrj1ylz6s6pcvt0sfrztqxlu52k55du7ph1yjnwes"></script>
+    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.core.css') }}" rel="stylesheet" type="text/css" /> --}}
+    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.bubble.css') }}" rel="stylesheet" type="text/css" /> --}}
+    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.snow.css') }}" rel="stylesheet" type="text/css" /> --}}
+    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=29qj3xynrj1ylz6s6pcvt0sfrztqxlu52k55du7ph1yjnwes">
+    </script>
     <script>
         tinymce.init({
             selector: '#mytextarea'
@@ -21,9 +22,9 @@
                     <div class="col-12">
                         <div class="page-title-box">
                             <div class="page-title-right">
-                                {{$clause->product." - ".$clause->class}} Clauses Details
+                                {{ $clause->product . ' - ' . $clause->class }} Clauses Details
                             </div>
-                            <h4 class="page-title">{{$clause->product." - ".$clause->class}} Clauses Details  </h4>
+                            <h4 class="page-title">{{ $clause->product . ' - ' . $clause->class }} Clauses Details </h4>
                         </div>
                     </div>
                 </div>
@@ -33,11 +34,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">{{$clause->product." - ".$clause->class}} Clauses Details</h4>
+                                <h4 class="header-title">{{ $clause->product . ' - ' . $clause->class }} Clauses Details</h4>
 
                                 <div class="row">
                                     <br>
-                                    <textarea id="mytextarea" rows="15" name="clauses" class="form-control @error('content') is-invalid @enderror" >{{ old('content') }} {{$clause->clauses}}</textarea> <!-- end Snow-editor-->
+                                    <textarea rows="15" name="clauses" class="form-control @error('content') is-invalid @enderror">{{ old('content') }} {{ $clause->clauses }}</textarea> <!-- end Snow-editor-->
                                     <br>
                                 </div>
                             </div> <!-- end card-body-->
@@ -50,5 +51,3 @@
         </div> <!-- content -->
     </div>
 @endsection
-
-

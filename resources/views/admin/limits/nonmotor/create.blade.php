@@ -1,10 +1,11 @@
 @extends('admin.layouts.layout')
-@section('title','Non Motor Limits/Clauses')
+@section('title', 'Non Motor Limits/Clauses')
 @section('content')
-    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.core.css') }}" rel="stylesheet" type="text/css" />--}}
-    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.bubble.css') }}" rel="stylesheet" type="text/css" />--}}
-    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.snow.css') }}" rel="stylesheet" type="text/css" />--}}
-    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=29qj3xynrj1ylz6s6pcvt0sfrztqxlu52k55du7ph1yjnwes"></script>
+    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.core.css') }}" rel="stylesheet" type="text/css" /> --}}
+    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.bubble.css') }}" rel="stylesheet" type="text/css" /> --}}
+    {{--    <link href="{{ asset('admins/assets/libs/quill/quill.snow.css') }}" rel="stylesheet" type="text/css" /> --}}
+    <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=29qj3xynrj1ylz6s6pcvt0sfrztqxlu52k55du7ph1yjnwes">
+    </script>
     <script>
         tinymce.init({
             selector: '#mytextarea'
@@ -23,7 +24,7 @@
                             <div class="page-title-right">
                                 New Non Motor Clauses
                             </div>
-                            <h4 class="page-title">New Non Motor Clauses  </h4>
+                            <h4 class="page-title">New Non Motor Clauses </h4>
                         </div>
                     </div>
                 </div>
@@ -35,14 +36,16 @@
                             <div class="card-body">
                                 <h4 class="header-title">New Non Motor Clauses</h4>
                                 @include('partials.info')
-                                <form method="post" action="{{ route('admin.limits.nonmotor.submit') }}" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('admin.limits.nonmotor.submit') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="fullname">Insurance Company * :</label>
-                                        <select name="company"  class="form-control @error('name') is-invalid @enderror" required>
+                                        <select name="company" class="form-control @error('name') is-invalid @enderror"
+                                            required>
                                             <option value="">--Select Insurance Company--</option>
-                                            @foreach($companies as $company)
-                                                <option value="{{$company->id}}">{{ $company->name }}</option>
+                                            @foreach ($companies as $company)
+                                                <option value="{{ $company->id }}">{{ $company->name }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('company'))
@@ -55,7 +58,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="product">Product * :</label>
-                                                <select name="product"  class="form-control" required>
+                                                <select name="product" class="form-control" required>
                                                     <option value="">--Select Product--</option>
                                                     <option value="Life Insurance">Life Insurance</option>
                                                     <option value="Home Insurance">Home Insurance</option>
@@ -71,7 +74,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="class">Class of Insurance * :</label>
-                                                <select name="class"  class="form-control" required>
+                                                <select name="class" class="form-control" required>
                                                     <option value="Full Cover">Full Cover</option>
                                                 </select>
                                             </div>
@@ -79,11 +82,11 @@
                                     </div>
 
                                     <label for="product">Clauses Section * :</label>
-                                    <textarea id="mytextarea" rows="15" name="clauses" class="form-control @error('content') is-invalid @enderror" >{{ old('content') }}</textarea> <!-- end Snow-editor-->
+                                    <textarea rows="15" name="clauses" class="form-control @error('content') is-invalid @enderror">{{ old('content') }}</textarea> <!-- end Snow-editor-->
                                     @if ($errors->has('content'))
                                         <span class="help-block">
-                                                <strong style="color: red">{{ $errors->first('content') }}</strong>
-                                            </span>
+                                            <strong style="color: red">{{ $errors->first('content') }}</strong>
+                                        </span>
                                     @endif
                                     <br>
                                     <div class="form-group" style="text-align: center">
