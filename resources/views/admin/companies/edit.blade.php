@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="fullname">Details(Optional)  :</label>
-                                    <textarea id="mytextarea" rows="5" name="details"
+                                    <textarea  name="details"
                                               class="form-control @error('details')
                                                       is-invalid @enderror" >{{ $details->details }}</textarea> <!-- end Snow-editor-->
                                     @if ($errors->has('details'))
