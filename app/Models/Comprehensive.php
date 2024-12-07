@@ -15,8 +15,9 @@ class Comprehensive extends Model
     {
         return $this->belongsTo(InsuranceCompany::class,'companyId');
     }
+
     public function benefits()
     {
-        return $this->hasMany(ComprehensiveBenefit::class,'compId', 'companyId');
+        return $this->hasMany(ComprehensiveBenefit::class,'compId', 'id');
     }
 }

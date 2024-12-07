@@ -77,7 +77,7 @@
                                                     @if($details->isExcess)
                                                         N/A
                                                     @else
-                                                        {{ $details->type == 1 ?"":"Ksh" }} {{ $details->rate }} {{ $detaiwls->type == 1 ?"%":"" }}
+                                                        {{ $details->type == 1 ?"":"Ksh" }} {{ $details->rate }} {{ $details->type == 1 ?"%":"" }}
                                                     @endif
                                                 </td>
                                                 <td>@if($details->isExcess)
