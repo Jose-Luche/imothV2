@@ -15,12 +15,12 @@
         </div>
     </div>
 
-    <div class="services-area pt-100 pb-70">
+    <div class="services-area pb-70">
         <div class="container">
             <div class="services-top-item d-flex align-items-end justify-content-between">
                 <div class="section-title left-title">
                     <span class="top-title">Our Services</span>
-                    <h2>Imoth Insurance Services</h2>
+{{--                    <h2>Imoth Insurance Services</h2>--}}
                 </div>
                 <a href="{{ route('products') }}" class="default-btn">All Services</a>
             </div>
@@ -113,15 +113,12 @@
     <div class="panther-area">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-3 col-md-12">
                     <div class="client-odometer">
-                        <h2>
-
-                        </h2>
                         <p>Our Insurance Partners Include</p>
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-12">
+                <div class="col-lg-9 col-md-12">
                     <div class="panther-slider owl-carousel owl-theme">
                         <div class="panther-logo">
                             <img src={{ asset('frontend/assets/images/partners/1.png') }} alt="panther-logo">
@@ -158,7 +155,7 @@
 
 
     @if (\App\Models\Admin::where('avatar', '!=', null)->first())
-        <div class="experts-area pt-100 pb-70">
+        <div class="experts-area  pb-70">
             <div class="container">
                 <div class="section-title">
                     <span class="top-title">Our Experts</span>
@@ -204,9 +201,5 @@
             </div>
         </div>
     @endif
-
-
-
-    </div>
     @include('front.layout2.footer')
 @endsection

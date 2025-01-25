@@ -122,7 +122,7 @@
                                 <div class="card-body p-5 d-flex flex-row">
                                     <div class="p-2">
                                         <img style="max-width: 100px"
-                                            src="{{ asset('frontend/assets/images/imoth.jpg') }}">
+                                            src="{{ asset('frontend/assets/images/imoth1.png') }}">
                                     </div>
                                     <div>
                                         {{--                                                        <span class="badge bg-pale-blue text-blue rounded py-1 mb-2">Full Time</span> --}}
@@ -169,7 +169,7 @@
                                 <div class="row gx-4">
                                     <div class="col-md-12">
                                         <div class="form-floating mb-4">
-                                            
+
                                             <input id="form_name" type="text" name="phone" class="form-control"
                                                 value="{{ $payment->phone }}" required>
                                             <label for="form_name">Enter your safaricom phone number *</label>
@@ -186,9 +186,9 @@
                                                 class="uil uil-arrow-circle-right"></i> </button>
                                     </div>
 
-                                    
+
                                 </div>
-                                
+
                             </form>
                             <!-- /form -->
                         </div>--}}

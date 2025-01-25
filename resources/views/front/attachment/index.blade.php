@@ -97,7 +97,7 @@
     </div>
 
 
-    <div class="contact-us-area pt-100">
+    <div class="contact-us-area">
         <div class="container">
             <div class="section-title">
                 <span class="top-title">Generate Instant Quote</span>

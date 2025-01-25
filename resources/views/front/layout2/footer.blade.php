@@ -1,12 +1,12 @@
-<div class="footer-area pt-100">
+<div class="footer-area" style="padding-top: 20px">
     <div class="container">
         <div class="row pb-100">
             <div class="col-lg-3 col-sm-6 col-md-6" data-cue="slideInUp">
                 <div class="footer-widget">
                     <a href="{{ route('home') }}">
-                        <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="black-logo"
+                        <img src={{ asset('frontend/assets/images/imoth1.png') }} class="black-logo"
                             style="width: 100px; height: 60px;" alt="imoth">
-                        <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="white-logo"
+                        <img src={{ asset('frontend/assets/images/imoth1.png') }} class="white-logo"
                             style="width: 100px; height: 60px;" alt="imoth">
                     </a>
                     <p>Welcome to Imoth Insurance Brokers. We are your trusted partner in safeguarding your future. We
@@ -107,17 +107,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="footer-shape-1">
-        <!--<img src="assets/images/footer-shape-1.webp" alt="footer">-->
-    </div>
-    <div class="footer-shape-2">
-        <!--<img src="assets/images/footer-shape-2.webp" alt="footer">-->
-    </div>
-    <div class="copyright-content">
-        <div class="d-flex align-items-center justify-content-center">
-
         </div>
     </div>
 </div>

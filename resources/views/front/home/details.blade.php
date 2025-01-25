@@ -113,7 +113,7 @@
                                 <div class="card-body p-5 d-flex flex-row">
                                     <div class="p-2">
                                         <img style="max-width: 100px"
-                                            src="{{ asset('frontend/assets/images/imoth.jpg') }}">
+                                            src="{{ asset('frontend/assets/images/imoth1.png') }}">
                                     </div>
                                     <div>
                                         {{--                                                        <span class="badge bg-pale-blue text-blue rounded py-1 mb-2">Full Time</span> --}}

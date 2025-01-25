@@ -93,10 +93,10 @@
                 <div class="main-responsive-menu">
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                            <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="black-logo"
-                                style="width:180px; height:140px" alt="imoth">
-                            <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="white-logo"
-                                style="width:180px; height:140px" alt="imoth">
+                            <img src={{ asset('frontend/assets/images/imoth1.png') }} class="black-logo"
+                                style="width:100px; height:60px" alt="imoth">
+                            <img src={{ asset('frontend/assets/images/imoth1.png') }} class="white-logo"
+                                style="width:100px; height:60px" alt="imoth">
                         </a>
                     </div>
                 </div>
@@ -106,10 +106,10 @@
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="black-logo"
-                            style="width:180px; height:140px" alt="imoth">
-                        <img src={{ asset('frontend/assets/images/imoth.jpg') }} class="white-logo"
-                            style="width:180px; height:140px" alt="imoth">
+                        <img src={{ asset('frontend/assets/images/imoth1.png') }} class="black-logo"
+                            style="width:100px; height:60px" alt="imoth">
+                        <img src={{ asset('frontend/assets/images/imoth1.png') }} class="white-logo"
+                            style="width:100px; height:60px" alt="imoth">
                     </a>
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto">
