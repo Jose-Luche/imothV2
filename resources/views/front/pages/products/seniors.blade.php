@@ -118,7 +118,7 @@
                     <div class="download-app">
                         <h2>Instant Quotation</h2>
                         <div class="option-item">
-                            <a href="{{ route('front.health.index') }}" style="background-color: #0031AA; color:white"
+                            <a href="{{ route('front.seniors.index') }}" style="background-color: #0031AA; color:white"
                                 class="default-btn">Get A Quote</a>
                         </div>
 
