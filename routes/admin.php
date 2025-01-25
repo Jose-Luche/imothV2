@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\LastExpenseController;
+use App\Http\Controllers\Admin\SeniorsMedicalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
@@ -200,6 +201,25 @@ Route::prefix('admin')->group(function() {
             /**OP Limits Routes**/
             Route::get('/new/op', [HealthController::class,'createOp'])->name('admin.health.create-op');
             Route::post('/submit/op', [HealthController::class,'submitOp'])->name('admin.health.submit-op');
+        });
+
+        Route::prefix('seniors')->group(function() {
+            Route::get('/', [SeniorsMedicalController::class,'index'])->name('admin.seniors');
+            Route::get('/new', [SeniorsMedicalController::class,'create'])->name('admin.seniors.create');
+            Route::post('/submit', [SeniorsMedicalController::class,'submit'])->name('admin.seniors.submit');
+            Route::get('/{id}/edit', [SeniorsMedicalController::class,'edit'])->name('admin.seniors.edit');
+            Route::get('/details/{id}', [SeniorsMedicalController::class,'details'])->name('admin.seniors.details');
+            Route::post('/update/{id}', [SeniorsMedicalController::class,'update'])->name('admin.seniors.update');
+            Route::get('/delete/{id}', [SeniorsMedicalController::class,'delete'])->name('admin.seniors.delete');
+            /**Save IP Premium Routes**/
+            Route::get('/new-premium', [SeniorsMedicalController::class,'createIpPremium'])->name('admin.seniors.create_ip_premiums');
+            Route::post('/submit-premium', [SeniorsMedicalController::class,'submitIpPremium'])->name('admin.seniors.submit_ip_premiums');
+            Route::get('/limits/{id}/{benefit}/{pp_pf}', [SeniorsMedicalController::class,'viewLimits'])->name('admin.seniors.health-inpatient-limits');
+            Route::get('/premiums/{id}', [SeniorsMedicalController::class,'viewPremiums'])->name('admin.seniors.available_premium_rates');
+
+            /**OP Limits Routes**/
+            Route::get('/new/op', [SeniorsMedicalController::class,'createOp'])->name('admin.seniors.create-op');
+            Route::post('/submit/op', [SeniorsMedicalController::class,'submitOp'])->name('admin.seniors.submit-op');
         });
         /**Added By Babu O. Katula**/
         Route::prefix('travel')->group(function() {

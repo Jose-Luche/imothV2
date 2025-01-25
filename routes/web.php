@@ -23,6 +23,7 @@ Route::view('/', 'front.index2')->name('home');
 Route::view('/about-imoth-insurance', 'front.pages.about')->name('about');
 Route::view('/motor-insurance', 'front.pages.products.motor')->name('motor');
 Route::view('/medical-insurance', 'front.pages.products.medical')->name('medical');
+Route::view('/seniors-medical-insurance', 'front.pages.products.seniors')->name('seniors');
 Route::view('/home-insurance', 'front.pages.products.home_ins')->name('home.ins');
 Route::view('/travel-insurance', 'front.pages.products.travel')->name('travel');
 Route::view('/business-insurance', 'front.pages.products.business_ins')->name('business');

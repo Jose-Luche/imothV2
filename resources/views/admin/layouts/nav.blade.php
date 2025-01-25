@@ -53,6 +53,9 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li>
+                            <a href="{{ route('admin.seniors') }}">Seniors Medical</a>
+                        </li>
+                        <li>
                             <a href="{{ route('admin.health') }}">Health Insurance</a>
                         </li>
                         <li>

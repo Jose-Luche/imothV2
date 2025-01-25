@@ -91,6 +91,23 @@ Route::prefix('covers')->group(function () {
         Route::get('/pay/{id}', [HealthController::class, 'pay'])->name('front.health.pay');
     });
 
+    /**Added By Katula**/
+    Route::prefix('seniors')->group(function () {
+        Route::get('/', [HealthController::class, 'index'])->name('front.seniors.index');
+        Route::post('/bond', [HealthController::class, 'submitHealthDetails'])->name('front.seniors.submit');
+        Route::get('/bio', [HealthController::class, 'userBio'])->name('front.seniors.bio');
+        Route::post('/bio/submit', [HealthController::class, 'submitBio'])->name('front.seniors.bio.submit');
+        Route::get('/covers/{id}', [HealthController::class, 'covers'])->name('front.seniors.covers');
+        Route::get('/update-my-application/{id}/{limitId}/{inpatientBasicPremium}/{currentSelectedOutpatient}/{currentSelectedDental}/{currentSelectedOptical}/{currentSelectedMaternity}', [HealthController::class, 'updateSelectedCover']);
+        Route::get('/update-outpatient-premium-details/{id}/{activator}/{limit}/{pp_pf}/{insurerId?}', [HealthController::class, 'updateOutpatientCover']);
+        Route::get('/update-dental-premium-details/{id}/{activator}/{limit}/{insurerId?}', [HealthController::class, 'updateDentalCover']);
+        Route::get('/update-optical-premium-details/{id}/{activator}/{limit}/{insurerId?}', [HealthController::class, 'updateOpticalCover']);
+        Route::get('/update-maternity-premium-details/{id}/{activator}/{limit}/{insurerId?}', [HealthController::class, 'updateMaternityCover']);
+        Route::get('/details/{applicationId}/{id}', [HealthController::class, 'coverDetails'])->name('front.seniors.details');
+        Route::get('/submit/{applicationId}/{id}', [HealthController::class, 'submitApplication'])->name('front.seniors.details.submit');
+        Route::get('/pay/{id}', [HealthController::class, 'pay'])->name('front.seniors.pay');
+    });
+
     Route::prefix('travel')->group(function () {
         Route::get('/', [TravelController::class, 'index'])->name('front.travel.index');
         Route::post('/travel', [TravelController::class, 'submitTravelDetails'])->name('front.travel.submit');

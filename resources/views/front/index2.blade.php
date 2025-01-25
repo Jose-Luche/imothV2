@@ -27,6 +27,14 @@
             <div class="row" data-cues="slideInUp">
                 <div class="col-lg-4 col-sm-6 col-md-6">
                     <div class="single-services-card d-flex align-items-center">
+                        <div class="services-icon bg-icon-color1">
+                            <img src={{ asset('frontend/assets/images/services/heart.svg') }} alt="heart">
+                        </div>
+                        <h3><a href="{{ route('seniors') }}">Seniors Medical</a></h3>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6">
+                    <div class="single-services-card d-flex align-items-center">
                         <div class="services-icon">
                             <img src={{ asset('frontend/assets/images/services/couple.svg') }} alt="couple">
                         </div>
