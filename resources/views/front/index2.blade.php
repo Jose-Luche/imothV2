@@ -1,5 +1,7 @@
 @extends('front.layout2.master')
 
+
+
 @section('admin')
     @include('front.layout2.header')
     <div class="search-area">
@@ -15,12 +17,47 @@
         </div>
     </div>
 
-    <div class="services-area pb-70">
+    <div class="banner-three-area">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="single-banner-three-content">
+                        
+                        <h1>Seniors Medical Insurance</h1>
+                        <p>
+                            Get an enhanced insurance solution providing health benefits for life.
+                        </p>
+                        <div class="banner-btn d-flex align-items-center">
+                            <a href="{{route('seniors')}}" class="default-btn">Get Quote</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="single-banner-image">
+                        <div class="banner-image3s">
+                            <div class="banner-main-img">
+                                <img src={{ asset('frontend/assets/images/senior-ci-2.jpg') }} class="rounded-circle">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    {{-- <div class="services-area pb-70">
         <div class="container">
             <div class="services-top-item d-flex align-items-end justify-content-between">
                 <div class="section-title left-title">
                     <span class="top-title">Our Services</span>
-{{--                    <h2>Imoth Insurance Services</h2>--}}
+                    <h2>Imoth Insurance Services</h2>
                 </div>
                 <a href="{{ route('products') }}" class="default-btn">All Services</a>
             </div>
@@ -115,7 +152,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Our Partners -->
     <div class="panther-area">
@@ -210,4 +247,15 @@
         </div>
     @endif
     @include('front.layout2.footer')
+    <script>
+        $(document).ready(function() {
+            $(".owl-carousel").owlCarousel({
+                items: 1, // Number of items to display
+                loop: true, // Loop through items
+                autoplay: true, // Auto play
+                autoplayTimeout: 3000, // Time between transitions
+                autoplayHoverPause: true // Pause on hover
+            });
+        });
+    </script>
 @endsection

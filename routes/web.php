@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Payment\PaymentController;
+use App\Http\Controllers\Payment\PaystackController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +40,14 @@ Route::view('/faq-insurance', 'front.pages.faq')->name('faq');
 Route::view('/location', 'front.pages.location')->name('ourLocation');
 
 Route::get('/mpesa-confirmation', [PaymentController::class, 'generateAccessToken']);
+
+Route::get('/callback', [PaystackController::class, 'callback'])->name('callback');
+Route::get('/success', [PaystackController::class, 'success'])->name('success');
+Route::get('/cancel', [PaystackController::class, 'cancel'])->name('cancel');
+
+Route::get('/welcome', function () {
+    return view ('welcome');
+});
 
 Route::resource('contact', ContactController::class);
 

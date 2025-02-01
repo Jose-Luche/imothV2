@@ -93,6 +93,9 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
+                                    <a href="{{ route('seniors') }}" class="nav-link">Seniors Medical</a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{ route('motor') }}" class="nav-link">Motor Insurance</a>
                                 </li>
                                 <li class="nav-item">

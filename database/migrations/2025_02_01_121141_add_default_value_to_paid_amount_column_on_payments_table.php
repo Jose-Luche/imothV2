@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPaidAmountToPaymentsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddPaidAmountToPaymentsTable extends Migration
     public function up()
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->float('paid_amount')->default(0);
+            $table->double('paid_amount')->default(0)->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AddPaidAmountToPaymentsTable extends Migration
     public function down()
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->dropColumn('paid_amount');
+            $table->double('paid_amount')->nullable()->change();
         });
     }
-}
+};

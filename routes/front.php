@@ -14,6 +14,8 @@ use App\Http\Controllers\Front\Insurance\BusinessController;
 use App\Http\Controllers\Front\Insurance\ThirdPartyController;
 use App\Http\Controllers\Front\Insurance\ComprehensiveController;
 use App\Http\Controllers\Front\Insurance\OtherPersonalAccidentController;
+use App\Http\Controllers\Front\Insurance\SeniorsMedicalController;
+//use App\Http\Controllers\Payment\PaystackController;
 
 Route::prefix('pay')->group(function () {
     Route::get('/register', [PaymentController::class, 'mpesaRegisterUrls']);
@@ -93,19 +95,23 @@ Route::prefix('covers')->group(function () {
 
     /**Added By Katula**/
     Route::prefix('seniors')->group(function () {
-        Route::get('/', [HealthController::class, 'index'])->name('front.seniors.index');
-        Route::post('/bond', [HealthController::class, 'submitHealthDetails'])->name('front.seniors.submit');
-        Route::get('/bio', [HealthController::class, 'userBio'])->name('front.seniors.bio');
-        Route::post('/bio/submit', [HealthController::class, 'submitBio'])->name('front.seniors.bio.submit');
-        Route::get('/covers/{id}', [HealthController::class, 'covers'])->name('front.seniors.covers');
-        Route::get('/update-my-application/{id}/{limitId}/{inpatientBasicPremium}/{currentSelectedOutpatient}/{currentSelectedDental}/{currentSelectedOptical}/{currentSelectedMaternity}', [HealthController::class, 'updateSelectedCover']);
-        Route::get('/update-outpatient-premium-details/{id}/{activator}/{limit}/{pp_pf}/{insurerId?}', [HealthController::class, 'updateOutpatientCover']);
-        Route::get('/update-dental-premium-details/{id}/{activator}/{limit}/{insurerId?}', [HealthController::class, 'updateDentalCover']);
-        Route::get('/update-optical-premium-details/{id}/{activator}/{limit}/{insurerId?}', [HealthController::class, 'updateOpticalCover']);
-        Route::get('/update-maternity-premium-details/{id}/{activator}/{limit}/{insurerId?}', [HealthController::class, 'updateMaternityCover']);
-        Route::get('/details/{applicationId}/{id}', [HealthController::class, 'coverDetails'])->name('front.seniors.details');
-        Route::get('/submit/{applicationId}/{id}', [HealthController::class, 'submitApplication'])->name('front.seniors.details.submit');
-        Route::get('/pay/{id}', [HealthController::class, 'pay'])->name('front.seniors.pay');
+        Route::get('/', [SeniorsMedicalController::class, 'index'])->name('front.seniors.index');
+        Route::post('/bond', [SeniorsMedicalController::class, 'submitHealthDetails'])->name('front.seniors.submit');
+        Route::get('/bio', [SeniorsMedicalController::class, 'userBio'])->name('front.seniors.bio');
+        Route::post('/bio/submit', [SeniorsMedicalController::class, 'submitBio'])->name('front.seniors.bio.submit');
+        Route::get('/covers/{id}', [SeniorsMedicalController::class, 'covers'])->name('front.seniors.covers');
+        Route::get('/update-my-application/{id}/{limitId}/{inpatientBasicPremium}/{currentSelectedOutpatient}/{currentSelectedDental}/{currentSelectedOptical}/{currentSelectedMaternity}', [SeniorsMedicalController::class, 'updateSelectedCover']);
+        Route::get('/update-outpatient-premium-details/{id}/{activator}/{limit}/{pp_pf}/{insurerId?}', [SeniorsMedicalController::class, 'updateOutpatientCover']);
+        Route::get('/update-dental-premium-details/{id}/{activator}/{limit}/{insurerId?}', [SeniorsMedicalController::class, 'updateDentalCover']);
+        Route::get('/update-optical-premium-details/{id}/{activator}/{limit}/{insurerId?}', [SeniorsMedicalController::class, 'updateOpticalCover']);
+        Route::get('/update-maternity-premium-details/{id}/{activator}/{limit}/{insurerId?}', [SeniorsMedicalController::class, 'updateMaternityCover']);
+        Route::get('/details/{applicationId}/{id}', [SeniorsMedicalController::class, 'coverDetails'])->name('front.seniors.details');
+        Route::get('/submit/{applicationId}/{id}', [SeniorsMedicalController::class, 'submitApplication'])->name('front.seniors.details.submit');
+        Route::get('/pay/{id}', [SeniorsMedicalController::class, 'pay'])->name('front.seniors.pay');
+
+        //Route::get('/callback', [PaystackController::class, 'callback'])->name('callback');
+        //Route::get('/success', [PaystackController::class, 'success'])->name('success');
+        //Route::get('/cancel', [PaystackController::class, 'cancel'])->name('cancel');
     });
 
     Route::prefix('travel')->group(function () {

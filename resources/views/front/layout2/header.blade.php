@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<div class="navbar-area">
+<div class="navbar-area" style="padding-bottom:20px;">
     <div class="main-responsive-nav">
         <div class="container">
             <div class="main-responsive-menu">
@@ -90,6 +90,9 @@
                                 <i class='bx bx-down-arrow-alt'></i>
                             </a>
                             <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('seniors') }}" class="nav-link">Seniors Medical</a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="{{ route('motor') }}" class="nav-link">Motor Insurance</a>
                                 </li>

@@ -150,9 +150,10 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
-                                        <input type="text" id="principalAge" name="principalAge"
+                                        <input type="number" id="principalAge" name="principalAge" min="65"
+                                            
                                             value="{{ old('principalAge') }}" class="form-control"
-                                            placeholder="Principal Member Age" required
+                                            placeholder="Principal Member Age: Min 65 yrs" required
                                             data-error="Please enter your Age">
                                         <div class="help-block with-errors"></div>
                                     </div>

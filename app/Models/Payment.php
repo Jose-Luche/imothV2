@@ -15,15 +15,7 @@ class Payment extends Model
     const STATUS_PROGRESS = 'progress';
     const STATUS_PAID = 'paid';
 
-    protected $fillable = [
-        'reference',
-        'ref_id',
-        'amount',
-        'paid_amount',
-        'type',
-        'phone',
-        'status'
-    ];
+    protected $guarded = ['id'];
 
     protected static function boot()
     {

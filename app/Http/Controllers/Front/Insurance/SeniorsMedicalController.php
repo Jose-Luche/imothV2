@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Front\Insurance;
 
 
-use App\Models\SeniorsMedical;
-use App\Models\SeniorsMedicalFamilyPremium;
-use App\Models\SeniorsMedicalInsuranceApplication;
-use App\Models\SeniorsMedicalPrincipalPremium;
-use App\Models\SeniorsMedicalSpousePremium;
 use Carbon\Carbon;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use App\Models\SeniorsMedical;
 use App\Http\Controllers\Controller;
 use App\Mail\Admin\AdminHealthEmail;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\Models\SeniorsMedicalFamilyPremium;
+use App\Models\SeniorsMedicalSpousePremium;
+use App\Models\SeniorsMedicalPrincipalPremium;
+use App\Models\SeniorsMedicalInsuranceApplication;
 
 class SeniorsMedicalController extends Controller
 {
@@ -668,22 +669,26 @@ class SeniorsMedicalController extends Controller
     {
         $details = SeniorsMedicalInsuranceApplication::findOrFail($id);
 
+        
         $payment = Payment::where('ref_id',$details->id)
-            ->where('type','seniors')
+            ->where('type','Paystack')
             ->first();
-        if (!$payment){
-            $payment = Payment::create([
-                'ref_id'=>$details->id,
-                'amount'=>$details->premiumPayable,
-                'type'=>'seniors',
-                'phone'=>Session::get('phoneNumber'),
-                'paid_amount'=>0
-            ]);
+        if ($payment){
+            $balance = $payment->amount - $payment->paid_amount;
+            /**We update the current Balance**/
+            $payment->update(['balance_after' => $balance]);
+
+            /**Get a fresh Instance of the Payment Now**/
+            $payment = Payment::where('ref_id',$details->id)
+            ->where('type','Paystack')
+            ->first();
         }
 
-        return view('front.travel.pay',[
+        return view('front.seniors.pay',[
             'details'=>$details,
             'payment'=>$payment
         ]);
     }
+
+    
 }

@@ -36,48 +36,6 @@
     <link rel="icon" type="image/png" href={{ asset('frontend/assets/images/favicon/favicon.ico') }} />
     <script src={{ asset('frontend/assets/js/jquery.min.js') }}></script>
     <script src={{ asset('frontend/assets/js/select2.min.js') }}></script>
-    <script>
-        $(document).ready(function() {
-            //$('#motor-makes').select2();
-
-            $('#motor-makes').change(function() {
-                let make = $(this).val();
-                if (make != "") {
-                    $.ajax({
-                        method: 'GET',
-                        url: '/quotation/motor-models/' + make,
-                        data: make,
-                        success: function(res) {
-                            if (res != "") {
-                                $('#motor-models').show();
-                                $('#motor-models-select').html(res);
-                            } else {
-                                $('#motor-models').hide();
-                            }
-                        }
-                    });
-                } else {
-                    $('#motor-models').hide();
-                }
-
-            });
-        });
-
-        //Auto-focus on search window
-        $(document).on('select2:open', () => {
-            document.querySelector('.select2-search__field').focus();
-        });
-
-        function showComprehensiveForm() {
-            $('#comprehensiveForm').show();
-            $('#TPOForm').hide();
-        }
-
-        function showTPOForm() {
-            $('#comprehensiveForm').hide();
-            $('#TPOForm').show();
-        }
-    </script>
 </head>
 
 <body>
@@ -128,75 +86,102 @@
                                         {{-- <span class="badge bg-pale-blue text-blue rounded py-1 mb-2">Full Time</span> --}}
                                         <h4 class="mb-1">Seniors Medical Insurance</h4>
                                         <p class="mb-0 text-body"> <i class="uil uil-wallet me-1"></i> Ksh
-                                            {{ number_format($payment->amount, 2) }}
+                                            @if($payment)
+                                            {{ number_format($payment->balance_after, 2) }}
+                                            @else
+                                            {{ number_format($details->premiumPayable, 2) }}
+                                            @endif
                                         </p>
+
+                                        {{--Only show this form when the Balance is greater than 0--}}
+                                        @if($payment)
+                                        <form id="paymentForm">
+                                            <div class="form-submit">
+                                                
+                                                <input type="hidden" id="name" value="{{$details->id}}">
+                                                <input type="hidden" id="email" value="{!!$details->email!!}">
+                                                <input type="hidden" id="amount" value="{{round($payment->balance_after)}}">
+                                                <br><br>
+                                                @if($payment->balance_after > 0)
+                                                <button style="float:right" type="submit" class="btn btn-success btn-sm rounded-pill btn-send mb-3"  onclick="payWithPaystack()">Pay to Get Cover </button>
+                                                @else
+                                                <b>Fully Paid!</b>
+                                                @endif
+                                                
+                                            </div>
+                                        </form>
+                                        @else
+                                        <form id="paymentForm">
+                                            <div class="form-submit">
+                                                
+                                                <input type="hidden" id="name" value="{{$details->id}}">
+                                                <input type="hidden" id="email" value="{!!$details->email!!}">
+                                                <input type="hidden" id="amount" value="{{round($details->premiumPayable)}}">
+                                                <br><br>
+                                                <button style="float:right" type="submit" class="btn btn-success btn-sm rounded-pill btn-send mb-3"  onclick="payWithPaystack()">Pay to Get Cover </button>
+                                            </div>
+                                        </form>
+                                        @endif
+                                        
+                                        <script src="https://js.paystack.co/v1/inline.js"></script>
+    
+                                        <script>
+                                            function payWithPaystack(e) {
+                                                e.preventDefault(); // Prevent form submission
+
+                                                
+                                                let customerName = document.getElementById("name").value;
+                                                let customerEmail = document.getElementById("email").value;
+                                                let amount = document.getElementById("amount").value * 100;
+
+                                                // Initialize Paystack payment
+                                                let handler = PaystackPop.setup({
+                                                    key: "{{ env('PAYSTACK_PUBLIC_KEY') }}", // Use your public key
+                                                    email: customerEmail,
+                                                    amount: amount,
+                                                    currency: "KES",
+                                                    metadata: {
+                                                        custom_fields: [
+                                                            {
+                                                                display_name: "Customer Name",
+                                                                variable_name: "customer_name",
+                                                                value: customerName
+                                                            }
+                                                        ]
+                                                    },
+                                                    onClose: function(){
+                                                        alert('Payment window closed.');
+                                                    },
+                                                    callback: function(response){
+                                                        // Redirect to your backend with the reference
+                                                        window.location.href = "{{ route('callback') }}?reference=" + response.reference;
+                                                    }
+                                                });
+
+                                                handler.openIframe();
+                                            }
+
+                                            document.getElementById("paymentForm").addEventListener("submit", payWithPaystack);
+                                        </script>
+                                        
                                     </div>
                                 </div>
                             </a>
 
-
+                            
                         </div>
+                        
                     </div>
+                    
                 </div>
-                <div class="features-area pt-100 pb-70">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4>How To Pay</h4>
-                            <ul>
-                                <li>Go to M-PESA on your phone</li>
-                                <li>Go to <strong>Lipa na M-pesa and select PayBill </strong>option</li>
-                                <li>Enter paybill number <strong>4108121</strong></li>
-                                <li>Enter <strong>{{ $payment->reference }}</strong> as the account number</li>
-                                <li>Enter <strong>KSH {{ number_format($payment->amount) }}</strong> </li>
-                                <li>Enter your <strong>M-pesa pin</strong> and select Ok</li>
-                                <li>Your will receive a confirmation message from m-pesa</li>
-                            </ul>
-
-                        </div>
-
-                        {{--<div class="col-md-6">
-                            <h6 class="mb-4">Or Submit your number to get a payment prompt</h6>
-                            <form class="coaantact-form needs-validation" id="paymentRequestForm" method="post"
-                                action="{{ route('payment.stk') }}" novalidate>
-                                @csrf
-                                <input type="hidden" name="invoice" value="{{ $payment->reference }}">
-                                <input type="hidden" name="amount"
-                                    value="{{ $payment->amount - $payment->paid_amount ?? 0 }}">
-                                <div class="row gx-4">
-                                    <div class="col-md-12">
-                                        <div class="form-floating mb-4">
-
-                                            <input id="form_name" type="text" name="phone" class="form-control"
-                                                value="{{ $payment->phone }}" required>
-                                            <label for="form_name">Enter your safaricom phone number *</label>
-                                            @if ($errors->has('phone'))
-                                                <div class="invalid-feedback"> {{ $errors->first('phone') }} </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <!-- /column -->
-                                    <div class="col-12 text-center">
-                                        <button type="submit" id="submitButton"
-                                            class="btn btn-success btn-sm rounded-pill btn-send mb-3"
-                                            value="Send message">Submit phone number <i
-                                                class="uil uil-arrow-circle-right"></i> </button>
-                                    </div>
-
-                                    <!-- /column -->
-                                </div>
-                                <!-- /.row -->
-                            </form>
-                            <!-- /form -->
-                        </div>--}}
-                    </div>
-                </div>
+                
 
             </div>
         </div>
     </div>
 
     @include('front.layout2.footer')
-    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
 
     <script>
         $(document).ready(function() {
