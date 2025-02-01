@@ -22,14 +22,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="single-banner-three-content">
-                        
                         <h1>Seniors Medical Insurance</h1>
                         <p>
                             Get an enhanced insurance solution providing health benefits for life.
                         </p>
                         <div class="banner-btn d-flex align-items-center">
-                            <a href="{{route('seniors')}}" class="default-btn">Get Quote</a>
-                            
+                            <a href="{{route('seniors')}}" class="default-btn">Get Quote</a>                            
                         </div>
                     </div>
                 </div>
@@ -37,7 +35,7 @@
                     <div class="single-banner-image">
                         <div class="banner-image3s">
                             <div class="banner-main-img">
-                                <img src={{ asset('frontend/assets/images/senior-ci-2.jpg') }} class="rounded-circle">
+                                <img src={{ asset('frontend/assets/images/senior-citizen-2.jpg') }} class="rounded-circle">
                             </div>
                         </div>
 
@@ -50,109 +48,6 @@
     </div>
 
 
-
-
-    {{-- <div class="services-area pb-70">
-        <div class="container">
-            <div class="services-top-item d-flex align-items-end justify-content-between">
-                <div class="section-title left-title">
-                    <span class="top-title">Our Services</span>
-                    <h2>Imoth Insurance Services</h2>
-                </div>
-                <a href="{{ route('products') }}" class="default-btn">All Services</a>
-            </div>
-            <div class="row" data-cues="slideInUp">
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon bg-icon-color1">
-                            <img src={{ asset('frontend/assets/images/services/heart.svg') }} alt="heart">
-                        </div>
-                        <h3><a href="{{ route('seniors') }}">Seniors Medical</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon">
-                            <img src={{ asset('frontend/assets/images/services/couple.svg') }} alt="couple">
-                        </div>
-                        <h3><a href="{{ route('life') }}">Life Insurance</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon">
-                            <img src={{ asset('frontend/assets/images/services/home.svg') }} alt="home">
-                        </div>
-                        <h3><a href="{{ route('home.ins') }}">Home Insurance</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon bg-icon-color">
-                            <img src={{ asset('frontend/assets/images/services/lightbulb.svg') }} alt="lightbulb">
-                        </div>
-                        <h3><a href="{{ route('business') }}">Business Insurance</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon bg-icon-color1">
-                            <img src={{ asset('frontend/assets/images/services/heart.svg') }} alt="heart">
-                        </div>
-                        <h3><a href="{{ route('medical') }}">Medical Insurance</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon bg-icon-color2">
-                            <img src={{ asset('frontend/assets/images/services/car.svg') }} alt="car">
-                        </div>
-                        <h3><a href="{{ route('motor') }}">Motor Insurance</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon bg-icon-color2">
-                            <img src={{ asset('frontend/assets/images/services/services-icon-1.svg') }} alt="lightbulb">
-                        </div>
-                        <h3><a href="{{ route('travel') }}">Travel Insurance</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon bg-icon-color">
-                            <img src={{ asset('frontend/assets/images/services/couple.svg') }} alt="couple">
-                        </div>
-                        <h3><a href="{{ route('attachment') }}">Student Personal Accident</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon bg-icon-color">
-                            <img src={{ asset('frontend/assets/images/services/couple.svg') }} alt="couple">
-                        </div>
-                        <h3><a href="{{ route('pa') }}">Personal Accident</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon bg-icon-color">
-                            <img src={{ asset('frontend/assets/images/services/lightbulb.svg') }} alt="lightbulb">
-                        </div>
-                        <h3><a href="{{ route('bid_bond') }}">Bid Bond</a></h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-md-6">
-                    <div class="single-services-card d-flex align-items-center">
-                        <div class="services-icon bg-icon-color">
-                            <img src={{ asset('frontend/assets/images/services/couple.svg') }} alt="lightbulb">
-                        </div>
-                        <h3><a href="{{ route('last_expense') }}">Funeral Expense</a></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <!-- Our Partners -->
     <div class="panther-area">
