@@ -27,7 +27,8 @@
                     <div class="navbar-other ms-lg-4">
                         <ul class="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
                             <li class="nav-item d-none d-md-block">
-                                <a href="{{ route('contact') }}" class="btn btn-sm btn-primary rounded-pill">Contact
+                                <a href="{{ route('contact.index') }}"
+                                    class="btn btn-sm btn-primary rounded-pill">Contact
                                     us</a>
                             </li>
                             <li class="nav-item d-lg-none">
@@ -50,7 +51,8 @@
                 <div class="d-lg-flex flex-row align-items-lg-center">
                     <h3 class="display-3 mb-6 mb-lg-0 pe-lg-20 pe-xl-22 pe-xxl-25 text-white">Have any concern or
                         question on our services?</h3>
-                    <a href="{{ route('contact') }}" class="btn btn-primary rounded-pill mb-0 text-nowrap">Contact us
+                    <a href="{{ route('contact.index') }}" class="btn btn-primary rounded-pill mb-0 text-nowrap">Contact
+                        us
                         now</a>
                 </div>
                 <!--/div -->

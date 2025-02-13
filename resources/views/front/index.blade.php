@@ -14,7 +14,7 @@
             <!-- /.row -->
             <div class="d-flex justify-content-center" data-cues="slideInDown" data-group="join" data-delay="900">
                 <span><a href="#covers" class="btn btn-lg btn-primary rounded-pill mx-1">See Covers</a></span>
-                <span><a href="{{ route('contact') }}" class="btn btn-lg btn-outline-primary rounded-pill mx-1">Contact Us</a></span>
+                <span><a href="{{ route('contact.index') }}" class="btn btn-lg btn-outline-primary rounded-pill mx-1">Contact Us</a></span>
             </div>
             <!-- /div -->
 {{--            <div class="row mt-12" data-cue="fadeIn" data-delay="1600">--}}
