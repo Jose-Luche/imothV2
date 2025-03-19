@@ -133,7 +133,9 @@
                         <li class="nav-item">
                             <a href="{{ route('contact.index') }}" class="nav-link">Contact Us</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="{{ route('policyPrivacy') }}" class="nav-link">Policy Privacy</a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('faq') }}" class="nav-link">FAQs</a>
                         </li>

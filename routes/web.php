@@ -37,6 +37,7 @@ Route::view('/personal-accident', 'front.pages.products.personal-accident')->nam
 //Route::view('/contact', 'front.pages.contact')->name('contact');
 Route::view('/products', 'front.pages.products.products')->name('products');
 Route::view('/faq-insurance', 'front.pages.faq')->name('faq');
+Route::view('/policy-privacy', 'front.pages.policy-privacy')->name('policyPrivacy');
 Route::view('/location', 'front.pages.location')->name('ourLocation');
 
 Route::get('/mpesa-confirmation', [PaymentController::class, 'generateAccessToken']);
